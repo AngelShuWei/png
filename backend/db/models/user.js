@@ -29,7 +29,10 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
-    }
+    },
+    gender: DataTypes.STRING,
+    bio: DataTypes.TEXT,
+    profilePic: DataTypes.STRING,
   },
   {
     defaultScope: {

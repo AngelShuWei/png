@@ -7,18 +7,19 @@ module.exports = {
       {
         email: 'demo@user.io',
         username: 'Demo-lition',
-        hashedPassword: bcrypt.hashSync('password')
+        hashedPassword: bcrypt.hashSync('password'),
+        gender: 'Nonconforming',
+        bio: 'Hi everyone! I am the demo user',
+        profilePic: 'https://en.meming.world/images/en/thumb/b/b9/Cursed_Cat.jpg/300px-Cursed_Cat.jpg',
       },
       {
-        email: 'user1@user.io',
-        username: 'FakeUser1',
-        hashedPassword: bcrypt.hashSync('password2')
+        email: 'angel@user.io',
+        username: 'Angle',
+        hashedPassword: bcrypt.hashSync('password'),
+        gender: 'Female',
+        bio: 'Hi everyone, my name angle.',
+        profilePic: 'https://i1.sndcdn.com/avatars-vzVavnrNStPmzryz-P4cGOw-t500x500.jpg',
       },
-      {
-        email: 'user2@user.io',
-        username: 'FakeUser2',
-        hashedPassword: bcrypt.hashSync('password3')
-      }
     ], {});
   },
 

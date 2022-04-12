@@ -22,6 +22,16 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
+      gender: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      bio: {
+        type: Sequelize.TEXT,
+      },
+      profilePic: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
