@@ -17,7 +17,7 @@ module.exports = {
         username: 'Angle',
         hashedPassword: bcrypt.hashSync('password'),
         gender: 'Female',
-        bio: 'Hi everyone, my name angle.',
+        bio: 'Hi my name angle',
         profilePic: 'https://i1.sndcdn.com/avatars-vzVavnrNStPmzryz-P4cGOw-t500x500.jpg',
       },
     ], {});
