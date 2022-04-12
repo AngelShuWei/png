@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     server: DataTypes.STRING(30),
     rank: DataTypes.STRING(30),
     position: DataTypes.STRING(30),
-    role: DataTypes.STRING(30),
     style: DataTypes.STRING(30),
     start: DataTypes.DATE,
     end: DataTypes.DATE,

@@ -5,3 +5,5 @@ npx sequelize model:generate --name Review --attributes userId:integer,palId:int
 npx sequelize model:generate --name Order --attributes userId:integer,padId:integer,totalCost:decimal,start:date,end:date
 
 npx sequelize model:generate --name Image --attributes palId:integer,url:string
+
+npx sequelize seed:generate --name pals-seeds
