@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function LoginForm() {
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
