@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Pal.associate = function(models) {
     // associations can be defined here
+    Pal.belongsTo(models.User, { foreignKey: 'userId' });
+    Pal.hasMany(models.GameStat, { foreignKey: 'palId' });
+    Pal.hasMany(models.Review, { foreignKey: 'palId' });
+    Pal.hasMany(models.Order, { foreignKey: 'palId' });
   };
   return Pal;
 };

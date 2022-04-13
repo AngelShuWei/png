@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   GameStat.associate = function(models) {
     // associations can be defined here
-
+    GameStat.belongsTo(models.Pal, { foreignKey: 'palId' });
+    GameStat.belongsTo(models.Game, { foreignKey: 'gameId' });
   };
   return GameStat;
 };
