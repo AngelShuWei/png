@@ -18,7 +18,6 @@ module.exports = {
       },
       content: {
         type: Sequelize.TEXT,
-        allowNull: false,
       },
       rating: {
         type: Sequelize.INTEGER,

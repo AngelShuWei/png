@@ -1,54 +1,34 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Pals', {
+    return queryInterface.createTable('Games', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      gameId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      nickname: {
+      gameName: {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
-      title: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-      },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      price: {
-        type: Sequelize.DECIMAL(10,2),
-        allowNull: false,
-      },
-      maxGuests: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      address: {
+      platform: {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
-      city: {
+      server: {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
-      state: {
+      rank: {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
-      country: {
+      position: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      style: {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
@@ -63,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Pals');
+    return queryInterface.dropTable('Games');
   }
 };

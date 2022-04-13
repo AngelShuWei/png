@@ -10,7 +10,7 @@ module.exports = {
         hashedPassword: bcrypt.hashSync('password'),
         gender: 'Nonconforming',
         bio: 'Hi everyone! I am the demo user',
-        profilePic: 'https://en.meming.world/images/en/thumb/b/b9/Cursed_Cat.jpg/300px-Cursed_Cat.jpg',
+        profilePic: 'https://m.media-amazon.com/images/I/51aJ4F9fJVL._AC_SY355_.jpg',
       },
       {
         email: 'angel@user.io',
