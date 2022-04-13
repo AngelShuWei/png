@@ -1,19 +1,19 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Games', {
+    return queryInterface.createTable('GameStats', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      gameName: {
-        type: Sequelize.STRING(30),
+      palId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
-      platform: {
-        type: Sequelize.STRING(30),
+      gameId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       server: {
@@ -43,6 +43,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Games');
+    return queryInterface.dropTable('GameStats');
   }
 };

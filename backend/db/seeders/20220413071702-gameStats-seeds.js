@@ -2,10 +2,10 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Games', [
+    return queryInterface.bulkInsert('GameStats', [
       {
-        gameName: "League of Legends",
-        platform: "PC",
+        palId: 1,
+        gameId: 1,
         server: "NA",
         rank: "Challenger",
         position: "ADC",
@@ -14,8 +14,8 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        gameName: "Apex Legends",
-        platform: "PC",
+        palId: 2,
+        gameId: 2,
         server: "NA",
         rank: "Diamond",
         position: "Support",
@@ -27,6 +27,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Games', null, {});
+    return queryInterface.bulkDelete('GameStats', null, {});
   }
 };

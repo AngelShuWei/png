@@ -8,4 +8,6 @@ npx sequelize model:generate --name Image --attributes palId:integer,url:string
 
 npx sequelize model:generate --name Game --attributes gameName:string,platform:string,server:string,rank:string,position:string,style:string
 
+npx sequelize model:generate --name Game --attributes palId:integer,gameName:string,gamePic:string
+
 npx sequelize seed:generate --name pals-seeds

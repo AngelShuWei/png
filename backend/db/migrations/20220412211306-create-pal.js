@@ -12,10 +12,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      gameId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
       nickname: {
         type: Sequelize.STRING(30),
         allowNull: false,
@@ -28,12 +24,12 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      price: {
-        type: Sequelize.DECIMAL(10,2),
+      palPic: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      maxGuests: {
-        type: Sequelize.INTEGER,
+      price: {
+        type: Sequelize.DECIMAL(10,2),
         allowNull: false,
       },
       address: {
