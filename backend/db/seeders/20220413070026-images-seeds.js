@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Images', [
       {
         palId: 1,
-        url: "",
+        url: "https://www.hollywoodreporter.com/wp-content/uploads/2021/05/GettyImages-1191359874-H-2021-1620057278.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -17,13 +17,13 @@ module.exports = {
       },
       {
         palId: 1,
-        url: "",
+        url: "https://townsquare.media/site/442/files/2019/06/deadpool-1.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         palId: 1,
-        url: "",
+        url: "https://estnn.com/wp-content/uploads/2020/08/ADC-tier-list.png",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -47,19 +47,19 @@ module.exports = {
       },
       {
         palId: 2,
-        url: "",
+        url: "https://global-oss.epal.gg/image/ablum/1606465030875.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         palId: 2,
-        url: "",
+        url: "https://global-oss.epal.gg/data/cover/262143/16496751197976135.jpeg",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         palId: 2,
-        url: "",
+        url: "https://global-oss.epal.gg/image/ablum/16412603338033839.jpg",
         createdAt: new Date(),
         updatedAt: new Date(),
       }

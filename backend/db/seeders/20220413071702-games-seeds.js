@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('People', [
+    return queryInterface.bulkInsert('Games', [
       {
         gameName: "League of Legends",
         platform: "PC",
