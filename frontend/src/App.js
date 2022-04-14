@@ -4,7 +4,7 @@ import {NavLink, Route, Switch} from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Navigation from './components/Navigation';
 import AllPalPage from './components/AllPalPage';
-import GameInfoPage from './components/GameInfoPage';
+import GameFormPage from './components/GameFormPage';
 import HomePage from './components/HomePage';
 import { loadAllPals } from './store/pals';
 import * as sessionActions from "./store/session";
@@ -30,7 +30,7 @@ function App() {
             <AllPalPage/>
           </Route>
           <ProtectedRoute exact path='/addgame'>
-            <GameInfoPage/>
+            <GameFormPage/>
           </ProtectedRoute>
         </Switch>
       )}

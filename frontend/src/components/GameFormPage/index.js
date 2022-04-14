@@ -1,9 +1,9 @@
-import './GameInfoPage.css'
+import './GameFormPage.css'
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
 
-function GameInfoPage() {
+function GameFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -37,4 +37,4 @@ function GameInfoPage() {
   )
 }
 
-export default GameInfoPage;
+export default GameFormPage;
