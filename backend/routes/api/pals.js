@@ -54,7 +54,7 @@ router.get('/', asyncHandler(async(req, res) => {
 //create pal
 router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   const { user } = req;
-  let { title, description, palPic, address, city, state, country } = req.body;
+  let { title, description, palPic, price, address, city, state, country } = req.body;
 
   const pal = await Pal.create({
     userId: user.id,

@@ -1,18 +1,18 @@
 .pal-page-container {
-  /* position: relative; */
-  top: 200px;
+  position: relative;
+  top: 300px;
   width: 1300px;
 }
 
 .form-container {
-  /* position: absolute; */
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 630px;
   margin: 0px auto;
   color: white;
   font-weight: 400;
-
+  margin-top: 100px;
 }
 
 .errors {
@@ -25,6 +25,7 @@
   border: 1px solid #4F4E60;
   border-radius: 4px;
   height: 36px;
+  width: 630px;
 }
 
 .input:focus{
