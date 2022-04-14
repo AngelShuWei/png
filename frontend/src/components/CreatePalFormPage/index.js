@@ -38,51 +38,50 @@ function CreatePalFormPage() {
           <div>Bio</div>
           <div>Introduction</div>
           <label>Title</label>
-          {/* <p className='errors'>{errors[0]}</p> */}
-          <input className='input'
-            placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
-            type="text"
-            value={title}
-            onChange={e => setTitle(e.target.value)}
-          />
-          <label>Detailed self-introduction</label>
-          {/* <p className='errors'>{errors[1]}</p> */}
-          <textarea className='input'
-            placeholder='10 characters minimum'
-            type="text"
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-          />
-          <label>Price</label>
-          {/* <p className='errors'>{errors[2]}</p> */}
-          <input className='input'
-            placeholder='The price range is 2.00-999.999'
-            type="number"
-            value={price}
-            onChange={e => setPrice(e.target.value)}
-          />
+            <input className='input'
+              placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
+              type="text"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+          <label>Detailed self-introduction
+            <textarea className='textarea' rows="3"
+              placeholder='10 characters minimum'
+              type="text"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+            />
+            <p className='textarea-counter'>{description.length}/500</p>
+          </label>
+          <label>Price
+            <input className='input'
+              placeholder='The price range is 2.00-999.999'
+              type="number"
+              value={price}
+              onChange={e => setPrice(e.target.value)}
+            />
+          </label>
           <label>Address</label>
-          {/* <p className='errors'>{errors[3]}</p> */}
-          <input className='input'
-            placeholder='Please enter your address'
-            type="text"
-            value={address}
-            onChange={e => setAddress(e.target.value)}
-          />
-          <label>City</label>
-          {/* <p className='errors'>{errors[4]}</p> */}
-          <input className='input'
-            placeholder='Please enter your city name'
-            type="text"
-            value={city}
-            onChange={e => setCity(e.target.value)}
-          />
+            <input className='input'
+              placeholder='Please enter your address'
+              type="text"
+              value={address}
+              onChange={e => setAddress(e.target.value)}
+            />
+          <label>City
+            <input className='input'
+              placeholder='Please enter your city name'
+              type="text"
+              value={city}
+              onChange={e => setCity(e.target.value)}
+            />
+          </label>
           <label>State
             <select className='input' value={state} onChange={e => setState(e.target.value)}>
               {statesArr.map(oneState => (
                 <option
-                  key={oneState.name}
-                  value={oneState.name}
+                  key={oneState.abbreviation}
+                  value={oneState.abbreviation}
                 >
                   {oneState.abbreviation}
                 </option>
@@ -90,13 +89,11 @@ function CreatePalFormPage() {
             </select>
           </label>
           <label>Country
-          {/* <p className='errors'>{errors[6]}</p> */}
             <select className='input' value={country} onChange={e => setCountry(e.target.value)}>
               <option>United States</option>
             </select>
           </label>
           <label>List Cover
-            {/* <p className='errors'>{errors[7]}</p> */}
             <input className='input'
               placeholder='Please upload your selfie here as the service cover image'
               type="text"
