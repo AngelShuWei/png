@@ -32,7 +32,7 @@ function Navigation({isLoaded}) {
         <NavLink exact to="/epals">ePal</NavLink>
       </div>
       <div>
-        <NavLink exact to="/becomeepal">Become an ePal</NavLink>
+        <NavLink exact to="/addgame">Become an ePal</NavLink>
       </div>
         {isLoaded && sessionLinks}
     </nav>
