@@ -41,7 +41,7 @@ app.use(
 app.use(routes);
 
 //first err handler. reg middleware. Will catch any req that don't match any of the route defined and create server error with status code 404
-app.use((_req, _res, next) => { //next invoked with  nothing means that the error handler defined after this middlware wont be invoked. If it's invoked, then error handlers defined after this middleware will be invoked
+app.use((_req, _res, next) => { //next invoked with nothing means that the error handler defined after this middlware wont be invoked. If it's invoked, then error handlers defined after this middleware will be invoked
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
   err.errors = ["The requested resource couldn't be found."];

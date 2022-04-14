@@ -1,0 +1,10 @@
+.navbar-c {
+  background-color: #302F3D;
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 8px 0px;
+  padding: 19px 7px 19px 7px;
+  z-index: 1;
+}
