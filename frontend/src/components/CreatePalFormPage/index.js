@@ -30,6 +30,7 @@ function CreatePalFormPage() {
       if (data && data.errors) setErrors(data.errors);
     })
   }
+  console.log(errors)
 
   return (
     <>

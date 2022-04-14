@@ -13,13 +13,13 @@ const validatePalInfo = [
   //   .withMessage('Please a nickname with min 3 and max 30 characters.'),
   check('title')
     // .exists({ checkFalsy: true })
-    .isLength({ min: 3 }, { max: 50 })
+    .isLength({ min: 10 }, { max: 50 })
     .withMessage('Please provide a title with min 10 and max 50 characters.'),
   check('description')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
     .withMessage('Please provide an introduction at least 10 characters long.'),
-    check('price')
+  check('price')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid price range'),
   check('address')
@@ -31,15 +31,12 @@ const validatePalInfo = [
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide a city with min 5 and max 30 characters.'),
   check('state')
-    // .exists({ checkFalsy: true })
-    .isLength({ min: 5}, { max: 30})
-    .withMessage('Please provide a state with min 5 and max 30 characters.'),
-    check('country')
-    // .exists({ checkFalsy: true })
-    .isLength({ min: 5}, { max: 30})
-    .withMessage('Please provide a country with min 5 and max 30 characters.'),
+    .isLength({ min:0 })
+    .withMessage('Please select a state'),
+  check('country')
+    .isLength({ min:0 })
+    .withMessage('Please select a country'),
   check('palPic')
-    .exists({ checkFalsy: true })
     .isURL()
     .withMessage('Please upload a valid imageUrl'),
     handleValidationErrors
