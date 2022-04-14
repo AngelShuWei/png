@@ -12,10 +12,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      nickname: {
-        type: Sequelize.STRING(30),
-        allowNull: false,
-      },
       title: {
         type: Sequelize.STRING(50),
         allowNull: false,

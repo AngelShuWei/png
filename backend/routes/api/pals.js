@@ -14,7 +14,7 @@ const validatePalInfo = [
   check('title')
     .exists({ checkFalsy: true })
     .isLength({ min: 3 }, { max: 50 })
-    .withMessage('Please provide a username with min 3 and max 50 characters.'),
+    .withMessage('Please provide a title with min 10 and max 50 characters.'),
   check('description')
     .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
