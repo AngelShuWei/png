@@ -5,7 +5,6 @@
   width: 100%;
   height: 100vh;
   overflow-y: hidden;
-  z-index: -3;
 }
 
 .for-you {

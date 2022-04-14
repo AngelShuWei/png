@@ -4,9 +4,10 @@ import {NavLink, Route, Switch} from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Navigation from './components/Navigation';
 import AllPalPage from './components/AllPalPage';
-import GameFormPage from './components/GameFormPage';
+import CreatePalFormPage from './components/CreatePalFormPage';
 import HomePage from './components/HomePage';
 import { loadAllPals } from './store/pals';
+import { loadAllUsers } from './store/users';
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    dispatch(loadAllUsers());
     dispatch(loadAllPals());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));  //if there is user, then set load to true
   }, [dispatch]);
@@ -30,7 +32,7 @@ function App() {
             <AllPalPage/>
           </Route>
           <ProtectedRoute exact path='/addgame'>
-            <GameFormPage/>
+            <CreatePalFormPage/>
           </ProtectedRoute>
         </Switch>
       )}
