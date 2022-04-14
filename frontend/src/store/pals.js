@@ -34,6 +34,10 @@ export const loadAllPals = () => async(dispatch) => {
   return response;
 }
 
+// export const createPal = () => async(dispatch) => {
+//   const response =
+// }
+
 const initialState = {};
 
 const palsReducer = (state = initialState, action) => {

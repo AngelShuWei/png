@@ -24,12 +24,15 @@ function Navigation({isLoaded}) {
   }
 
   return (
-    <ul>
-      <li>
+    <nav className='navbar-c'>
+      <div>
         <NavLink exact to="/">Home</NavLink>
+      </div>
+      <div>
+        <NavLink exact to="/epals">ePal</NavLink>
+      </div>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    </nav>
   );
 }
 
