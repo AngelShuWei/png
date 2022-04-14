@@ -7,10 +7,10 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { Pal } = require('../../db/models');
 
 const validatePalInfo = [
-  check('nickname')
-    // .exists({ checkFalsy: true })
-    .isLength({ min: 3 }, { max: 30 })
-    .withMessage('Please a nickname with min 3 and max 30 characters.'),
+  // check('nickname')
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 3 }, { max: 30 })
+  //   .withMessage('Please a nickname with min 3 and max 30 characters.'),
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 3 }, { max: 50 })
@@ -19,11 +19,7 @@ const validatePalInfo = [
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
     .withMessage('Please provide an introduction at least 10 characters long.'),
-  check('palPic')
-    .exists({ checkFalsy: true })
-    .isURL()
-    .withMessage('Please upload a valid imageUrl'),
-  check('price')
+    check('price')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a valid price range'),
   check('address')
@@ -38,11 +34,15 @@ const validatePalInfo = [
     // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide a state with min 5 and max 30 characters.'),
-  check('country')
+    check('country')
     // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide a country with min 5 and max 30 characters.'),
-  handleValidationErrors
+  check('palPic')
+    .exists({ checkFalsy: true })
+    .isURL()
+    .withMessage('Please upload a valid imageUrl'),
+    handleValidationErrors
 ];
 
 //get all pals
@@ -54,7 +54,7 @@ router.get('/', asyncHandler(async(req, res) => {
 //create pal
 router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   const { user } = req;
-  let { title, description, palPic, address, city, country } = req.body;
+  let { title, description, palPic, address, city, state, country } = req.body;
 
   const pal = await Pal.create({
     userId: user.id,
@@ -64,6 +64,7 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
     price,
     address,
     city,
+    state,
     country,
   });
   return res.json({pal});
