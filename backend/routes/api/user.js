@@ -26,6 +26,12 @@ const validateSignup = [
   handleValidationErrors
 ];
 
+//get all users
+router.get('/', asyncHandler(async(req, res) => {
+  const allUsers = await User.findAll();
+  return res.json({allUsers});
+}))
+
 // Sign up
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
     const { email, password, username } = req.body; //getting the info from the body
