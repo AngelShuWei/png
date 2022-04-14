@@ -20,7 +20,7 @@ function GameFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createGame({nickname, title, description, palPic, price, address, city, country}))
+    dispatch(createPal({nickname, title, description, palPic, price, address, city, country}))
     .then(() => history.push('/'))
     .catch(async(res) => {
       const data = await res.json();
