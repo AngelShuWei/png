@@ -64,6 +64,25 @@
   font-size: 18px;
 }
 
+.pal-card-rank-position {
+  display: flex;
+  gap: 5px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #c4c3e6;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.pal-card-rank, .pal-card-position {
+  background-color: #21212c;
+  padding: 1px 8px;
+  margin-top: 13px;
+}
+
 .pal-card-title {
   color: #c4c3e6;
   font-size: 12px;

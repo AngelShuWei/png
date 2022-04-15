@@ -168,7 +168,7 @@ function CreatePalFormPage() {
             />
           </label>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          <button type='submit'  >Submit</button>
+          <button type='submit'>Submit</button>
         </form>
     </>
   )

@@ -7,10 +7,11 @@ import { loadAllPals } from '../../store/pals';
 function AllPalPage() {
   const dispatch = useDispatch();
   const allPals = useSelector(state => Object.values(state.pals));
+  console.log(allPals)
 
-  useEffect(() => {
-    dispatch(loadAllPals());
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(loadAllPals());
+  // }, [dispatch])
 
   return (
     <>
@@ -21,7 +22,12 @@ function AllPalPage() {
               <div className='pal-card' key={pal.id}>
                 <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
                 <div className='pal-card-top'>
+                  <div>{pal.gameName}</div>
                   <div className='pal-card-nickname'>{pal.nickname}</div>
+                  <div className='pal-card-rank-position'>
+                    <div className='pal-card-rank'>{pal.rank}</div>
+                    <div className='pal-card-position'>{pal.position}</div>
+                  </div>
                   <div className='pal-card-title'>{pal.title}</div>
                 </div>
                 <div className='pal-card-footer'>{pal.price}/Game</div>
