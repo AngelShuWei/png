@@ -19,6 +19,7 @@ function AllPalPage() {
         <div className='for-you'>For You</div>
           <div className='pals-card-list'>
             {allPals.map(pal =>
+              <Link to={`/epals/${pal.id}`}>
               <div className='pal-card' key={pal.id}>
                 <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
                 <div className='pal-card-top'>
@@ -32,6 +33,7 @@ function AllPalPage() {
                 </div>
                 <div className='pal-card-footer'>{pal.price}/Game</div>
               </div>
+              </Link>
             )}
           </div>
         </div>

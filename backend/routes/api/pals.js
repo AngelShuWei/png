@@ -91,5 +91,13 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   return res.json(pal);
 }));
 
+router.delete('/:palId', asyncHandler(async(req, res) => {
+  const pal = await Pal.findByPk(req.params.palId);
+  if (!pal) throw new Error('Cannot find pal listing');
+
+  await pal.destroy();
+  return res.json(pal.id);
+}))
+
 
 module.exports = router;
