@@ -17,21 +17,19 @@ function CreatePalFormPage() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createPal({title, description, palPic, price, address, city, state, country}))
-    .then(() => history.push('/'))
+    dispatch(createPal({ title, description, palPic, price, address, city, state }))
+    .then(() => history.push('/epals'))
     .catch(async(res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     })
   }
-  console.log(errors)
-
+  console.log(statesArr);
   return (
     <>
       <div className='pals-page-container'></div>
@@ -87,11 +85,6 @@ function CreatePalFormPage() {
                   {oneState.abbreviation}
                 </option>
               ))}
-            </select>
-          </label>
-          <label>Country
-            <select className='input' value={country} onChange={e => setCountry(e.target.value)}>
-              <option>United States</option>
             </select>
           </label>
           <label>List Cover

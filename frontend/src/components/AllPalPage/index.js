@@ -31,7 +31,7 @@ function AllPalPage() {
                   <div className='pal-card-nickname'>{pal.nickname}</div>
                   <div className='pal-card-title'>{pal.title}</div>
                 </div>
-                <div className='pal-card-footer'>Price here/Game</div>
+                <div className='pal-card-footer'>{pal.price}/Game</div>
               </div>
             )}
           </div>

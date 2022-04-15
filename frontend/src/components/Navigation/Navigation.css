@@ -8,3 +8,22 @@
   padding: 19px 7px 19px 7px;
   z-index: 1;
 }
+
+.profile-dropdown{
+  background-color: #21212C;
+  color: white;
+  position: fixed;
+  width: 200px;
+  height: auto;
+  outline: 1px solid black;
+  margin-top: 50px;
+  border-radius: 3px;
+  padding-bottom: 15px;
+  padding-top: 1px;
+  /* box-shadow: 5px 5px 50px 1px black; */
+}
+
+.logout-button {
+  margin-left: 40px;
+  cursor: pointer;
+}

@@ -8,10 +8,6 @@ let statesArr = [
     "abbreviation": "AK"
   },
   {
-    "name": "American Samoa",
-    "abbreviation": "AS"
-  },
-  {
     "name": "Arizona",
     "abbreviation": "AZ"
   },
@@ -40,20 +36,12 @@ let statesArr = [
     "abbreviation": "DC"
   },
   {
-    "name": "Federated States Of Micronesia",
-    "abbreviation": "FM"
-  },
-  {
     "name": "Florida",
     "abbreviation": "FL"
   },
   {
     "name": "Georgia",
     "abbreviation": "GA"
-  },
-  {
-    "name": "Guam",
-    "abbreviation": "GU"
   },
   {
     "name": "Hawaii",
@@ -90,10 +78,6 @@ let statesArr = [
   {
     "name": "Maine",
     "abbreviation": "ME"
-  },
-  {
-    "name": "Marshall Islands",
-    "abbreviation": "MH"
   },
   {
     "name": "Maryland",
@@ -156,10 +140,6 @@ let statesArr = [
     "abbreviation": "ND"
   },
   {
-    "name": "Northern Mariana Islands",
-    "abbreviation": "MP"
-  },
-  {
     "name": "Ohio",
     "abbreviation": "OH"
   },
@@ -172,16 +152,8 @@ let statesArr = [
     "abbreviation": "OR"
   },
   {
-    "name": "Palau",
-    "abbreviation": "PW"
-  },
-  {
     "name": "Pennsylvania",
     "abbreviation": "PA"
-  },
-  {
-    "name": "Puerto Rico",
-    "abbreviation": "PR"
   },
   {
     "name": "Rhode Island",
@@ -212,10 +184,6 @@ let statesArr = [
     "abbreviation": "VT"
   },
   {
-    "name": "Virgin Islands",
-    "abbreviation": "VI"
-  },
-  {
     "name": "Virginia",
     "abbreviation": "VA"
   },
@@ -236,10 +204,5 @@ let statesArr = [
     "abbreviation": "WY"
   }
 ]
-
-
-
-
-// ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
 
 export default statesArr;

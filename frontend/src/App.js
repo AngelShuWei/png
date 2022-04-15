@@ -31,7 +31,7 @@ function App() {
           <Route exact path='/epals'>
             <AllPalPage/>
           </Route>
-          <ProtectedRoute exact path='/addgame'>
+          <ProtectedRoute exact path='/applyepal'>
             <CreatePalFormPage/>
           </ProtectedRoute>
         </Switch>

@@ -29,29 +29,19 @@ export const loadAllPals = () => async(dispatch) => {
   const response = await csrfFetch(`/api/pals`);
   if (response.ok) {
     const data = await response.json();
-    await dispatch(loadAll(data.allPals));
+    await dispatch(loadAll(data));
   }
   return response;
 }
 
 export const createPal = (pal) => async(dispatch) => {
-  const {title, description, palPic, price, address, city, state, country } = pal
   const response = await csrfFetch(`/api/pals`, {
     method: 'POST',
-    body: JSON.stringify({
-      title,
-      description,
-      palPic,
-      price,
-      address,
-      city,
-      state,
-      country,
-    }),
+    body: JSON.stringify(pal),
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(createOne(data.pal));
+    dispatch(createOne(data));
   }
   return response;
 }

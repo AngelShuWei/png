@@ -45,13 +45,13 @@ const validatePalInfo = [
 //get all pals
 router.get('/', asyncHandler(async(req, res) => {
   const allPals = await Pal.findAll();
-  return res.json({allPals});
+  return res.json(allPals);
 }));
 
 //create pal
 router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   const { user } = req;
-  let { title, description, palPic, price, address, city, state, country } = req.body;
+  let { title, description, palPic, price, address, city, state } = req.body;
 
   const pal = await Pal.create({
     userId: user.id,
@@ -62,9 +62,9 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
     address,
     city,
     state,
-    country,
+    country: "United States",
   });
-  return res.json({pal});
+  return res.json(pal);
 }));
 
 
