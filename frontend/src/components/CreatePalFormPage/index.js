@@ -9,7 +9,15 @@ function CreatePalFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const nickname = useSelector(state => state.session.nickname);
+  const [gameName, setGameName] = useState("");
+  const [gamePic, setGamePic] = useState("");
+
+  const [server, setServer] = useState("");
+  const [rank, setRank] = useState("");
+  const [position, setPosition] = useState("");
+  const [style, setStyle] = useState("");
+
+  const nickname = useSelector(state => state.session.user.nickname);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [palPic, setPalPic] = useState("");
@@ -36,6 +44,7 @@ function CreatePalFormPage() {
         <form className='form-container' onSubmit={handleSubmit}>
           <div>Bio</div>
           <div>Introduction</div>
+          <label>Choose a Service</label>
           <label>Title</label>
             <input className='input'
               placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
