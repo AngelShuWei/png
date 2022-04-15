@@ -9,7 +9,7 @@ function CreatePalFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [nickname, setNickname] = useState("");
+  const nickname = useSelector(state => state.session.nickname);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [palPic, setPalPic] = useState("");
@@ -22,7 +22,7 @@ function CreatePalFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createPal({ title, description, palPic, price, address, city, state }))
+    dispatch(createPal({ nickname, title, description, palPic, price, address, city, state }))
     .then(() => history.push('/epals'))
     .catch(async(res) => {
       const data = await res.json();

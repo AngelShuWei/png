@@ -6,13 +6,6 @@ import { loadAllPals } from '../../store/pals';
 
 function AllPalPage() {
   const dispatch = useDispatch();
-
-  // const allUsers = useSelector(state => Object.values(state.users));
-  // console.log("======", allUsers[0].nickname)
-  // const test = allUsers.map(user => {
-  //   return user
-  // })
-  // console.log("test", test)
   const allPals = useSelector(state => Object.values(state.pals));
 
   useEffect(() => {

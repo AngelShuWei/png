@@ -53,14 +53,9 @@ module.exports = (sequelize, DataTypes) => {
 
   //return an obj with only the User instance info that is safe to save to a JWT
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-    const { id, username, email } = this; // context will be the User instance
-    return { id, username, email };
+    const { id, username, email, nickname } = this; // context will be the User instance
+    return { id, username, email, nickname };
   };
-
-  // User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
-  //   const { id, username, email } = this; // context will be the User instance
-  //   return { id, username, email };
-  // };
 
   User.prototype.validatePassword = function (password) { //should accept password string and return true if there is a match w/ user instance's hashedpw and return false otherwise
   return bcrypt.compareSync(password, this.hashedPassword.toString());
