@@ -19,21 +19,21 @@ function AllPalPage() {
         <div className='for-you'>For You</div>
           <div className='pals-card-list'>
             {allPals.map(pal =>
-              <Link to={`/epals/${pal.id}`}>
               <div className='pal-card' key={pal.id}>
-                <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
-                <div className='pal-card-top'>
-                  <div>{pal.gameName}</div>
-                  <div className='pal-card-nickname'>{pal.nickname}</div>
-                  <div className='pal-card-rank-position'>
-                    <div className='pal-card-rank'>{pal.rank}</div>
-                    <div className='pal-card-position'>{pal.position}</div>
+                <Link to={`/epals/${pal.id}`}>
+                  <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
+                  <div className='pal-card-top'>
+                    <div>{pal.gameName}</div>
+                    <div className='pal-card-nickname'>{pal.nickname}</div>
+                    <div className='pal-card-rank-position'>
+                      <div className='pal-card-rank'>{pal.rank}</div>
+                      <div className='pal-card-position'>{pal.position}</div>
+                    </div>
+                    <div className='pal-card-title'>{pal.title}</div>
                   </div>
-                  <div className='pal-card-title'>{pal.title}</div>
-                </div>
-                <div className='pal-card-footer'>{pal.price}/Game</div>
+                  <div className='pal-card-footer'>{pal.price}/Game</div>
+                </Link>
               </div>
-              </Link>
             )}
           </div>
         </div>

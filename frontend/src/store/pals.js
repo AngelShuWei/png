@@ -15,9 +15,9 @@ const createOne = (pal) => ({
   pal
 })
 
-const deleteOne = (id) => ({
+const deleteOne = (pal) => ({
   type: DELETE_ONE,
-  id
+  pal
 })
 
 const updateOne = (pal) => ({
