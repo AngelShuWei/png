@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "game/load";
 
-const loadGames = (games) => ({
+const loadAll = (games) => ({
   type: LOAD,
   games
 })
@@ -11,11 +11,10 @@ export const loadAllGames = () => async(dispatch) => {
   const response = await csrfFetch(`/api/games`);
   if (response.ok) {
     const data = await response.json();
-    await dispatch(loadGames(data));
+    await dispatch(loadAll(data));
   }
   return response;
 }
-
 
 const initialState = {};
 
@@ -32,4 +31,4 @@ const gamesReducer = (state = initialState, action) => {
   }
 }
 
-export default gamesReducer
+export default gamesReducer;

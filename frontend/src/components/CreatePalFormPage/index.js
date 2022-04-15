@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
 import { createPal } from "../../store/pals";
-import { createGameStat } from '../../store/gameStats';
 import { loadAllGames } from '../../store/games';
 import statesArr from './StatesArr';
 
@@ -11,12 +10,10 @@ function CreatePalFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const allGames = useSelector(state => state.games);
-  console.log("test", allGames);
+  const allGames = useSelector(state => Object.values(state.games));
 
-  // useEffect(() => {
-  //   dispatch(loadAllGames());
-  // }, [dispatch])
+  const [gameName, setGameName] = useState("");
+  const [gamePic, setGamePic] = useState("");
 
   const [server, setServer] = useState("");
   const [rank, setRank] = useState("");
@@ -37,27 +34,33 @@ function CreatePalFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createGameStat({ server, rank, position, style, gameStatsPic }))
-    dispatch(createPal({ nickname, title, description, palPic, price, address, city, state }))
+    dispatch(createPal({ gameId: gameName, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
     .then(() => history.push('/epals'))
     .catch(async(res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     })
   }
-  console.log(statesArr);
+
   return (
     <>
       <div className='pals-page-container'></div>
         <form className='form-container' onSubmit={handleSubmit}>
           <div>Games</div>
           <label>Choose a Game
-            <input
-              type='radio'
-              // value={gameName}
-              // checked={ === ""}
-              // onChange={}
-            />
+          <select className='input' value={gameName} onChange={e => setGameName(e.target.value)}>
+            <option value="" disabled>
+              Select a game
+            </option>
+            {allGames.map(game => (
+              <option
+                key={game.id}
+                value={game.id}
+              >
+                {game.gameName}
+              </option>
+            ))}
+          </select>
           </label>
           <div>Game Info</div>
           <label>Server
@@ -143,6 +146,9 @@ function CreatePalFormPage() {
           </label>
           <label>State
             <select className='input' value={state} onChange={e => setState(e.target.value)}>
+              <option value="" disabled>
+              Select a state
+              </option>
               {statesArr.map(oneState => (
                 <option
                   key={oneState.abbreviation}
@@ -162,7 +168,7 @@ function CreatePalFormPage() {
             />
           </label>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          <button type='submit'>Submit</button>
+          <button type='submit'  >Submit</button>
         </form>
     </>
   )
