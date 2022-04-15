@@ -12,7 +12,7 @@ const gamesRouter = require('./games.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/pals', palsRouter);
-router.use('/games', palsRouter);
+router.use('/games', gamesRouter);
 
 // router.post('/test', function(req, res) {
 //   res.json({ requestBody: req.body });

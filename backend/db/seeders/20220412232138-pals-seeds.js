@@ -5,6 +5,12 @@ module.exports = {
     return queryInterface.bulkInsert('Pals', [
     {
       userId: 1,
+      gameId: 1,
+      server: "NA",
+      rank: "Diamond",
+      position: "ADC",
+      style: "Try Hard",
+      gameStatsPic: "https://global-oss.epal.gg/image/ablum/16243402695185694.jpg",
       nickname: "demo",
       title: 'Please be my friend',
       description: "Hello my name is Demo and welcome to my page!",
@@ -19,6 +25,12 @@ module.exports = {
     },
     {
       userId: 2,
+      gameId: 2,
+      server: "NA",
+      rank: "Master",
+      position: "Assault",
+      style: "Flanker",
+      gameStatsPic: "https://global-oss.epal.gg/image/ablum/16434205654971271.jpg",
       nickname: "angle",
       title: "Book me, I'm cool",
       description: "My name is Angel and this is my description",

@@ -14,8 +14,8 @@ const validateGameStatInfo = [
     .isLength({ min: 5 }, { max: 30 })
     .withMessage('Please provide a rank with min 5 and max 30 characters.'),
   check('position')
-  .isLength({ min: 5 }, { max: 30 })
-  .withMessage('Please provide a position with min 5 and max 30 characters.'),
+    .isLength({ min: 5 }, { max: 30 })
+    .withMessage('Please provide a position with min 5 and max 30 characters.'),
   check('style')
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide an playstyle with min 5 and max 30 characters.'),

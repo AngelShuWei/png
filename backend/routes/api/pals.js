@@ -5,12 +5,29 @@ const { setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { Pal } = require('../../db/models');
+const { Game } = require('../../db/models');
+const game = require('../../db/models/game');
 
 const validatePalInfo = [
   // check('nickname')
   //   .exists({ checkFalsy: true })
   //   .isLength({ min: 3 }, { max: 30 })
   //   .withMessage('Please a nickname with min 3 and max 30 characters.'),
+  check('server')
+    .isLength({ min: 1 }, { max: 30 })
+    .withMessage('Please provide a server with min 1 and max 30 characters.'),
+  check('rank')
+    .isLength({ min: 5 }, { max: 30 })
+    .withMessage('Please provide a rank with min 5 and max 30 characters.'),
+  check('position')
+    .isLength({ min: 1 }, { max: 30 })
+    .withMessage('Please provide a position with min 1 and max 30 characters.'),
+  check('style')
+    .isLength({ min: 5}, { max: 30})
+    .withMessage('Please provide an playstyle with min 5 and max 30 characters.'),
+  check('gameStatsPic')
+    .isURL()
+    .withMessage('Please upload a valid imageUrl.'),
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
@@ -51,9 +68,16 @@ router.get('/', asyncHandler(async(req, res) => {
 //create pal
 router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   const { user } = req;
-  let { nickname, title, description, palPic, price, address, city, state } = req.body;
+  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body;
+  console.log(req.body)
   const pal = await Pal.create({
     userId: user.id,
+    gameId,
+    server,
+    rank,
+    position,
+    style,
+    gameStatsPic,
     nickname,
     title,
     description,
