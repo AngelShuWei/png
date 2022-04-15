@@ -3,11 +3,15 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import usersReducer from "./users";
 import palsReducer from "./pals";
+import gamesReducer from "./games";
+import gameStatsReducer from "./gameStats";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   pals: palsReducer,
+  games: gamesReducer,
+  gameStats: gameStatsReducer,
 });
 
 let enhancer;

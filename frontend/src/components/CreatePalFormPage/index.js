@@ -3,19 +3,26 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
 import { createPal } from "../../store/pals";
+import { createGameStat } from '../../store/gameStats';
+import { loadAllGames } from '../../store/games';
 import statesArr from './StatesArr';
 
 function CreatePalFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [gameName, setGameName] = useState("");
-  const [gamePic, setGamePic] = useState("");
+  const allGames = useSelector(state => state.games);
+  console.log("test", allGames);
+
+  // useEffect(() => {
+  //   dispatch(loadAllGames());
+  // }, [dispatch])
 
   const [server, setServer] = useState("");
   const [rank, setRank] = useState("");
   const [position, setPosition] = useState("");
   const [style, setStyle] = useState("");
+  const [gameStatsPic, setGameStatsPic] = useState("");
 
   const nickname = useSelector(state => state.session.user.nickname);
   const [title, setTitle] = useState("");
@@ -30,6 +37,7 @@ function CreatePalFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
+    dispatch(createGameStat({ server, rank, position, style, gameStatsPic }))
     dispatch(createPal({ nickname, title, description, palPic, price, address, city, state }))
     .then(() => history.push('/epals'))
     .catch(async(res) => {
@@ -42,10 +50,59 @@ function CreatePalFormPage() {
     <>
       <div className='pals-page-container'></div>
         <form className='form-container' onSubmit={handleSubmit}>
+          <div>Games</div>
+          <label>Choose a Game
+            <input
+              type='radio'
+              // value={gameName}
+              // checked={ === ""}
+              // onChange={}
+            />
+          </label>
+          <div>Game Info</div>
+          <label>Server
+            <input className='input'
+              placeholder='Please enter server'
+              type='text'
+              value={server}
+              onChange={e => setServer(e.target.value)}
+            />
+          </label>
+          <label> Rank
+            <input className='input'
+              placeholder='Please enter rank'
+              type='text'
+              value={rank}
+              onChange={e => setRank(e.target.value)}
+            />
+          </label>
+          <label>Position
+            <input className='input'
+              placeholder='Please enter your position'
+              type='text'
+              value={position}
+              onChange={e => setPosition(e.target.value)}
+            />
+          </label>
+          <label>Style
+            <input className='input'
+              placeholder='Please enter your playstyle'
+              type='text'
+              value={style}
+              onChange={e => setStyle(e.target.value)}
+            />
+          </label>
+          <label>Screenshot
+            <input className='input'
+              placeholder='Showcase your skills by uploading a screenshot'
+              type='text'
+              value={gameStatsPic}
+              onChange={e => setGameStatsPic(e.target.value)}
+            />
+          </label>
           <div>Bio</div>
-          <div>Introduction</div>
-          <label>Choose a Service</label>
-          <label>Title</label>
+          <label>Introduction</label>
+          <div>Use an eye-catching one-liner to gain potential clients</div>
             <input className='input'
               placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
               type="text"

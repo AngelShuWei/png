@@ -1,7 +1,7 @@
 .pal-page-container {
-  position: relative;
+  background-color: #21212C;
+  /* position: relative; */
   top: 300px;
-  width: 1300px;
 }
 
 .form-container {
