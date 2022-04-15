@@ -31,7 +31,7 @@ const validatePalInfo = [
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
-    .withMessage('Please provide a title with min 10 and max 50 characters.'),
+    .withMessage('Please provide an introduction with min 10 and max 50 characters.'),
   check('description')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
