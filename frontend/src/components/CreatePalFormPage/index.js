@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
 import { createPal } from "../../store/pals";
-import { loadAllGames } from '../../store/games';
 import statesArr from './StatesArr';
 
 function CreatePalFormPage() {
@@ -71,7 +70,7 @@ function CreatePalFormPage() {
               onChange={e => setServer(e.target.value)}
             />
           </label>
-          <label> Rank
+          <label>Rank
             <input className='input'
               placeholder='Please enter rank'
               type='text'
@@ -105,7 +104,7 @@ function CreatePalFormPage() {
           </label>
           <div>Bio</div>
           <label>Introduction</label>
-          <div>Use an eye-catching one-liner to gain potential clients</div>
+            <div>Use an eye-catching one-liner to gain potential clients</div>
             <input className='input'
               placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
               type="text"

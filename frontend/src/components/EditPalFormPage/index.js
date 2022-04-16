@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory, useParams} from "react-router-dom";
 import { updatePal } from "../../store/pals";
-import { loadAllGames } from '../../store/games';
 import statesArr from '../CreatePalFormPage/StatesArr'
 
 function EditPalFormPage() {
@@ -13,9 +12,9 @@ function EditPalFormPage() {
   const sessionUser = useSelector(state => state.session.user);
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
+  console.log("===========", pal)
 
-
-  const [gameName, setGameName] = useState("");
+  const [gameId, setGameId] = useState(pal.Game.id);
 
   const [server, setServer] = useState(pal.server);
   const [rank, setRank] = useState(pal.rank);
@@ -36,7 +35,7 @@ function EditPalFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(updatePal({ id:pal.id, gameId: gameName, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
+    dispatch(updatePal({ id:pal.id, gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
     .then(() => history.push('/epals'))
     .catch(async(res) => {
       const data = await res.json();
@@ -50,17 +49,17 @@ function EditPalFormPage() {
         <form className='form-container' onSubmit={handleSubmit}>
           <div>Games</div>
           <div>Choose a Game
-            {allGames.map(game => (
-              <label htmlFor={game.id}>
+            {allGames.map(game => (  //want gameId because we will reference that in the backend
+              <label htmlFor={game.id} key={game.id}>
                 <div>{game.gameName}</div>
-                <div key={game.id}>
+                <div>
                   <img src={game.gamePic}/>
                     <input id={game.id}
                       name='game' //binds all the inputs to one name so now can only select one out of the options
                       type="radio"
-                      value={game.id}
-                      // checked={game.gameName.selectedOption === {game}}
-                      onChange={e => setGameName(e.target.value)}
+                      value={game.id} //radio's button's value
+                      defaultChecked={game.id === pal.Game.id}
+                      onChange={e => setGameId(e.target.value)}
                     />
                 </div>
               </label>
@@ -75,7 +74,7 @@ function EditPalFormPage() {
               onChange={e => setServer(e.target.value)}
             />
           </label>
-          <label> Rank
+          <label>Rank
             <input className='input'
               placeholder='Please enter rank'
               type='text'
@@ -109,7 +108,7 @@ function EditPalFormPage() {
           </label>
           <div>Bio</div>
           <label>Introduction</label>
-          <div>Use an eye-catching one-liner to gain potential clients</div>
+            <div>Use an eye-catching one-liner to gain potential clients</div>
             <input className='input'
               placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
               type="text"

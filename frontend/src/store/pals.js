@@ -15,6 +15,11 @@ const createOne = (pal) => ({
   pal
 })
 
+const updateOne = (pal) => ({
+  type: UPDATE_ONE,
+  pal
+})
+
 const deleteOne = (pal) => ({
   type: DELETE_ONE,
   pal
@@ -50,7 +55,7 @@ export const updatePal = (pal) => async(dispatch) => { //have to take in whole p
   });
   if (response.ok) {
     const data = await response.json();
-    dispatch(createOne(data));
+    dispatch(updateOne(data));
   }
   return response;
 }

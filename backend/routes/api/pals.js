@@ -4,9 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Pal } = require('../../db/models');
-const { Game } = require('../../db/models');
-const game = require('../../db/models/game');
+const { Pal, Game } = require('../../db/models');
 
 const validatePalInfo = [
   // check('nickname')
@@ -61,7 +59,9 @@ const validatePalInfo = [
 
 //get all pals
 router.get('/', asyncHandler(async(req, res) => {
-  const allPals = await Pal.findAll();
+  const allPals = await Pal.findAll({
+    include: Game
+  });
   return res.json(allPals);
 }));
 
@@ -97,7 +97,7 @@ router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
 
   let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body
 
-  const pal = await Pal.findByPk(+palId);
+  let pal = await Pal.findByPk(+palId);
   console.log('=======', pal);
 
   await pal.update({
@@ -117,6 +117,8 @@ router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
     state,
     // country: "United States", // since we're not updating this, we don't need to include
   });
+  
+  pal = await Pal.findByPk(+palId, { include: Game });
   return res.json(pal);
 }));
 
