@@ -9,6 +9,24 @@
   z-index: 1;
 }
 
+.navlink-home, .navlink-ePal, .navlink-my-ePal, .navlink-apple-ePal {
+  color: white;
+  font-weight: 600;
+}
+
+.navlink-home:hover, .navlink-ePal:hover, .navlink-my-ePal:hover, .navlink-apple-ePal:hover {
+  color: #7041e6;
+  border-bottom: 5px solid #7041e6;
+  padding-bottom: 15px;
+}
+
+.navlink-home:focus, .navlink-ePal:focus, .navlink-my-ePal:focus, .navlink-apple-ePal:focus {
+  color: #7041e6;
+  border-bottom: 5px solid #7041e6;
+  padding-bottom: 15px;
+}
+
+
 .profile-dropdown{
   background-color: #21212C;
   color: white;
