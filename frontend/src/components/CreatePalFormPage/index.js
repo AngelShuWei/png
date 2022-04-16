@@ -48,7 +48,7 @@ function CreatePalFormPage() {
           <div className='game-select'>
             {allGames.map(game => ( //needs to be a label so can click on the image. otherwise only can click on circle
                 <label htmlFor={game.id} key={game.id}>
-                  <img src={game.gamePic}/>
+                  <img className='game-img' src={game.gamePic}/>
                     <div>{game.gameName}
                       <input id={game.id}
                         name='game' //binds all the inputs to one name so now can only select one out of the options

@@ -7,7 +7,6 @@
   margin-top: 100px;
   width: 630px;
   left: 34%;
-  right: 30%;
 }
 
 .errors {
@@ -22,6 +21,10 @@
   padding-bottom: 30px;
 }
 
+.game-img {
+  border-radius: 8px;
+}
+
 .label-input, .intro-label, .screenshot-label, .state-label, .list-cover-label {
   font-size: 14px;
   margin-bottom: 12px;
@@ -33,7 +36,6 @@
   padding-top: 40px;
   padding-bottom: 30px;
   border-top: 1px solid #4f4e60;
-  /* width: 1300px; */
 }
 
 .line-div {

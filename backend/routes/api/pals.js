@@ -13,16 +13,16 @@ const validatePalInfo = [
   //   .withMessage('Please a nickname with min 3 and max 30 characters.'),
   check('server')
     .isLength({ min: 1 }, { max: 30 })
-    .withMessage('Please provide a server with min 1 and max 30 characters.'),
+    .withMessage('Please provide a server with max 30 characters.'),
   check('rank')
-    .isLength({ min: 5 }, { max: 30 })
-    .withMessage('Please provide a rank with min 5 and max 30 characters.'),
+    .isLength({ min: 1 }, { max: 15 })
+    .withMessage('Please provide a rank with max 15 characters.'),
   check('position')
-    .isLength({ min: 1 }, { max: 30 })
-    .withMessage('Please provide a position with min 1 and max 30 characters.'),
+    .isLength({ min: 1 }, { max: 15 })
+    .withMessage('Please provide a position with max 15 characters.'),
   check('style')
-    .isLength({ min: 5}, { max: 30})
-    .withMessage('Please provide an playstyle with min 5 and max 30 characters.'),
+    .isLength({ min: 1 }, { max: 15})
+    .withMessage('Please provide a playstyle with max 15 characters.'),
   check('gameStatsPic')
     .isURL()
     .withMessage('Please upload a valid imageUrl.'),
@@ -46,11 +46,11 @@ const validatePalInfo = [
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide a city with min 5 and max 30 characters.'),
   check('state')
-    .isLength({ min:0 })
+    .isLength({ min: 0 })
     .withMessage('Please select a state'),
-  check('country')
-    .isLength({ min:0 })
-    .withMessage('Please select a country'),
+  // check('country')
+  //   .isLength({ min: 0 })
+  //   .withMessage('Please select a country'),
   check('palPic')
     .isURL()
     .withMessage('Please upload a valid imageUrl'),
@@ -98,7 +98,6 @@ router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
   let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body
 
   let pal = await Pal.findByPk(+palId);
-  console.log('=======', pal);
 
   await pal.update({
     gameId,
@@ -117,7 +116,7 @@ router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
     state,
     // country: "United States", // since we're not updating this, we don't need to include
   });
-  
+
   pal = await Pal.findByPk(+palId, { include: Game });
   return res.json(pal);
 }));
