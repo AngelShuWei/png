@@ -11,7 +11,7 @@ function CreatePalFormPage() {
 
   const allGames = useSelector(state => Object.values(state.games));
 
-  const [gameName, setGameName] = useState("");
+  const [gameId, setGameId] = useState("");
 
   const [server, setServer] = useState("");
   const [rank, setRank] = useState("");
@@ -32,7 +32,7 @@ function CreatePalFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createPal({ gameId: gameName, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
+    dispatch(createPal({ gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
     .then(() => history.push('/epals'))
     .catch(async(res) => {
       const data = await res.json();
@@ -55,7 +55,7 @@ function CreatePalFormPage() {
                       name='game' //binds all the inputs to one name so now can only select one out of the options
                       type="radio"
                       value={game.id}
-                      onChange={e => setGameName(e.target.value)}
+                      onChange={e => setGameId(e.target.value)}
                     />
                 </div>
               </label>

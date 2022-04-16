@@ -12,7 +12,6 @@ function EditPalFormPage() {
   const sessionUser = useSelector(state => state.session.user);
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
-  console.log("===========", pal)
 
   const [gameId, setGameId] = useState(pal.Game.id);
 
@@ -58,7 +57,7 @@ function EditPalFormPage() {
                       name='game' //binds all the inputs to one name so now can only select one out of the options
                       type="radio"
                       value={game.id} //radio's button's value
-                      defaultChecked={game.id === pal.Game.id}
+                      defaultChecked={game.id === gameId}
                       onChange={e => setGameId(e.target.value)}
                     />
                 </div>
