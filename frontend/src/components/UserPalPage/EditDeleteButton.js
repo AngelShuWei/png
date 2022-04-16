@@ -5,10 +5,12 @@ import { deletePal } from '../../store/pals';
 
 function EditDeleteButton({game}) {
   const dispatch = useDispatch();
-  console.log(game.id)
 
   return (
     <div>
+      <Link to={`/myepal/${game.id}/edit`}>
+        <button>Edit Game</button>
+      </Link>
       <button onClick={() => dispatch(deletePal(game.id))}>
         Delete Game
       </button>

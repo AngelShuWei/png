@@ -71,7 +71,7 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body;
   console.log(req.body)
   const pal = await Pal.create({
-    userId: user.id,
+    userId: user.id,  //dont need in update because user has already been established
     gameId,
     server,
     rank,
@@ -87,6 +87,35 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
     city,
     state,
     country: "United States",
+  });
+  return res.json(pal);
+}));
+
+router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
+  // console.log("testing backend-------------", palId);
+  const { palId } = req.params;
+
+  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body
+
+  const pal = await Pal.findByPk(+palId);
+  console.log('=======', pal);
+
+  await pal.update({
+    gameId,
+    server,
+    rank,
+    position,
+    style,
+    gameStatsPic,
+    nickname,
+    title,
+    description,
+    palPic,
+    price,
+    address,
+    city,
+    state,
+    // country: "United States", // since we're not updating this, we don't need to include
   });
   return res.json(pal);
 }));

@@ -11,6 +11,7 @@ import CreatePalFormPage from './components/CreatePalFormPage';
 import HomePage from './components/HomePage';
 import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
+import EditPalFormPage from './components/EditPalFormPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <ProtectedRoute exact path='/myepal'>
             <UserPalPage/>
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/myepal/:palId/edit'>
+            <EditPalFormPage/>
           </ProtectedRoute>
           <ProtectedRoute exact path='/applyepal'>
             <CreatePalFormPage/>

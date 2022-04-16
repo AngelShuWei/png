@@ -20,10 +20,6 @@ const deleteOne = (pal) => ({
   pal
 })
 
-const updateOne = (pal) => ({
-  type: UPDATE_ONE,
-  pal
-})
 
 export const loadAllPals = () => async(dispatch) => {
   const response = await csrfFetch(`/api/pals`);
@@ -46,7 +42,8 @@ export const createPal = (pal) => async(dispatch) => {
   return response;
 }
 
-export const updatePal = (pal) => async(dispatch) => {
+export const updatePal = (pal) => async(dispatch) => { //have to take in whole pal obj to update, unlike delete which one requires id
+  console.log(pal.id);
   const response = await csrfFetch(`/api/pals/${pal.id}`, {
     method: 'PUT',
     body: JSON.stringify(pal),
@@ -58,7 +55,7 @@ export const updatePal = (pal) => async(dispatch) => {
   return response;
 }
 
-export const deletePal = (palId) => async(dispatch) => {
+export const deletePal = (palId) => async(dispatch) => { //only requires id to delete
   const response = await csrfFetch(`/api/pals/${palId}`, {
     method: 'DELETE',
   });

@@ -1,42 +1,43 @@
-import './CreatePalFormPage.css'
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
-import { createPal } from "../../store/pals";
+import { Redirect, NavLink, Link, useHistory, useParams} from "react-router-dom";
+import { updatePal } from "../../store/pals";
 import { loadAllGames } from '../../store/games';
-import statesArr from './StatesArr';
+import statesArr from '../CreatePalFormPage/StatesArr'
 
-function CreatePalFormPage() {
+function EditPalFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { palId } = useParams();
 
-  console.log(statesArr)
-
+  const sessionUser = useSelector(state => state.session.user);
+  const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
-  const [gameName, setGameName] = useState("");
-  const [gamePic, setGamePic] = useState("");
 
-  const [server, setServer] = useState("");
-  const [rank, setRank] = useState("");
-  const [position, setPosition] = useState("");
-  const [style, setStyle] = useState("");
-  const [gameStatsPic, setGameStatsPic] = useState("");
+  const [gameName, setGameName] = useState("");
+  // const [gamePic, setGamePic] = useState(pal.gamePic);
+
+  const [server, setServer] = useState(pal.server);
+  const [rank, setRank] = useState(pal.rank);
+  const [position, setPosition] = useState(pal.position);
+  const [style, setStyle] = useState(pal.style);
+  const [gameStatsPic, setGameStatsPic] = useState(pal.gameStatsPic);
 
   const nickname = useSelector(state => state.session.user.nickname);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [palPic, setPalPic] = useState("");
-  const [price, setPrice] = useState(0);
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [title, setTitle] = useState(pal.title);
+  const [description, setDescription] = useState(pal.description);
+  const [palPic, setPalPic] = useState(pal.palPic);
+  const [price, setPrice] = useState(pal.price);
+  const [address, setAddress] = useState(pal.address);
+  const [city, setCity] = useState(pal.city);
+  const [state, setState] = useState(pal.state);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createPal({ gameId: gameName, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
+    dispatch(updatePal({ id:pal.id, gameId: gameName, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
     .then(() => history.push('/epals'))
     .catch(async(res) => {
       const data = await res.json();
@@ -175,5 +176,4 @@ function CreatePalFormPage() {
     </>
   )
 }
-
-export default CreatePalFormPage;
+export default EditPalFormPage;
