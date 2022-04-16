@@ -23,7 +23,10 @@ function AllPalPage() {
                 <Link to={`/epals/${pal.id}`}>
                   <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
                   <div className='pal-card-top'>
-                    <div>{pal.gameName}</div>
+                    <div className='pal-card-gamename'>
+                      {pal.Game.gameName}
+                      <div className='shadow-arrow'/>
+                    </div>
                     <div className='pal-card-nickname'>{pal.nickname}</div>
                     <div className='pal-card-rank-position'>
                       <div className='pal-card-rank'>{pal.rank}</div>

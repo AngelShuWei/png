@@ -1,23 +1,55 @@
-.pal-page-container {
-  background-color: #21212C;
-  /* position: relative; */
+/* .pals-page-container {
+  position: relative;
   top: 300px;
-}
+  height: 100%;
+} */
 
 .form-container {
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 630px;
+  /* align-items: left; */
   margin: 0px auto;
   color: white;
   font-weight: 400;
   margin-top: 100px;
+  width: 630px;
+  /* width: 1300px; */
 }
 
 .errors {
-  color: pink;
+  color: white;
   font-size: 12px;
+}
+
+.game-select {
+  display: flex;
+  gap: 20px;
+  padding-top: 30px;
+  border-bottom: 1px solid #4f4e60;
+  padding-bottom: 30px;
+}
+
+.label-input, .intro-label, .screenshot-label, .price-label, .state-label, .list-cover-label{
+  font-size: 14px;
+}
+
+.choose-a-game-div, .game-info, .bio-div, .location-div {
+  font-size: 24px;
+  font-weight: 500;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid #4f4e60;
+}
+
+.screenshot-label, .price-label, .state-label, .list-cover-label {
+  padding-bottom: 30px;
+}
+
+.intro-description, .label-input#detailed-description {
+  color: #c4c3e6;
+  font-size: 12px;
+  margin-bottom: 12px;
 }
 
 .input {
@@ -28,9 +60,10 @@
   height: 36px;
   width: 630px;
   margin-bottom: 20px;
+  font-weight: 500;
 }
 
-.input:focus{
+.input:focus {
   border: 1px solid #966fb2;
   outline: none;
   box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
@@ -44,6 +77,12 @@
   width: 630px;
   resize: none;
   overflow-y: hidden;
+}
+
+.textarea:focus {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
 }
 
 .textarea-counter{

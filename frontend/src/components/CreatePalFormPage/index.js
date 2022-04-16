@@ -44,25 +44,25 @@ function CreatePalFormPage() {
     <>
       <div className='pals-page-container'></div>
         <form className='form-container' onSubmit={handleSubmit}>
-          <div>Games</div>
-          <div> Choose a Game
-            {allGames.map(game => (
-              <label htmlFor={game.id}>
-                <div>{game.gameName}</div>
-                <div key={game.id}>
+          <div className='choose-a-game-div'>Choose a Game</div>
+          <div className='game-select'>
+            {allGames.map(game => ( //needs to be a label so can click on the image. otherwise only can click on circle
+                <label htmlFor={game.id} key={game.id}>
                   <img src={game.gamePic}/>
-                    <input id={game.id}
-                      name='game' //binds all the inputs to one name so now can only select one out of the options
-                      type="radio"
-                      value={game.id}
-                      onChange={e => setGameId(e.target.value)}
-                    />
-                </div>
-              </label>
+                    <div>{game.gameName}
+                      <input id={game.id}
+                        name='game' //binds all the inputs to one name so now can only select one out of the options
+                        type="radio"
+                        value={game.id}
+                        onChange={e => setGameId(e.target.value)}
+                        // required
+                      />
+                    </div>
+                </label>
             ))}
           </div>
-          <div>Game Info</div>
-          <label>Server
+          <div className='game-info'>Game Info</div>
+          <label className='label-input'>Server
             <input className='input'
               placeholder='Please enter server'
               type='text'
@@ -70,7 +70,7 @@ function CreatePalFormPage() {
               onChange={e => setServer(e.target.value)}
             />
           </label>
-          <label>Rank
+          <label className='label-input'>Rank
             <input className='input'
               placeholder='Please enter rank'
               type='text'
@@ -78,7 +78,7 @@ function CreatePalFormPage() {
               onChange={e => setRank(e.target.value)}
             />
           </label>
-          <label>Position
+          <label className='label-input'>Position
             <input className='input'
               placeholder='Please enter your position'
               type='text'
@@ -86,7 +86,7 @@ function CreatePalFormPage() {
               onChange={e => setPosition(e.target.value)}
             />
           </label>
-          <label>Style
+          <label className='label-input'>Style
             <input className='input'
               placeholder='Please enter your playstyle'
               type='text'
@@ -94,24 +94,24 @@ function CreatePalFormPage() {
               onChange={e => setStyle(e.target.value)}
             />
           </label>
-          <label>Screenshot
-            <input className='input'
+          <label className='screenshot-label'>Screenshot
+            <input className='input' id='screenshot'
               placeholder='Showcase your skills by uploading a screenshot'
               type='text'
               value={gameStatsPic}
               onChange={e => setGameStatsPic(e.target.value)}
             />
           </label>
-          <div>Bio</div>
-          <label>Introduction</label>
-            <div>Use an eye-catching one-liner to gain potential clients</div>
+          <div className='bio-div'>Bio</div>
+          <label className='intro-label'>Introduction</label>
+            <div className='intro-description'>Use an eye-catching one-liner to gain potential clients</div>
             <input className='input'
               placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
-          <label>Detailed self-introduction
+          <label className='label-input' id='detailed-description'>Detailed self-introduction
             <textarea className='textarea' rows="3"
               placeholder='10 characters minimum'
               type="text"
@@ -120,22 +120,23 @@ function CreatePalFormPage() {
             />
             <p className='textarea-counter'>{description.length}/500</p>
           </label>
-          <label>Price
-            <input className='input'
+          <label className='price-label'>Price
+            <input className='input' id='price'
               placeholder='The price range is 2.00-999.999'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}
             />
           </label>
-          <label>Address</label>
+          <div className='location-div'>Location</div>
+          <label className='label-input'>Address</label>
             <input className='input'
               placeholder='Please enter your address'
               type="text"
               value={address}
               onChange={e => setAddress(e.target.value)}
             />
-          <label>City
+          <label className='label-input'>City
             <input className='input'
               placeholder='Please enter your city name'
               type="text"
@@ -143,7 +144,7 @@ function CreatePalFormPage() {
               onChange={e => setCity(e.target.value)}
             />
           </label>
-          <label>State
+          <label className='state-label'>State
             <select className='input' value={state} onChange={e => setState(e.target.value)}>
               <option value="" disabled>
               Select a state
@@ -158,7 +159,7 @@ function CreatePalFormPage() {
               ))}
             </select>
           </label>
-          <label>List Cover
+          <label className='list-cover-label'>List Cover
             <input className='input'
               placeholder='Please upload your selfie here as the service cover image'
               type="text"

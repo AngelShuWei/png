@@ -1,9 +1,9 @@
 .pals-page-container {
   background-color: rgb(18, 14, 27);
-  position: absolute;
-  margin-top: 60px;
+  position: fixed;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  margin-top: 50px;
 }
 
 .for-you {
@@ -58,6 +58,30 @@
   border-radius: 8px 8px 0 0;
 }
 
+.pal-card-gamename {
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  overflow: hidden;
+  margin-bottom: 12px;
+  text-overflow: ellipsis;
+  display: inline-block;
+  padding: 1px 16px 1px 8px;
+  max-width: 100%;
+  background: linear-gradient(90deg, #8b65ea, rgba(99, 93, 255, 0.23))
+  /* position: relative; */
+}
+
+/* .shadow-arrow, .pal-card-gamename, .pal-card {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 0px;
+  height: 0px;
+  border-bottom: 22px solid #302f3d;
+  border-left: 10px solid transparent;
+} */
+
 .pal-card-nickname {
   color: white;
   font-size: 18px;
@@ -80,6 +104,7 @@
   background-color: #21212c;
   padding: 1px 8px;
   margin-top: 13px;
+  text-overflow: ellipsis;
 }
 
 .pal-card-title {
@@ -90,6 +115,7 @@
 
 .pal-card-footer {
   background-color: #302f3d;
+  color: white;
   height: 76px;
   display: flex;
   align-items: flex-end;

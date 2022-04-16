@@ -12,7 +12,7 @@ function UserPalPage() {
 
   return (
     <>
-      <div className='user-pal-page-container'>
+      <div className='pals-page-container'>
         {userPals.map(userPal => (
           <div key={userPal.id}>
             <img className='user-pal-img' src={userPal.palPic}></img>
