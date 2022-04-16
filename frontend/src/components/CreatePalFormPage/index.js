@@ -61,47 +61,48 @@ function CreatePalFormPage() {
                 </label>
             ))}
           </div>
+
           <div className='game-info'>Game Info</div>
-          <label className='label-input'>Server
+          <label className='label-input'>Server</label>
             <input className='input'
               placeholder='Please enter server'
               type='text'
               value={server}
               onChange={e => setServer(e.target.value)}
             />
-          </label>
-          <label className='label-input'>Rank
+
+          <label className='label-input'>Rank</label>
             <input className='input'
               placeholder='Please enter rank'
               type='text'
               value={rank}
               onChange={e => setRank(e.target.value)}
             />
-          </label>
-          <label className='label-input'>Position
+
+          <label className='label-input'>Position </label>
             <input className='input'
               placeholder='Please enter your position'
               type='text'
               value={position}
               onChange={e => setPosition(e.target.value)}
             />
-          </label>
-          <label className='label-input'>Style
+
+          <label className='label-input'>Style</label>
             <input className='input'
               placeholder='Please enter your playstyle'
               type='text'
               value={style}
               onChange={e => setStyle(e.target.value)}
             />
-          </label>
-          <label className='screenshot-label'>Screenshot
+
+          <label className='screenshot-label'>Screenshot</label>
             <input className='input' id='screenshot'
               placeholder='Showcase your skills by uploading a screenshot'
               type='text'
               value={gameStatsPic}
               onChange={e => setGameStatsPic(e.target.value)}
             />
-          </label>
+
           <div className='bio-div'>Bio</div>
           <label className='intro-label'>Introduction</label>
             <div className='intro-description'>Use an eye-catching one-liner to gain potential clients</div>
@@ -111,23 +112,32 @@ function CreatePalFormPage() {
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
-          <label className='label-input' id='detailed-description'>Detailed self-introduction
-            <textarea className='textarea' rows="3"
-              placeholder='10 characters minimum'
-              type="text"
-              value={description}
-              onChange={e => setDescription(e.target.value)}
-            />
-            <p className='textarea-counter'>{description.length}/500</p>
-          </label>
-          <label className='price-label'>Price
+
+          <label className='label-input' id='detailed-description'>Detailed self-introduction</label>
+              <textarea className='textarea' rows="4"
+                placeholder='10 characters minimum'
+                type="text"
+                value={description}
+                onChange={e => setDescription(e.target.value)}
+              />
+              <div className='textarea-counter'>{description.length}/500</div>
+
+          <label className='label-input'>Price</label>
             <input className='input' id='price'
               placeholder='The price range is 2.00-999.999'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}
             />
-          </label>
+
+          <label className='list-cover-label'>List Cover</label>
+            <input className='input'
+              placeholder='Please upload your selfie here as the service cover image'
+              type="text"
+              value={palPic}
+              onChange={e => setPalPic(e.target.value)}
+            />
+
           <div className='location-div'>Location</div>
           <label className='label-input'>Address</label>
             <input className='input'
@@ -136,15 +146,15 @@ function CreatePalFormPage() {
               value={address}
               onChange={e => setAddress(e.target.value)}
             />
-          <label className='label-input'>City
+          <label className='label-input'>City </label>
             <input className='input'
               placeholder='Please enter your city name'
               type="text"
               value={city}
               onChange={e => setCity(e.target.value)}
             />
-          </label>
-          <label className='state-label'>State
+
+          <label className='state-label'>State</label>
             <select className='input' value={state} onChange={e => setState(e.target.value)}>
               <option value="" disabled>
               Select a state
@@ -158,17 +168,9 @@ function CreatePalFormPage() {
                 </option>
               ))}
             </select>
-          </label>
-          <label className='list-cover-label'>List Cover
-            <input className='input'
-              placeholder='Please upload your selfie here as the service cover image'
-              type="text"
-              value={palPic}
-              onChange={e => setPalPic(e.target.value)}
-            />
-          </label>
+
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          <button type='submit'>Submit</button>
+          <button className='submit-button' type='submit'>Submit</button>
         </form>
     </>
   )

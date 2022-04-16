@@ -8,7 +8,8 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  /* align-items: left; */
+  align-items: left;
+  justify-content: center;
   margin: 0px auto;
   color: white;
   font-weight: 400;
@@ -25,26 +26,27 @@
 .game-select {
   display: flex;
   gap: 20px;
-  padding-top: 30px;
   border-bottom: 1px solid #4f4e60;
+  padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.label-input, .intro-label, .screenshot-label, .price-label, .state-label, .list-cover-label{
+.label-input, .intro-label, .screenshot-label, .state-label, .list-cover-label {
   font-size: 14px;
+  margin-bottom: 12px;
 }
 
 .choose-a-game-div, .game-info, .bio-div, .location-div {
   font-size: 24px;
   font-weight: 500;
-  padding-top: 30px;
+  padding-top: 40px;
   padding-bottom: 30px;
   border-top: 1px solid #4f4e60;
 }
 
-.screenshot-label, .price-label, .state-label, .list-cover-label {
-  padding-bottom: 30px;
-}
+/* .screenshot-label, .state-label, .list-cover-label {
+  margin-bottom: 12px;
+} */
 
 .intro-description, .label-input#detailed-description {
   color: #c4c3e6;
@@ -63,6 +65,12 @@
   font-weight: 500;
 }
 
+.input:hover {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+}
+
 .input:focus {
   border: 1px solid #966fb2;
   outline: none;
@@ -71,12 +79,23 @@
 
 .textarea {
   background-color: #21212C;
-  border: 1px solid #4F4E60;
+  border-top: 1px solid #4F4E60;
+  border-left: 1px solid #4F4E60;
+  border-right: 1px solid #4F4E60;
+  border-bottom: 0px solid #4F4E60;
   color: white;
-  border-radius: 4px;
+  min-height: 60px;
+  max-height: 200px;
+  border-radius: 4px 4px 0 0;
   width: 630px;
   resize: none;
   overflow-y: hidden;
+}
+
+.textarea:hover {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
 }
 
 .textarea:focus {
@@ -87,14 +106,30 @@
 
 .textarea-counter{
   background-color: #21212C;
-  border: 1px solid #4F4E60;
+  border-right: 1px solid #4F4E60;
+  border-left: 1px solid #4F4E60;
+  border-bottom: 1px solid #4F4E60;
   font-size: 12px;
   font-weight: 400;
   color: #C4C3E6;
   text-align: right;
   padding-right: 12px;
   padding-bottom: 12px;
-  border-radius: 4px;
+  border-radius: 0px 0px 4px 4px;
   margin-bottom: 20px;
-  /* line-height: 17px; */
+  line-height: 17px;
+  /* border-top: 1px solid #4F4E60; */
+}
+
+.submit-button {
+  border-radius: 20px;
+  background: #7041e6;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 24px;
+  min-width: 120px;
+  margin-bottom: 30px;
 }
