@@ -168,7 +168,7 @@ function CreatePalFormPage() {
                 </option>
               ))}
             </select>
-
+          <div className='line-div'/>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
           <button className='submit-button' type='submit'>Submit</button>
         </form>

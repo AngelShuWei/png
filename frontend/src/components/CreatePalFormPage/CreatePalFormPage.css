@@ -1,21 +1,13 @@
-/* .pals-page-container {
-  position: relative;
-  top: 300px;
-  height: 100%;
-} */
-
 .form-container {
   position: absolute;
   display: flex;
   flex-direction: column;
-  align-items: left;
-  justify-content: center;
-  margin: 0px auto;
   color: white;
   font-weight: 400;
   margin-top: 100px;
   width: 630px;
-  /* width: 1300px; */
+  left: 34%;
+  right: 30%;
 }
 
 .errors {
@@ -26,7 +18,6 @@
 .game-select {
   display: flex;
   gap: 20px;
-  border-bottom: 1px solid #4f4e60;
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -42,11 +33,13 @@
   padding-top: 40px;
   padding-bottom: 30px;
   border-top: 1px solid #4f4e60;
+  /* width: 1300px; */
 }
 
-/* .screenshot-label, .state-label, .list-cover-label {
-  margin-bottom: 12px;
-} */
+.line-div {
+  border-top: 1px solid #4f4e60;
+  padding-bottom: 30px;
+}
 
 .intro-description, .label-input#detailed-description {
   color: #c4c3e6;
@@ -60,7 +53,7 @@
   color: white;
   border-radius: 4px;
   height: 36px;
-  width: 630px;
+  /* width: 800px; */
   margin-bottom: 20px;
   font-weight: 500;
 }
@@ -87,7 +80,7 @@
   min-height: 60px;
   max-height: 200px;
   border-radius: 4px 4px 0 0;
-  width: 630px;
+  /* width: 800px; */
   resize: none;
   overflow-y: hidden;
 }
@@ -104,7 +97,7 @@
   box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
 }
 
-.textarea-counter{
+.textarea-counter {
   background-color: #21212C;
   border-right: 1px solid #4F4E60;
   border-left: 1px solid #4F4E60;
@@ -132,4 +125,5 @@
   padding: 8px 24px;
   min-width: 120px;
   margin-bottom: 30px;
+  cursor: pointer;
 }
