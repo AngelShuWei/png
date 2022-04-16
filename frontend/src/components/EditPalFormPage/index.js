@@ -16,7 +16,6 @@ function EditPalFormPage() {
 
 
   const [gameName, setGameName] = useState("");
-  // const [gamePic, setGamePic] = useState(pal.gamePic);
 
   const [server, setServer] = useState(pal.server);
   const [rank, setRank] = useState(pal.rank);
@@ -50,21 +49,23 @@ function EditPalFormPage() {
       <div className='pals-page-container'></div>
         <form className='form-container' onSubmit={handleSubmit}>
           <div>Games</div>
-          <label>Choose a Game
-          <select className='input' value={gameName} onChange={e => setGameName(e.target.value)}>
-            <option value="" disabled>
-              Select a game
-            </option>
+          <div>Choose a Game
             {allGames.map(game => (
-              <option
-                key={game.id}
-                value={game.id}
-              >
-                {game.gameName}
-              </option>
+              <label htmlFor={game.id}>
+                <div>{game.gameName}</div>
+                <div key={game.id}>
+                  <img src={game.gamePic}/>
+                    <input id={game.id}
+                      name='game' //binds all the inputs to one name so now can only select one out of the options
+                      type="radio"
+                      value={game.id}
+                      // checked={game.gameName.selectedOption === {game}}
+                      onChange={e => setGameName(e.target.value)}
+                    />
+                </div>
+              </label>
             ))}
-          </select>
-          </label>
+          </div>
           <div>Game Info</div>
           <label>Server
             <input className='input'
