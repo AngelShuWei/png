@@ -64,6 +64,7 @@
   border: 1px solid #966fb2;
   outline: none;
   box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+  transition: 0.2s ease-in;
 }
 
 .input:focus {
@@ -91,6 +92,7 @@
   border: 1px solid #966fb2;
   outline: none;
   box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+  transition: 0.2s ease-in;
 }
 
 .textarea:focus {
@@ -128,4 +130,9 @@
   min-width: 120px;
   margin-bottom: 30px;
   cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: rgb(141, 101, 234);
+  transition: 0.2s ease-in;
 }

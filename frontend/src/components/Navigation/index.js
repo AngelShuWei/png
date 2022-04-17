@@ -35,7 +35,7 @@ function Navigation({isLoaded}) {
         <NavLink className='navlink-my-ePal' exact to="/myepal">My ePal</NavLink>
       </div>
       <div>
-        <NavLink className='navlink-apple-ePal' exact to="/applyepal">Become an ePal</NavLink>
+        <NavLink className='navlink-apply-ePal' exact to="/applyepal">Become an ePal</NavLink>
       </div>
         {isLoaded && sessionLinks}
     </nav>
