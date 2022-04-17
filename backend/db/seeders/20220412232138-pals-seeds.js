@@ -5,7 +5,6 @@ module.exports = {
     return queryInterface.bulkInsert('Pals', [
     {
       userId: 1,
-      nickname: "demo",
       title: 'Please be my friend',
       description: "Hello my name is Demo and welcome to my page!",
       palPic: "https://www.hollywoodreporter.com/wp-content/uploads/2021/05/GettyImages-1191359874-H-2021-1620057278.jpg",
@@ -19,7 +18,6 @@ module.exports = {
     },
     {
       userId: 2,
-      nickname: "angle",
       title: "Book me, I'm cool",
       description: "My name is Angel and this is my description",
       palPic: "https://static.onecms.io/wp-content/uploads/sites/20/2020/09/11/gal-gadot-2000.jpg",

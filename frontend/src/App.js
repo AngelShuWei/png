@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
-import {Route, Switch} from 'react-router-dom';
+import {NavLink, Route, Switch} from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Navigation from './components/Navigation';
-import AllPalPage from './components/AllPalPage'
-import * as sessionActions from "./store/session";
+import AllPalPage from './components/AllPalPage';
+import GameFormPage from './components/GameFormPage';
+import HomePage from './components/HomePage';
 import { loadAllPals } from './store/pals';
+import * as sessionActions from "./store/session";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,9 +23,15 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <HomePage/>
+          </Route>
           <Route exact path='/epals'>
             <AllPalPage/>
           </Route>
+          <ProtectedRoute exact path='/addgame'>
+            <GameFormPage/>
+          </ProtectedRoute>
         </Switch>
       )}
     </>

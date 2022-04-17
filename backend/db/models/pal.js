@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Pal = sequelize.define('Pal', {
     userId: DataTypes.INTEGER,
-    nickname: DataTypes.STRING(30),
     title: DataTypes.STRING(50),
     description: DataTypes.TEXT,
     palPic: DataTypes.STRING,

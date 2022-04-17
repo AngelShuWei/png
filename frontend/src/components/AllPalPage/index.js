@@ -20,7 +20,12 @@ function AllPalPage() {
           <div className='pals-card-list'>
             {allPals.map(pal =>
               <div className='pal-card' key={pal.id}>
-                <img className='pal-card-img' src={pal.palPic}/>
+                <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
+                <div className='pal-card-top'>
+                  <div className='pal-card-nickname'>{pal.nickname}</div>
+                  <div className='pal-card-title'>{pal.title}</div>
+                </div>
+                <div className='pal-card-footer'>Price here/Game</div>
               </div>
             )}
           </div>

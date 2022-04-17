@@ -32,6 +32,10 @@ module.exports = {
         type: Sequelize.STRING(30),
         allowNull: false,
       },
+      gameStatsPic: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
