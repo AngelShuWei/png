@@ -12,6 +12,7 @@ import HomePage from './components/HomePage';
 import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
+import { loadAllUsers } from './store/users';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
   useEffect(() => {
     dispatch(loadAllPals());
     dispatch(loadAllGames());
+    dispatch(loadAllUsers());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));  //if there is user, then set load to true
   }, [dispatch]);
 

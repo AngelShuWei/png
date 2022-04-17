@@ -42,7 +42,7 @@ function CreatePalFormPage() {
 
   return (
     <>
-      <div className='pals-page-container'></div>
+      <div className='create-pal-page-container'></div>
         <form className='form-container' onSubmit={handleSubmit}>
           <div className='choose-a-game-div'>Choose a Game</div>
           <div className='game-select'>

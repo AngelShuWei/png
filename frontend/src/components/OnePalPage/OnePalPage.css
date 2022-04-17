@@ -1,0 +1,92 @@
+.pal-page-container {
+  background-color: rgb(18, 14, 27);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 50px;
+}
+
+.one-pal-top {
+  background-color: rgb(62, 33, 113);
+  height: 210px;
+  top: 10px;
+  overflow: hidden;
+}
+
+.one-pal-bg {
+  margin-left: 14%;
+  height: 210px;
+  position: absolute;
+}
+
+.one-pal-top-content {
+  width: 1300px;
+  height: 200px;
+  margin: 0 auto;
+  position: absolute;
+  text-align: center;
+}
+
+.one-pal-left-container {
+  position: relative;
+  width: 386px;
+  left: 14%;
+}
+
+.one-pal-left-content {
+  padding: 19px 24px 16px;
+  background-color: #302f3d;
+  border-radius: 8px;
+  height: 987px;
+  /* height: auto; */
+  margin-top: -60px;
+  overflow: hidden;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  color: white;
+}
+
+.one-pal-cover-pic {
+  position: absolute;
+  top: -5%;
+  left: 0;
+  width: 386px;
+  height: 289px;
+  object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.one-pal-avatar-pic {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  border-radius: 100px;
+  background-color: #302f3d;
+  padding: 8px;
+  top: 19%;
+  left: 35%;
+  /* padding: 10px; */
+}
+
+.one-pal-nickname {
+  position: absolute;
+  top: 31%;
+  left: 40%;
+  font-size: 24px;
+}
+
+.one-pal-bio-text {
+  position: absolute;
+  font-size: 14px;
+  top: 37%;
+  color: #c4c3e6;
+}
+
+.one-pal-bio {
+  position: absolute;
+  font-size: 14px;
+  top: 40%;
+}
+
+/* .one-pal-services {
+
+} */

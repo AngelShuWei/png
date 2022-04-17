@@ -22,8 +22,8 @@ function AllPalPage() {
             {allPals.map(pal =>
               <div className='pal-card' key={pal.id}>
                 <Link to={`/epals/${pal.id}`}>
-                  <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
                   <div className='pal-card-top'>
+                    <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
                     <div className='pal-card-gamename'>
                       {pal.Game.gameName}
                       <div className='shadow-arrow'/>
