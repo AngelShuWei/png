@@ -1,0 +1,220 @@
+.pal-page-container {
+  background-color: rgb(18, 14, 27);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 50px;
+}
+
+.one-pal-top {
+  background-color: rgb(62, 33, 113);
+  height: 210px;
+  top: 10px;
+  overflow: hidden;
+}
+
+.one-pal-bg {
+  margin-left: 14%;
+  height: 210px;
+  position: absolute;
+}
+
+.one-pal-top-content {
+  width: 1300px;
+  height: 200px;
+  margin: 0 auto;
+  position: absolute;
+  text-align: center;
+}
+
+.one-pal-bottom {
+  display: flex;
+}
+
+.one-pal-left-container {
+  position: relative;
+  width: 386px;
+  left: 14%;
+}
+
+.one-pal-left-content {
+  padding: 19px 24px 16px;
+  background-color: #302f3d;
+  border-radius: 8px;
+  height: 987px;
+  margin-top: -60px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+.one-pal-cover-pic {
+  position: absolute;
+  top: -6.5%;
+  left: 0;
+  width: 386px;
+  height: 289px;
+  object-fit: cover;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.one-pal-avatar-pic {
+  position: absolute;
+  width: 105px;
+  height: 105px;
+  border-radius: 100px;
+  background-color: #302f3d;
+  padding: 8px;
+  top: 18%;
+  left: 35%;
+  /* padding: 10px; */
+}
+
+.one-pal-nickname {
+  position: absolute;
+  top: 31%;
+  left: 39%;
+  font-size: 24px;
+}
+
+.one-pal-user-info {
+  position: absolute;
+  font-size: 14px;
+  top: 37%;
+}
+
+.one-pal-bio-text {
+  color: #c4c3e6;
+}
+
+.one-pal-services {
+  position: absolute;
+  color: white;
+  left: 35%;
+  top: 21%;
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 5px solid #7041e6;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.one-pal-service-list {
+  position: absolute;
+  left: 35%;
+  top: 26%;
+}
+
+.service-list-img {
+  width: 156px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #7041e6;
+}
+
+.one-pal-game-content {
+  position: absolute;
+  background-color: #302f3d;
+  width: 900px;
+  height: 678px;
+  left: 35%;
+  top: 33%;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.one-pal-service-info {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  max-width: 635px;
+  padding: 10px 20px 10px 20px;
+  /* line-height: 48px; */
+}
+
+.one-pal-long-description {
+  color: #c4c3e6;
+  padding: 10px 20px 10px 20px;
+}
+
+.one-pal-game-stat-img {
+  width: 413px;
+  height: 232px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.one-pal-service-details-container {
+  position: absolute;
+  background-color: #302f3d;
+  color: white;
+  left: 35%;
+  top: 92%;
+  width: 900px;
+  height: 225px;
+  border-radius: 8px;
+}
+
+.one-pal-service-details-content {
+  position: absolute;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 10px 20px 10px 20px;
+  top: 2%;
+}
+
+.one-pal-service-details-text {
+  margin-left: 10px;
+}
+
+.one-pal-service-content {
+  position: absolute;
+  background-color: #21212c;
+  border-radius: 4px;
+  width: 852px;
+  height: 160px;
+  overflow: hidden;
+  left: 2.5%;
+  top: 17%;
+  padding: 24px 24px 12px;
+  margin-top: 12px;
+}
+
+.one-pal-service-content-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 200px;
+  width: 100%;
+  height: 100%;
+  padding-right: 400px;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.one-pal-rank-text, .one-pal-server-text, .one-pal-style-text, .one-pal-position-text {
+  color: #c4c3e6;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.one-pal-reviews-container {
+  background-color: #302f3d;
+  position: absolute;
+  color: white;
+  left: 35%;
+  top: 115%;
+  width: 900px;
+  height: 800px;
+  border-radius: 8px;
+}
+
+.one-pal-reviews-details {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px;
+}

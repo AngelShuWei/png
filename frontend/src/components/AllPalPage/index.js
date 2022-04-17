@@ -6,12 +6,13 @@ import { loadAllPals } from '../../store/pals';
 
 function AllPalPage() {
   const dispatch = useDispatch();
-
   const allPals = useSelector(state => Object.values(state.pals));
 
-  useEffect(() => {
-    dispatch(loadAllPals());
-  }, [dispatch])
+  console.log(allPals)
+
+  // useEffect(() => {
+  //   dispatch(loadAllPals());
+  // }, [dispatch])
 
   return (
     <>
@@ -20,12 +21,22 @@ function AllPalPage() {
           <div className='pals-card-list'>
             {allPals.map(pal =>
               <div className='pal-card' key={pal.id}>
-                <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
-                <div className='pal-card-top'>
-                  <div className='pal-card-nickname'>{pal.nickname}</div>
-                  <div className='pal-card-title'>{pal.title}</div>
-                </div>
-                <div className='pal-card-footer'>Price here/Game</div>
+                <Link to={`/epals/${pal.id}`}>
+                  <div className='pal-card-top'>
+                    <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
+                    <div className='pal-card-gamename'>
+                      {pal.Game.gameName}
+                      <div className='shadow-arrow'/>
+                    </div>
+                    <div className='pal-card-nickname'>{pal.nickname}</div>
+                    <div className='pal-card-rank-position'>
+                      <div className='pal-card-rank'>{pal.rank}</div>
+                      <div className='pal-card-position'>{pal.position}</div>
+                    </div>
+                    <div className='pal-card-title'>{pal.title}</div>
+                  </div>
+                  <div className='pal-card-footer'>{pal.price}/Game</div>
+                </Link>
               </div>
             )}
           </div>

@@ -26,13 +26,16 @@ function Navigation({isLoaded}) {
   return (
     <nav className='navbar-c'>
       <div>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink className='navlink-home' exact to="/">Home</NavLink>
       </div>
       <div>
-        <NavLink exact to="/epals">ePal</NavLink>
+        <NavLink className='navlink-ePal' exact to="/epals">ePal</NavLink>
       </div>
       <div>
-        <NavLink exact to="/addgame">Become an ePal</NavLink>
+        <NavLink className='navlink-my-ePal' exact to="/myepal">My ePal</NavLink>
+      </div>
+      <div>
+        <NavLink className='navlink-apply-ePal' exact to="/applyepal">Become an ePal</NavLink>
       </div>
         {isLoaded && sessionLinks}
     </nav>

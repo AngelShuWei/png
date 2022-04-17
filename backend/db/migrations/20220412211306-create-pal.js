@@ -12,6 +12,34 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      gameId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      server: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      rank: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      position: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      style: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      gameStatsPic: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      nickname: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
       title: {
         type: Sequelize.STRING(50),
         allowNull: false,

@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import {NavLink, Route, Switch} from 'react-router-dom';
+import * as sessionActions from "./store/session";
+import { loadAllPals } from './store/pals';
+import { loadAllGames } from './store/games';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Navigation from './components/Navigation';
 import AllPalPage from './components/AllPalPage';
-import GameFormPage from './components/GameFormPage';
+import CreatePalFormPage from './components/CreatePalFormPage';
 import HomePage from './components/HomePage';
-import { loadAllPals } from './store/pals';
-import * as sessionActions from "./store/session";
+import OnePalPage from './components/OnePalPage';
+import UserPalPage from './components/UserPalPage';
+import EditPalFormPage from './components/EditPalFormPage';
+import { loadAllUsers } from './store/users';
 
 function App() {
   const dispatch = useDispatch();
@@ -15,6 +20,8 @@ function App() {
 
   useEffect(() => {
     dispatch(loadAllPals());
+    dispatch(loadAllGames());
+    dispatch(loadAllUsers());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));  //if there is user, then set load to true
   }, [dispatch]);
 
@@ -29,8 +36,17 @@ function App() {
           <Route exact path='/epals'>
             <AllPalPage/>
           </Route>
-          <ProtectedRoute exact path='/addgame'>
-            <GameFormPage/>
+          <Route exact path='/epals/:palId'>
+            <OnePalPage/>
+          </Route>
+          <ProtectedRoute exact path='/myepal'>
+            <UserPalPage/>
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/myepal/:palId/edit'>
+            <EditPalFormPage/>
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/applyepal'>
+            <CreatePalFormPage/>
           </ProtectedRoute>
         </Switch>
       )}

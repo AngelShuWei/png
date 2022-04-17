@@ -1,0 +1,146 @@
+.create-pal-page-container {
+  background-color: rgb(18, 14, 27);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+}
+
+.form-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-weight: 400;
+  margin-top: 100px;
+  width: 630px;
+  left: 34%;
+}
+
+.errors {
+  color: white;
+  font-size: 12px;
+}
+
+.game-select {
+  display: flex;
+  gap: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.game-img {
+  border-radius: 8px;
+}
+
+.label-input, .intro-label, .screenshot-label, .state-label, .list-cover-label {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.choose-a-game-div, .game-info, .bio-div, .location-div {
+  font-size: 24px;
+  font-weight: 500;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  border-top: 1px solid #4f4e60;
+}
+
+.line-div {
+  border-top: 1px solid #4f4e60;
+  padding-bottom: 30px;
+}
+
+.intro-description, .label-input#detailed-description {
+  color: #c4c3e6;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.input {
+  background-color: #21212C;
+  border: 1px solid #4F4E60;
+  color: white;
+  border-radius: 4px;
+  height: 36px;
+  /* width: 800px; */
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.input:hover {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+  transition: 0.2s ease-in;
+}
+
+.input:focus {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+}
+
+.textarea {
+  background-color: #21212C;
+  border-top: 1px solid #4F4E60;
+  border-left: 1px solid #4F4E60;
+  border-right: 1px solid #4F4E60;
+  border-bottom: 0px solid #4F4E60;
+  color: white;
+  min-height: 60px;
+  max-height: 200px;
+  border-radius: 4px 4px 0 0;
+  /* width: 800px; */
+  resize: none;
+  overflow-y: hidden;
+}
+
+.textarea:hover {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+  transition: 0.2s ease-in;
+}
+
+.textarea:focus {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+}
+
+.textarea-counter {
+  background-color: #21212C;
+  border-right: 1px solid #4F4E60;
+  border-left: 1px solid #4F4E60;
+  border-bottom: 1px solid #4F4E60;
+  font-size: 12px;
+  font-weight: 400;
+  color: #C4C3E6;
+  text-align: right;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  border-radius: 0px 0px 4px 4px;
+  margin-bottom: 20px;
+  line-height: 17px;
+  /* border-top: 1px solid #4F4E60; */
+}
+
+.submit-button {
+  border-radius: 20px;
+  background: #7041e6;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 24px;
+  min-width: 120px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: rgb(141, 101, 234);
+  transition: 0.2s ease-in;
+}

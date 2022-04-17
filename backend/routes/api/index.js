@@ -7,10 +7,12 @@ const { restoreUser } = require('../../utils/auth.js');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./user.js');
 const palsRouter = require('./pals.js');
+const gamesRouter = require('./games.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/pals', palsRouter);
+router.use('/games', gamesRouter);
 
 // router.post('/test', function(req, res) {
 //   res.json({ requestBody: req.body });
