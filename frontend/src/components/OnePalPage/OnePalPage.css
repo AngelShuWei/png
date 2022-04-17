@@ -25,14 +25,14 @@
 .one-pal-bg {
   margin-left: 14%;
   height: 210px;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .one-pal-top-content {
   width: 1300px;
   height: 200px;
   margin: 0 auto;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
 }
 
