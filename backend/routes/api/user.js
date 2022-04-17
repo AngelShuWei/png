@@ -12,9 +12,9 @@ const validateSignup = [
     .isEmail()
     .withMessage('Please provide a valid email.'),
   check('username')
-    .exists({ checkFalsy: true })
+    // .exists({ checkFalsy: true })
     .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
+    .withMessage('Please provide an unique username with at least 4 characters.'),
   check('username')
     .not()
     .isEmail()
@@ -23,6 +23,18 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
+  check('nickname')
+    .isLength({ min: 1}, {max: 30})
+    .withMessage('Please provide a nickname maximum 30 characters.'),
+  check('bio')
+    .isLength({ min: 10}, {max: 500})
+    .withMessage('Please provide a bio with maximum 500 characters.'),
+  check('gender')
+    .exists({ checkFalsy: true })
+    .withMessage('Please select a gender.'),
+  check('profilePic')
+    .isURL()
+    .withMessage('Please upload a valid imageUrl'),
   handleValidationErrors
 ];
 

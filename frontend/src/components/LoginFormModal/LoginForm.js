@@ -8,10 +8,20 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({credential, password}))
+      .catch(async (res) => { //if there is an error, then skip the res.ok and get the response
+        const data = await res.json(); //parse the data again because we skipped the res.ok
+        if (data && data.errors) setErrors(data.errors); //set the new Errors
+      });
+  }
+
+  const handleDemo = (e) => {
+    e.preventDefault();
+    setErrors([]);
+    return dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}))
       .catch(async (res) => { //if there is an error, then skip the res.ok and get the response
         const data = await res.json(); //parse the data again because we skipped the res.ok
         if (data && data.errors) setErrors(data.errors); //set the new Errors
@@ -42,6 +52,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button onClick={handleDemo}>Demo User</button>
     </form>
   );
 }

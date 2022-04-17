@@ -27,6 +27,10 @@
   text-align: center;
 }
 
+.one-pal-bottom {
+  display: flex;
+}
+
 .one-pal-left-container {
   position: relative;
   width: 386px;
@@ -40,14 +44,15 @@
   height: 987px;
   /* height: auto; */
   margin-top: -60px;
+  margin-bottom: 40px;
   overflow: hidden;
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
   color: white;
 }
 
 .one-pal-cover-pic {
   position: absolute;
-  top: -5%;
+  top: -6.5%;
   left: 0;
   width: 386px;
   height: 289px;
@@ -62,7 +67,7 @@
   border-radius: 100px;
   background-color: #302f3d;
   padding: 8px;
-  top: 19%;
+  top: 18%;
   left: 35%;
   /* padding: 10px; */
 }
@@ -70,23 +75,82 @@
 .one-pal-nickname {
   position: absolute;
   top: 31%;
-  left: 40%;
+  left: 39%;
   font-size: 24px;
 }
 
-.one-pal-bio-text {
+.one-pal-user-info {
   position: absolute;
   font-size: 14px;
   top: 37%;
+}
+
+.one-pal-bio-text {
   color: #c4c3e6;
 }
 
-.one-pal-bio {
+.one-pal-services {
   position: absolute;
-  font-size: 14px;
-  top: 40%;
+  color: white;
+  left: 35%;
+  top: 21%;
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 5px solid #7041e6;
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-/* .one-pal-services {
+.one-pal-service-list {
+  position: absolute;
+  left: 35%;
+  top: 26%;
+}
 
-} */
+.service-list-img {
+  width: 156px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #7041e6;
+}
+
+.one-pal-right-content {
+  position: absolute;
+  background-color: #302f3d;
+  width: 900px;
+  height: 678px;
+  left: 35%;
+  top: 33%;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.one-pal-service-info {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  max-width: 635px;
+  padding: 10px 20px 10px 20px;
+  /* line-height: 48px; */
+}
+
+.one-pal-long-description {
+  color: #c4c3e6;
+  padding: 10px 20px 10px 20px;
+}
+
+.one-pal-game-stat-img {
+  width: 413px;
+  height: 232px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.one-pal-service-details {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
