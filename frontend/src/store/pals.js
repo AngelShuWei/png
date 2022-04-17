@@ -1,9 +1,9 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = "pal/load";
-const CREATE_ONE = "pal/createOne"
-const UPDATE_ONE = "pal/updateOne"
-const DELETE_ONE = "pal/deleteOne"
+const CREATE_ONE = "pal/createOne";
+const UPDATE_ONE = "pal/updateOne";
+const DELETE_ONE = "pal/deleteOne";
 
 const loadAll = (pals) => ({
   type: LOAD,

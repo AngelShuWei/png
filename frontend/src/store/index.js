@@ -4,12 +4,14 @@ import sessionReducer from "./session";
 import usersReducer from "./users";
 import palsReducer from "./pals";
 import gamesReducer from "./games";
+import reviewsReducer from "./reviews";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   users: usersReducer,
   pals: palsReducer,
   games: gamesReducer,
+  reviews: reviewsReducer,
 });
 
 let enhancer;
