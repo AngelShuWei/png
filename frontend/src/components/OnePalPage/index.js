@@ -44,10 +44,10 @@ function OnePalPage() {
               <div className='one-pal-long-description'>{onePal[0]?.description}</div>
               <div className='one-pal-game-stat'><img className='one-pal-game-stat-img' src={onePal[0]?.gameStatsPic}/></div>
             </div>
-            <div className='one-pal-service-details'>
-              <div className='one-pal-service-details-text'>
+            <div className='one-pal-service-details-container'>
+              <div className='one-pal-service-details-content'>
                 <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAD1JREFUKFNjZCARMILUHzn87DCItrGVsoXy/2Mzx8ZWipE8DaS4CmwDKYA8J5HsaZKdRLIGkp1EsgZSnAQAmkIwDRyYvHUAAAAASUVORK5CYII='/>
-                Service Details
+                <span className='one-pal-service-details-text'>Service Details</span>
               </div>
               <div className='one-pal-service-content'>
                 <div className='one-pal-service-content-text'>
@@ -70,7 +70,12 @@ function OnePalPage() {
                 </div>
               </div>
             </div>
-            <div className='one-pal-reviews'></div>
+            <div className='one-pal-reviews-container'>
+              <div className='one-pal-reviews-details'>
+                Review(s)
+              </div>
+              <div className='one-pal-user-reviews'></div>
+            </div>
           </div>
         </div>
       </div>

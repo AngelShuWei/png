@@ -148,7 +148,7 @@
   object-fit: cover;
 }
 
-.one-pal-service-details {
+.one-pal-service-details-container {
   position: absolute;
   background-color: #302f3d;
   color: white;
@@ -159,12 +159,16 @@
   border-radius: 8px;
 }
 
-.one-pal-service-details-text {
+.one-pal-service-details-content {
   position: absolute;
   font-size: 18px;
   font-weight: 700;
   padding: 10px 20px 10px 20px;
   top: 2%;
+}
+
+.one-pal-service-details-text {
+  margin-left: 10px;
 }
 
 .one-pal-service-content {
@@ -181,13 +185,13 @@
 }
 
 .one-pal-service-content-text {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  /* padding-right: 400px; */
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 200px;
   width: 100%;
   height: 100%;
+  padding-right: 400px;
+  overflow: hidden;
   font-size: 14px;
   font-weight: 400;
 }
@@ -198,6 +202,19 @@
   margin-bottom: 12px;
 }
 
-/* .one-pal-rank, .one-pal-server, .one-pal-style, .one-pal-position {
-  margin-bottom: 24px;
-} */
+.one-pal-reviews-container {
+  background-color: #302f3d;
+  position: absolute;
+  color: white;
+  left: 35%;
+  top: 115%;
+  width: 900px;
+  height: 800px;
+  border-radius: 8px;
+}
+
+.one-pal-reviews-details {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 10px 20px 10px 20px;
+}
