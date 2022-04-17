@@ -13,6 +13,7 @@ import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
 import { loadAllUsers } from './store/users';
+import { loadAllReviews } from './store/reviews';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
     dispatch(loadAllPals());
     dispatch(loadAllGames());
     dispatch(loadAllUsers());
+    // dispatch(loadAllReviews());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));  //if there is user, then set load to true
   }, [dispatch]);
 

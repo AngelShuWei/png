@@ -8,8 +8,6 @@ function AllPalPage() {
   const dispatch = useDispatch();
   const allPals = useSelector(state => Object.values(state.pals));
 
-  console.log(allPals)
-
   // useEffect(() => {
   //   dispatch(loadAllPals());
   // }, [dispatch])

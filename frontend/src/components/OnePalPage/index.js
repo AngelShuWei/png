@@ -1,10 +1,13 @@
 import './OnePalPage.css'
 import userPalBg from '../../assets/user-pal-bg.png'
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link} from "react-router-dom";
+import { loadAllReviews } from '../../store/reviews';
 
 function OnePalPage() {
+  const dispatch = useDispatch();
   const { palId } = useParams();
 
   const onePal = useSelector(state => Object.values(state.pals).filter(pal => {
@@ -17,10 +20,29 @@ function OnePalPage() {
     return user.id === onePal[0].userId;
   }));
 
+  const allReviews = useSelector(state => Object.values(state.reviews).filter(review => {
+    return review.palId === +palId;
+  }));
+
+  //calculation to get avg ratings
+  let sum = 0;
+  allReviews.forEach(review => {
+    sum += review.rating;
+  })
+  const avgSum = (sum / allReviews.length).toFixed(1);
+  // end of calculation
+
+  console.log(allReviews)
+
+  useEffect(() => {
+    dispatch(loadAllReviews());
+  }, [dispatch]);
+
   return (
     <>
       <div className='pal-page-container'>
         <div className='one-pal-top'>
+            <Link to='/epals'><div className='back'> {'<'} Back </div></Link>
           <div><img className='one-pal-bg' src={userPalBg}/></div>
           <div className='one-pal-top-content'></div>
         </div>
@@ -37,7 +59,7 @@ function OnePalPage() {
             </div>
           </div>
           <div className='one-pal-right-container'>
-            <div className='one-pal-services'>Games</div>
+            <div className='one-pal-games'>Games</div>
             <div className='one-pal-service-list'><img className='service-list-img' src={onePal[0].Game.gamePic}/></div>
             <div className='one-pal-game-content'>
               <div className='one-pal-service-info'>{onePal[0]?.Game.gameName}</div>
@@ -72,9 +94,21 @@ function OnePalPage() {
             </div>
             <div className='one-pal-reviews-container'>
               <div className='one-pal-reviews-details'>
-                Review(s)
+                <i className="fa-xs fa-solid fa-star"/>
+                {avgSum} · {allReviews.length} Review(s)
               </div>
               <div className='one-pal-user-reviews'></div>
+                {allReviews.map(review => (
+                  <div className='one-pal-user-review-container' key={review.id}>
+                    <img className='one-pal-user-review-profile-img' src={review.User.profilePic}/>
+                    <span className='one-pal-user-review-user-nickname'>{review.User.nickname}</span>
+                    <span className='one-pal-user-review-user-date'> · {review.createdAt}</span>
+                    <div className='one-pal-user-review-user-rating'>
+                      <i className="fa-xs fa-solid fa-star"/> {review.rating.toFixed(1)} score
+                    </div>
+                    <div className='one-pal-user-review-user-review'>{review.content}</div>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
