@@ -42,7 +42,6 @@
   background-color: #302f3d;
   border-radius: 8px;
   height: 987px;
-  /* height: auto; */
   margin-top: -60px;
   margin-bottom: 40px;
   overflow: hidden;
@@ -116,7 +115,7 @@
   border: 2px solid #7041e6;
 }
 
-.one-pal-right-content {
+.one-pal-game-content {
   position: absolute;
   background-color: #302f3d;
   width: 900px;
@@ -150,7 +149,55 @@
 }
 
 .one-pal-service-details {
+  position: absolute;
+  background-color: #302f3d;
   color: white;
+  left: 35%;
+  top: 92%;
+  width: 900px;
+  height: 225px;
+  border-radius: 8px;
+}
+
+.one-pal-service-details-text {
+  position: absolute;
   font-size: 18px;
   font-weight: 700;
+  padding: 10px 20px 10px 20px;
+  top: 2%;
 }
+
+.one-pal-service-content {
+  position: absolute;
+  background-color: #21212c;
+  border-radius: 4px;
+  width: 852px;
+  height: 160px;
+  overflow: hidden;
+  left: 2.5%;
+  top: 17%;
+  padding: 24px 24px 12px;
+  margin-top: 12px;
+}
+
+.one-pal-service-content-text {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* padding-right: 400px; */
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.one-pal-rank-text, .one-pal-server-text, .one-pal-style-text, .one-pal-position-text {
+  color: #c4c3e6;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+/* .one-pal-rank, .one-pal-server, .one-pal-style, .one-pal-position {
+  margin-bottom: 24px;
+} */

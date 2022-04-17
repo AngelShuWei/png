@@ -37,18 +37,40 @@ function OnePalPage() {
             </div>
           </div>
           <div className='one-pal-right-container'>
-            <div className='one-pal-services'>Services</div>
+            <div className='one-pal-services'>Games</div>
             <div className='one-pal-service-list'><img className='service-list-img' src={onePal[0].Game.gamePic}/></div>
-            <div className='one-pal-right-content'>
+            <div className='one-pal-game-content'>
               <div className='one-pal-service-info'>{onePal[0]?.Game.gameName}</div>
               <div className='one-pal-long-description'>{onePal[0]?.description}</div>
               <div className='one-pal-game-stat'><img className='one-pal-game-stat-img' src={onePal[0]?.gameStatsPic}/></div>
-              <div className='one-pal-service-details'>
+            </div>
+            <div className='one-pal-service-details'>
+              <div className='one-pal-service-details-text'>
                 <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAD1JREFUKFNjZCARMILUHzn87DCItrGVsoXy/2Mzx8ZWipE8DaS4CmwDKYA8J5HsaZKdRLIGkp1EsgZSnAQAmkIwDRyYvHUAAAAASUVORK5CYII='/>
                 Service Details
               </div>
-              <div className='one-pal-reviews'></div>
+              <div className='one-pal-service-content'>
+                <div className='one-pal-service-content-text'>
+                  <div className='one-pal-rank'>
+                    <div className='one-pal-rank-text'>Rank</div>
+                    <div>{onePal[0]?.rank}</div>
+                  </div>
+                  <div className='one-pal-server'>
+                    <div className='one-pal-server-text'>Server</div>
+                    <div>{onePal[0]?.server}</div>
+                  </div>
+                  <div className='one-pal-style'>
+                    <div className='one-pal-style-text'>Style</div>
+                    <div>{onePal[0]?.style}</div>
+                  </div>
+                  <div className='one-pal-position'>
+                    <div className='one-pal-position-text'>Position</div>
+                    <div>{onePal[0]?.position}</div>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div className='one-pal-reviews'></div>
           </div>
         </div>
       </div>
