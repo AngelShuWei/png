@@ -69,7 +69,7 @@ router.get('/', asyncHandler(async(req, res) => {
 router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   const { user } = req;
   let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body;
-  console.log(req.body)
+
   const pal = await Pal.create({
     userId: user.id,  //dont need in update because user has already been established
     gameId,
