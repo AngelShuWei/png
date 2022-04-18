@@ -1,21 +1,19 @@
-import './SignupForm.css';
 import React, { useState } from "react";
 import { Modal } from '../../context/Modal';
-import SignupForm from './SignupForm';
+import ReviewForm from "./ReviewForm";
 
-function SignupFormModal() {
+function ReviewFormModel() {
   const [showModal, setShowModal] = useState(false);
-
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Sign up</button>
+      <button className='submit-button' onClick={() => setShowModal(true)}>Leave a Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SignupForm />
+          <ReviewForm/>
         </Modal>
       )}
     </>
   );
 };
 
-export default SignupFormModal;
+export default ReviewFormModel;

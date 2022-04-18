@@ -127,7 +127,7 @@ function EditPalFormPage() {
 
           <label className='label-input'>Price</label>
             <input className='input' id='price'
-              placeholder='The price range is 2.00-999.999'
+              placeholder='The price range is 2.00-999.00'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}

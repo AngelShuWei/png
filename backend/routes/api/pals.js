@@ -35,8 +35,8 @@ const validatePalInfo = [
     .isLength({ min: 10 }, { max: 500 })
     .withMessage('Please provide an introduction at least 10 characters long.'),
   check('price')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a valid price range'),
+    .isInt({ min: 2 , max: 999 })
+    .withMessage('Please provide a price between 2.00 - 999.00.'),
   check('address')
     // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
@@ -88,6 +88,7 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
     state,
     country: "United States",
   });
+
   return res.json(pal);
 }));
 
@@ -95,7 +96,7 @@ router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
   // console.log("testing backend-------------", palId);
   const { palId } = req.params;
 
-  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body
+  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body;
 
   let pal = await Pal.findByPk(+palId);
 
@@ -127,7 +128,7 @@ router.delete('/:palId', asyncHandler(async(req, res) => {
 
   await pal.destroy();
   return res.json(pal.id);
-}))
+}));
 
 
 module.exports = router;

@@ -4,6 +4,8 @@ import {NavLink, Route, Switch} from 'react-router-dom';
 import * as sessionActions from "./store/session";
 import { loadAllPals } from './store/pals';
 import { loadAllGames } from './store/games';
+import { loadAllUsers } from './store/users';
+import { loadAllReviews } from './store/reviews';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Navigation from './components/Navigation';
 import AllPalPage from './components/AllPalPage';
@@ -12,8 +14,7 @@ import HomePage from './components/HomePage';
 import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
-import { loadAllUsers } from './store/users';
-import { loadAllReviews } from './store/reviews';
+import ReviewForm from './components/ReviewFormModal/ReviewForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path='/applyepal'>
             <CreatePalFormPage/>
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/myepal/:palId'>
+            <ReviewForm/>
           </ProtectedRoute>
         </Switch>
       )}

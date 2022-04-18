@@ -34,6 +34,41 @@ export const loadAllReviews = () => async(dispatch) => {
   return response;
 }
 
+export const createReview = (review) => async(dispatch) => {
+  const response = await csrfFetch(`/api/reviews`, {
+    method: 'POST',
+    body: JSON.stringify(review),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(createOne(data));
+  }
+  return response;
+}
+
+export const updateReview = (review) => async(dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${review.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(review),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateOne(data));
+  }
+  return response;
+}
+
+export const deleteReview = (reviewId) => async(dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    const id = await response.json();
+    dispatch(deleteOne(id));
+  }
+  return response;
+}
+
 const initialState = {};
 
 const reviewsReducer = (state = initialState, action) => {

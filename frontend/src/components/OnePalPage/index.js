@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link} from "react-router-dom";
 import { loadAllReviews } from '../../store/reviews';
+import ReviewFormModel from '../ReviewFormModal';
 
 function OnePalPage() {
   const dispatch = useDispatch();
@@ -96,6 +97,7 @@ function OnePalPage() {
               <div className='one-pal-reviews-details'>
                 <i className="fa-xs fa-solid fa-star"/>
                 {avgSum} · {allReviews.length} Review(s)
+                <ReviewFormModel />
               </div>
               <div className='one-pal-user-reviews'></div>
                 {allReviews.map(review => (

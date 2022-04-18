@@ -23,7 +23,7 @@ function CreatePalFormPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [palPic, setPalPic] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -124,7 +124,7 @@ function CreatePalFormPage() {
 
           <label className='label-input'>Price</label>
             <input className='input' id='price'
-              placeholder='The price range is 2.00-999.999'
+              placeholder='The price range is 2.00-999.00'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}

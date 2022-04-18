@@ -23,7 +23,7 @@ function AllPalPage() {
                   <div className='pal-card-top'>
                     <div className='pal-card-img'><img className='pal-card-img-size' src={pal.palPic}/></div>
                     <div className='pal-card-gamename'>
-                      {pal.Game.gameName}
+                      {pal.Game?.gameName}
                       <div className='shadow-arrow'/>
                     </div>
                     <div className='pal-card-nickname'>{pal.nickname}</div>
