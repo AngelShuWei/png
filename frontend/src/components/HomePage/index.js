@@ -2,8 +2,30 @@ import './HomePage.css';
 import nemesisBg from '../../assets/lol-nemesis-bg.jpg';
 import lolCard from '../../assets/lol-card.png';
 import valorantCard from '../../assets/valorant-card.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loadAllPals } from '../../store/pals';
 
 function HomePage() {
+  const dispatch = useDispatch();
+
+  const league = useSelector(state => Object.values(state.pals).filter(pal => {
+    return pal.Game.gameName === 'League of Legends';
+  }));
+
+  const valorant = useSelector(state => Object.values(state.pals).filter(pal => {
+    return pal.Game.gameName === 'Valorant';
+  }));
+
+  const apex = useSelector(state => Object.values(state.pals).filter(pal => {
+    return pal.Game.gameName === 'Apex Legends';
+  }));
+
+  console.log(apex)
+
+  useEffect(() => {
+    dispatch(loadAllPals());
+  }, [dispatch])
   return (
     <>
       <div className="home-page-container">
@@ -20,12 +42,12 @@ function HomePage() {
           <div className='home-page-middle-game-cards'>
             <div className='lol-card'>
               <div className='lol-card-text'>League of Legends</div>
-              <div></div>
+              <div className='lol-card-epal-count'>{league.length} ePals</div>
               <img className='lol-card-img' src={lolCard}/>
             </div>
             <div className='valorant-card'>
               <div className='valorant-card-text'>Valorant</div>
-              <div></div>
+              <div className='valorant-card-epal-count'>{valorant.length} ePals</div>
               <img className='valorant-card-img' src={valorantCard}/>
             </div>
           </div>
