@@ -9,6 +9,7 @@ import { loadAllGames } from '../../store/games';
 import { loadAllPals } from '../../store/pals';
 import { loadAllUsers } from '../../store/users';
 import ReviewFormModel from '../ReviewFormModal';
+import EditDeleteButton from './EditDeleteButton';
 
 function OnePalPage() {
   const dispatch = useDispatch();
@@ -127,6 +128,7 @@ function OnePalPage() {
                       <i className="fa-xs fa-solid fa-star"/> {review.rating.toFixed(1)} score
                     </div>
                     <div className='one-pal-user-review-user-review'>{review.content}</div>
+                    <EditDeleteButton review={review} />
                   </div>
                 ))}
             </div>
