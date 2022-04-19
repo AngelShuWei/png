@@ -43,6 +43,7 @@ router.post('/', restoreUser, validateReviewInfo, asyncHandler(async(req, res) =
 
 router.put('/:reviewId', validateReviewInfo, asyncHandler(async(req, res) => {
   const { reviewId } = req.params;
+  console.log(reviewId);
 
   let { palId, content, rating } = req.body;
 

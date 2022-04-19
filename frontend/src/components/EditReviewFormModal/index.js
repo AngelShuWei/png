@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Modal } from '../../context/Modal';
-import ReviewForm from "./ReviewForm";
+import EditReviewForm from "./EditReviewForm";
 
-function ReviewFormModel() {
+function EditReviewFormModel({review}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className='submit-button' onClick={() => setShowModal(true)}>Leave a Review</button>
+      <button onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewForm setShowModal={setShowModal}/>
+          <EditReviewForm setShowModal={setShowModal} review={review}/>
         </Modal>
       )}
     </>
   );
 };
 
-export default ReviewFormModel;
+export default EditReviewFormModel;

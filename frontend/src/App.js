@@ -14,6 +14,7 @@ import HomePage from './components/HomePage';
 import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
+import EditReviewForm from './components/EditReviewFormModal/EditReviewForm';
 
 function App() {
   const dispatch = useDispatch();
