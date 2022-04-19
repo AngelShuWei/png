@@ -71,6 +71,7 @@
   /* width: 800px; */
   margin-bottom: 20px;
   font-weight: 500;
+  padding: 8px 11px;
 }
 
 .input:hover {
@@ -96,9 +97,10 @@
   min-height: 60px;
   max-height: 200px;
   border-radius: 4px 4px 0 0;
-  /* width: 800px; */
   resize: none;
   overflow-y: hidden;
+  padding: 8px 11px;
+  /* width: 800px; */
 }
 
 .textarea:hover {

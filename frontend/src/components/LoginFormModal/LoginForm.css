@@ -1,1 +1,113 @@
+.login-modal-container {
+  background-color: #302f3d;
+  border-radius: 8px 8px 8px 8px;
+  width: 520px;
+  height: 570px;
+}
 
+.login-modal-top {
+  display: relative;
+  background: #21212c;
+  padding: 40px 0;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.fa-solid.fa-xmark {
+  position: absolute;
+  color: white;
+  top: 15px;
+  right: 25px;
+}
+
+.epal-logo {
+  width: 205px;
+  height: 68px;
+}
+
+.login-modal-wrapper {
+  padding: 24px 24px 0;
+}
+
+.login-tab {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-bottom: 4px solid #7041e6;
+  width: 55px;
+  padding-bottom: 5px;
+}
+
+.login-tab-line {
+  border-bottom: 1px solid #4f4e60;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-top: 15px;
+}
+
+.login-label-input {
+  display: flex;
+  flex-direction: column;
+  color: #c4c3e6;
+  border-bottom: 5px;
+  font-size: 14px;
+}
+
+.login-input {
+  background-color: #21212C;
+  border: 1px solid #4F4E60;
+  color: white;
+  border-radius: 4px;
+  height: 36px;
+  padding: 8px 11px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  width: 472px;
+  height: 40px;
+}
+
+.login-input:hover {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+  transition: 0.2s ease-in;
+}
+
+.login-input:focus {
+  border: 1px solid #966fb2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
+}
+
+.login-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.login-submit-button {
+  border-radius: 20px;
+  background: #7041e6;
+  color: #fff;
+  width: 160px;
+  /* height: 40px; */
+  border: none;
+  box-shadow: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 6px 24px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.login-submit-button:hover {
+  background-color: rgb(141, 101, 234);
+  transition: 0.2s ease-in;
+}

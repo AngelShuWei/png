@@ -1,12 +1,16 @@
+import './LoginForm.css'
+import ePalLogo from '../../assets/epal-logo.png'
 import React, {useState} from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 
 function LoginForm() {
   const dispatch = useDispatch();
+
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
+  const [showModal, setShowModal] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,31 +33,51 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Username or Email
-        <input
-        type="text"
-        value={credential}
-        onChange={e => setCredential(e.target.value)}
-        required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-      <button onClick={handleDemo}>Demo User</button>
-    </form>
+    <>
+      <div className='login-modal-container'>
+        <div className='login-modal-top'>
+          <div onClick={() => setShowModal(false)}><i className="fa-solid fa-xmark"/></div>
+            {/* {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <LoginForm />
+              </Modal>
+            )} */}
+          <div><img className='epal-logo' src={ePalLogo}/></div>
+        </div>
+        <div className='login-modal-wrapper'>
+        <div className='login-tab'>Log In</div>
+        <div className='login-tab-line'/>
+          <form className='login-form' onSubmit={handleSubmit}>
+            <label className='login-label-input'>
+              Username or Email
+              <input className='login-input'
+                placeholder='Please enter your Username or Email'
+                type="text"
+                value={credential}
+                onChange={e => setCredential(e.target.value)}
+                // required
+              />
+            </label>
+            <label className='login-label-input'>
+              Password
+              <input className='login-input'
+                placeholder='Please enter your password'
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                // required
+                />
+            </label>
+            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+            <div className='login-buttons'>
+              <button className='login-submit-button' type="submit">Log in</button>
+              <button className='login-submit-button' onClick={handleDemo}>Demo User</button>
+            </div>
+            <div className='login-tab-line'/>
+          </form>
+        </div>
+      </div>
+    </>
   );
 }
 
