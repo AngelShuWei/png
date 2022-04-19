@@ -3,12 +3,17 @@ import nemesisBg from '../../assets/lol-nemesis-bg.jpg';
 import lolCard from '../../assets/lol-card.png';
 import valorantCard from '../../assets/valorant-card.png';
 import apexCard from '../../assets/apex-card-bg.png'
+import SignupForm from '../SignupFormModal/SignupForm';
+import React, { useState } from "react";
+import { Modal } from '../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { loadAllPals } from '../../store/pals';
 
 function HomePage() {
   const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(false);
 
   const league = useSelector(state => Object.values(state.pals).filter(pal => {
     return pal.Game.gameName === 'League of Legends';
@@ -34,7 +39,12 @@ function HomePage() {
           <div className='home-page-top-content'>
             <div className='home-page-top-content-title'>Teammates On-Demand</div>
             <div className='home-page-top-content-subtitle'>Hire and play with the most engaging gamers, creators, and pros!</div>
-            <button className='home-page-submit-button'>Start now</button>
+            <button className='home-page-submit-button' onClick={() => setShowModal(true)}>Start now</button>
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                  <SignupForm />
+                </Modal>
+              )}
           </div>
           <div><img className='sliding-bg' src={nemesisBg}/></div>
         </div>
