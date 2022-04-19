@@ -24,6 +24,7 @@ function OnePalPage() {
   let onePal = [];
   let allUsers = [];
   let allReviews = [];
+  let date;
 
   if (isLoaded) { //need conditional because only when page is loaded then we can get the filters, otherwise can break page if trying to stuff without stuff being there in state
     onePal = pals.filter(pal => {
@@ -37,6 +38,9 @@ function OnePalPage() {
     allReviews = reviews.filter(review => {
       return review.palId === +palId;
     });
+
+    date = new Date(allReviews[0].createdAt);
+    console.log(date);
   };
 
   //calculation to get avg ratings
@@ -47,7 +51,8 @@ function OnePalPage() {
   const avgSum = (sum / allReviews.length).toFixed(1);
   // end of calculation
 
-  console.log(allReviews)
+  // console.log(allReviews[0].createdAt)
+
 
   useEffect(() => { //eliminates possibilities of race conditions because need to complete all dispatches before page will load
     dispatch(loadAllReviews())
@@ -125,8 +130,8 @@ function OnePalPage() {
                 {allReviews.map(review => (
                   <div className='one-pal-user-review-container' key={review.id}>
                     <img className='one-pal-user-review-profile-img' src={review.User.profilePic}/>
-                    <span className='one-pal-user-review-user-nickname'>{review.User.nickname}</span>
-                    <span className='one-pal-user-review-user-date'> · {review.createdAt}</span>
+                    <span className='one-pal-user-review-user-nickname'>{review.User.nickname} · </span>
+                    <span className='one-pal-user-review-user-date'> {date.getDay()} day(s) ago</span>
                     <div className='one-pal-user-review-user-rating'>
                       <i className="fa-xs fa-solid fa-star"/> {review.rating.toFixed(1)}
                     </div>

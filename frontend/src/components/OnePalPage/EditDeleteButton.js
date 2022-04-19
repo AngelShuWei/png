@@ -11,9 +11,7 @@ function EditDeleteButton({review}) {
     <div className='one-pal-user-delete-edit-btn'>
       <EditReviewFormModel review={review}/>
       <button className='one-pal-user-delete-btn' onClick={() => dispatch(deleteReview(review.id))}>
-        <i className="fa-sm fa-solid fa-trash-can"/>
-        Delete
-      </button>
+        <i className="fa-sm fa-solid fa-trash-can"/> Delete</button>
     </div>
   )
 }
