@@ -2,6 +2,7 @@ import './HomePage.css';
 import nemesisBg from '../../assets/lol-nemesis-bg.jpg';
 import lolCard from '../../assets/lol-card.png';
 import valorantCard from '../../assets/valorant-card.png';
+import apexCard from '../../assets/apex-card-bg.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { loadAllPals } from '../../store/pals';
@@ -49,6 +50,13 @@ function HomePage() {
               <div className='valorant-card-text'>Valorant</div>
               <div className='valorant-card-epal-count'>{valorant.length} ePals</div>
               <img className='valorant-card-img' src={valorantCard}/>
+            </div>
+          </div>
+          <div className='home-page-middle-game-cards'>
+            <div className='apex-card'>
+              <div className='apex-card-text'>Apex</div>
+              <div className='apex-card-epal-count'><span className='apex-count'>{apex.length}</span> ePals</div>
+              <img className='apex-card-img' src={apexCard}/>
             </div>
           </div>
         </div>
