@@ -1,6 +1,6 @@
 import './OnePalPage.css'
 import userPalBg from '../../assets/user-pal-bg.png'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link} from "react-router-dom";
@@ -14,19 +14,29 @@ function OnePalPage() {
   const dispatch = useDispatch();
   const { palId } = useParams();
 
-  const onePal = useSelector(state => Object.values(state.pals).filter(pal => {
-    return pal.id === +palId;
-  }));
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(onePal)
+  const pals = useSelector(state => Object.values(state.pals));
+  const users = useSelector(state => Object.values(state.users));
+  const reviews = useSelector(state => Object.values(state.reviews));
 
-  const allUsers = useSelector(state => Object.values(state.users).filter(user => {
-    return user.id === onePal[0].userId;
-  }));
+  let onePal = [];
+  let allUsers = [];
+  let allReviews = [];
 
-  const allReviews = useSelector(state => Object.values(state.reviews).filter(review => {
-    return review.palId === +palId;
-  }));
+  if (isLoaded) { //need conditional because only when page is loaded then we can get the filters, otherwise can break page if trying to stuff without stuff being there in state
+    onePal = pals.filter(pal => {
+      return pal.id === +palId;
+    });
+
+    allUsers = users.filter(user => {
+      return user.id === onePal[0].userId;
+    });
+
+    allReviews = reviews.filter(review => {
+      return review.palId === +palId;
+    });
+  };
 
   //calculation to get avg ratings
   let sum = 0;
@@ -38,15 +48,17 @@ function OnePalPage() {
 
   console.log(allReviews)
 
-  useEffect(() => {
-    dispatch(loadAllReviews());
-    dispatch(loadAllGames());
-    dispatch(loadAllUsers());
-    dispatch(loadAllPals());
+  useEffect(() => { //eliminates possibilities of race conditions because need to complete all dispatches before page will load
+    dispatch(loadAllReviews())
+    .then(() => dispatch(loadAllGames()))
+    .then(() => dispatch(loadAllUsers()))
+    .then(() => dispatch(loadAllPals()))
+    .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
+    {isLoaded && (
       <div className='pal-page-container'>
         <div className='one-pal-top'>
             <Link to='/epals'><div className='back'> {'<'} Back </div></Link>
@@ -121,6 +133,7 @@ function OnePalPage() {
           </div>
         </div>
       </div>
+      )}
     </>
   )
 }
