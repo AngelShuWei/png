@@ -8,9 +8,12 @@ function EditDeleteButton({review}) {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className='one-pal-user-delete-edit-btn'>
       <EditReviewFormModel review={review}/>
-      <button onClick={() => dispatch(deleteReview(review.id))}>Delete</button>
+      <button className='one-pal-user-delete-btn' onClick={() => dispatch(deleteReview(review.id))}>
+        <i className="fa-sm fa-solid fa-trash-can"/>
+        Delete
+      </button>
     </div>
   )
 }

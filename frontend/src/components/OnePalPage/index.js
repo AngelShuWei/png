@@ -83,6 +83,10 @@ function OnePalPage() {
             <div className='one-pal-service-list'><img className='service-list-img' src={onePal[0].Game.gamePic}/></div>
             <div className='one-pal-game-content'>
               <div className='one-pal-service-info'>{onePal[0]?.Game.gameName}</div>
+              <div className='one-pal-rating-avg'>
+                <i className="fa-xs fa-solid fa-star"/>
+                {avgSum}
+              </div>
               <div className='one-pal-long-description'>{onePal[0]?.description}</div>
               <div className='one-pal-game-stat'><img className='one-pal-game-stat-img' src={onePal[0]?.gameStatsPic}/></div>
             </div>

@@ -8,9 +8,9 @@ const { Review, User } = require('../../db/models');
 
 // VALIDATIORS
 const validateReviewInfo = [
-  // check('content')
-  //   .isLength({ min: 1 }, { max: 500 })
-  //   .withMessage('Please provide a review with max 500 characters.'),
+  check('content')
+    .isLength({ max: 500 })
+    .withMessage('The review can be no longer than 500 characters.'),
   check('rating')
     .isInt({ min: 1 , max: 5 })
     .withMessage('Please provide a rating between 1 - 5.'),
