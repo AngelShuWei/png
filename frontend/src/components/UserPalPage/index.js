@@ -10,7 +10,7 @@ import EditDeleteButton from './EditDeleteButton';
 
 function UserPalPage() {
   const dispatch = useDispatch();
-  
+
   const sessionUser = useSelector(state => state.session.user);
 
   const pals = useSelector(state => Object.values(state.pals));
@@ -26,14 +26,16 @@ function UserPalPage() {
 
   return (
     <>
-      <div className='pals-page-container'>
-        {userPals.map(userPal => (
-          <div key={userPal.id}>
-            <img className='user-pal-img' src={userPal.Game.gamePic}></img>
-            <EditDeleteButton game={userPal}/>
-          </div>
-        ))}
-      </div>
+        <div className='pals-page-container'>
+          {userPals.map(userPal => (
+            <div key={userPal.id}>
+              <Link to={`/epals/${userPal.id}`}>
+                <img className='user-pal-img' src={userPal.Game.gamePic}></img>
+              </Link>
+              <EditDeleteButton game={userPal}/>
+            </div>
+          ))}
+        </div>
     </>
   )
 }

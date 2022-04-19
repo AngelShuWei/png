@@ -3,13 +3,29 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, Link } from 'react-router-dom';
 import { loadAllPals } from '../../store/pals';
+import { loadAllReviews } from '../../store/reviews';
 
 function AllPalPage() {
   const dispatch = useDispatch();
   const allPals = useSelector(state => Object.values(state.pals));
+  const reviews = useSelector(state => Object.values(state.reviews));
+
+  // const allReviews = reviews.filter(review => {
+  //   return review.palId === palId;
+  // });
+  // console.log("====", reviews);
+
+  // //calc to get avg ratings
+  // let sum = 0;
+  // allReviews.forEach(review => {
+  //   sum += review.rating;
+  // })
+  // const avgSum = (sum / allReviews.length).toFixed(1);
+  // //end of calc
 
   useEffect(() => {
     dispatch(loadAllPals());
+    dispatch(loadAllReviews());
   }, [dispatch])
 
   return (
@@ -33,7 +49,14 @@ function AllPalPage() {
                     </div>
                     <div className='pal-card-title'>{pal.title}</div>
                   </div>
-                  <div className='pal-card-footer'>{pal.price}/Game</div>
+                  <div>
+                    <span className='pal-card-footer'>{pal.price}/Game</span>
+                    {/* <span>
+                      {reviews.map(review => (
+                        review.rating
+                      ))}
+                    </span> */}
+                  </div>
                 </Link>
               </div>
             )}

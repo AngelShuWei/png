@@ -61,6 +61,7 @@
 }
 
 .pal-card-gamename {
+  position: relative;
   color: white;
   font-size: 12px;
   font-weight: 500;
@@ -74,7 +75,7 @@
   /* position: relative; */
 }
 
-/* .shadow-arrow, .pal-card-gamename, .pal-card {
+.shadow-arrow {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -82,7 +83,7 @@
   height: 0px;
   border-bottom: 22px solid #302f3d;
   border-left: 10px solid transparent;
-} */
+}
 
 .pal-card-nickname {
   color: white;
