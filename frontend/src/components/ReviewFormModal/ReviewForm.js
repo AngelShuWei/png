@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory, useParams} from "react-router-dom";
 import { createReview } from "../../store/reviews";
 
-function ReviewForm() {
+function ReviewForm({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { palId } = useParams();
-  const parsedPalId = +palId
-  console.log(parsedPalId);
+  const { palId } = useParams(); //palId is a string here a
 
-  // const [palId, setPalId] = useState("")
   const [content, setContent] = useState("");
   const [rating, setRating] = useState("");
   const [errors, setErrors] = useState([]);
@@ -19,11 +16,11 @@ function ReviewForm() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(createReview({ parsedPalId, content, rating }))
-    .then(() => history.push(`/epals/${palId}}`))
+    dispatch(createReview({ palId, content, rating }))
+    .then(() => setShowModal(false))
     .catch(async(res) => {
       const data = await res.json();
-      if (data && data.errors) setErrors(data.erros);
+      if (data && data.errors) setErrors(data.errors);
     })
   }
 
@@ -33,7 +30,7 @@ function ReviewForm() {
         <form className='review-form-container' onSubmit={handleSubmit}>
           <label className='label-input'></label>
             <textarea className='textarea' rows="4"
-              placeholder='10 characters minimum'
+              placeholder='optional review'
               type="text"
               value={content}
               onChange={e => setContent(e.target.value)}

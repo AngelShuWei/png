@@ -35,8 +35,8 @@ const validatePalInfo = [
     .isLength({ min: 10 }, { max: 500 })
     .withMessage('Please provide an introduction at least 10 characters long.'),
   check('price')
-    .isInt({ min: 2 , max: 999 })
-    .withMessage('Please provide a price between 2.00 - 999.00.'),
+    .isDecimal({ min: 2.00 , max: 999.99 })
+    .withMessage('Please provide a price between 2.00 - 999.99.'),
   check('address')
     // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
@@ -53,7 +53,7 @@ const validatePalInfo = [
   //   .withMessage('Please select a country'),
   check('palPic')
     .isURL()
-    .withMessage('Please upload a valid imageUrl'),
+    .withMessage('Please upload a valid cover image'),
     handleValidationErrors
 ];
 
@@ -89,10 +89,11 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
     country: "United States",
   });
 
-  return res.json(pal);
+  const newPal = await Pal.findByPk(pal.id, {include: Game});
+  return res.json(newPal);
 }));
 
-router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
+router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => { //'/:palId(\\d+)' regex
   // console.log("testing backend-------------", palId);
   const { palId } = req.params;
 

@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link} from "react-router-dom";
 import { loadAllReviews } from '../../store/reviews';
+import { loadAllGames } from '../../store/games';
+import { loadAllPals } from '../../store/pals';
+import { loadAllUsers } from '../../store/users';
 import ReviewFormModel from '../ReviewFormModal';
 
 function OnePalPage() {
@@ -37,6 +40,9 @@ function OnePalPage() {
 
   useEffect(() => {
     dispatch(loadAllReviews());
+    dispatch(loadAllGames());
+    dispatch(loadAllUsers());
+    dispatch(loadAllPals());
   }, [dispatch]);
 
   return (
@@ -97,7 +103,7 @@ function OnePalPage() {
               <div className='one-pal-reviews-details'>
                 <i className="fa-xs fa-solid fa-star"/>
                 {avgSum} · {allReviews.length} Review(s)
-                <ReviewFormModel />
+                <ReviewFormModel/>
               </div>
               <div className='one-pal-user-reviews'></div>
                 {allReviews.map(review => (

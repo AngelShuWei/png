@@ -9,7 +9,7 @@ function ReviewFormModel() {
       <button className='submit-button' onClick={() => setShowModal(true)}>Leave a Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewForm/>
+          <ReviewForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

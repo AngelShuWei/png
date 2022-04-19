@@ -21,7 +21,7 @@ const validateGameStatInfo = [
     .withMessage('Please provide an playstyle with min 5 and max 30 characters.'),
   check('gameStatsPic')
     .isURL()
-    .withMessage('Please upload a valid imageUrl.'),
+    .withMessage('Please upload a valid screenshot.'),
     handleValidationErrors
 ];
 

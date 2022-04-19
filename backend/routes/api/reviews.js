@@ -8,9 +8,9 @@ const { Review, User } = require('../../db/models');
 
 // VALIDATIORS
 const validateReviewInfo = [
-  check('content')
-    .isLength({ min: 1 }, { max: 500 })
-    .withMessage('Please provide a review with max 500 characters.'),
+  // check('content')
+  //   .isLength({ min: 1 }, { max: 500 })
+  //   .withMessage('Please provide a review with max 500 characters.'),
   check('rating')
     .isInt({ min: 1 , max: 5 })
     .withMessage('Please provide a rating between 1 - 5.'),
@@ -30,13 +30,15 @@ router.post('/', restoreUser, validateReviewInfo, asyncHandler(async(req, res) =
   const { user } = req;
   let { palId, content, rating } = req.body;
 
-  const pal = await Review.create({
+  const review = await Review.create({
       userId: user.id,
       palId,
       content,
       rating
   });
-  return res.json(pal);
+
+  const newReview = await Review.findByPk(review.id, {include: User});
+  return res.json(newReview);
 }));
 
 router.put('/:reviewId', validateReviewInfo, asyncHandler(async(req, res) => {

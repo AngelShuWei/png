@@ -34,7 +34,7 @@ const validateSignup = [
     .withMessage('Please select a gender.'),
   check('profilePic')
     .isURL()
-    .withMessage('Please upload a valid imageUrl'),
+    .withMessage('Please upload a valid profile picture'),
   handleValidationErrors
 ];
 

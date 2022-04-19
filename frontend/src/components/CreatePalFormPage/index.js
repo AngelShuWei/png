@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
 import { createPal } from "../../store/pals";
+import { loadAllGames } from '../../store/games';
+// import { loadAllPals } from '../../store/pals';
+// import { loadAllUsers } from '../../store/users';
 import statesArr from './StatesArr';
 
 function CreatePalFormPage() {
@@ -39,6 +42,12 @@ function CreatePalFormPage() {
       if (data && data.errors) setErrors(data.errors);
     })
   }
+
+  useEffect(() => {
+    dispatch(loadAllGames());
+    // dispatch(loadAllUsers());
+    // dispatch(loadAllPals());
+  }, [dispatch]);
 
   return (
     <>
