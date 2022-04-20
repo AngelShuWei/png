@@ -47,7 +47,7 @@ const validatePalInfo = [
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide a city with min 5 and max 30 characters.'),
   check('state')
-    .isLength({ min: 0 })
+    .exists({ checkFalsy: true })
     .withMessage('Please select a state'),
     // check('palPic')
     //   .isURL()
