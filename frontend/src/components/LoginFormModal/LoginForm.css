@@ -1,3 +1,21 @@
+.login-modal-button {
+  background: #21212c;
+	color: white;
+  font-size: 14px;
+  font-weight: 500;
+	border: none;
+  width: 80px;
+  height: 32px;
+  border-radius: 4px;
+	/* padding: 0px 16px; */
+	cursor: pointer;
+}
+
+.login-modal-button:hover {
+  background: rgb(79, 78, 96);
+  transition: .2s ease-in;
+}
+
 .login-modal-container {
   background-color: #302f3d;
   border-radius: 8px 8px 8px 8px;
