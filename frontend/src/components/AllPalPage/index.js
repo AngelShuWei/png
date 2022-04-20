@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, Link } from 'react-router-dom';
 import { loadAllPals } from '../../store/pals';
 import { loadAllReviews } from '../../store/reviews';
+import userPalBg from '../../assets/user-pal-bg.png'
 
 function AllPalPage() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function AllPalPage() {
   return (
     <>
       <div className='pals-page-container'>
+        <div><img className='pals-one-pal-bg' src={userPalBg}/></div>
         <div className='for-you'>For You</div>
           <div className='pals-card-list'>
             {allPals.map(pal =>

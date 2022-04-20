@@ -29,11 +29,11 @@ const validatePalInfo = [
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
-    .withMessage('Please provide an introduction with min 10 and max 50 characters.'),
+    .withMessage('Please provide an one-liner with min 10 and max 50 characters.'),
   check('description')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
-    .withMessage('Please provide an introduction at least 10 characters long.'),
+    .withMessage('Please provide a detailed self-introduction at least 10 characters long.'),
   check('price')
     .isDecimal({ min: 2.00 , max: 999.99 })
     .withMessage('Please provide a price between 2.00 - 999.99.'),

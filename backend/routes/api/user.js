@@ -8,11 +8,16 @@ const { User } = require('../../db/models');
 
 const validateSignup = [
   check('email')
-    .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.'),
+    // .custom(value => {
+    //   console.log("=======",User.findOne({ where: {email: value} }))
+    //   return User.findOne({ where: {email: value} })
+    //   .then(() => {
+    //     return Promise.reject('Email is already taken')
+    //   })
+    // }),
   check('username')
-    // .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage('Please provide an unique username with at least 4 characters.'),
   check('username')
@@ -28,13 +33,13 @@ const validateSignup = [
     .withMessage('Please provide a nickname maximum 30 characters.'),
   check('bio')
     .isLength({ min: 10}, {max: 500})
-    .withMessage('Please provide a bio with maximum 500 characters.'),
+    .withMessage('Please provide a bio at least 10 characters long.'),
   check('gender')
     .exists({ checkFalsy: true })
     .withMessage('Please select a gender.'),
   check('profilePic')
     .isURL()
-    .withMessage('Please upload a valid profile picture'),
+    .withMessage('Please upload a valid profile picture.'),
   handleValidationErrors
 ];
 
@@ -46,7 +51,7 @@ router.get('/', asyncHandler(async(req, res) => {
 
 // Sign up
 router.post('/', validateSignup, asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body; //getting the info from the body
+    const { email, password, username, nickname, bio, gender, profilePic } = req.body; //getting the info from the body
     const user = await User.signup({ email, username, password, nickname, bio, gender, profilePic});
 
     await setTokenCookie(res, user); //returns a JSON response w/ the user info

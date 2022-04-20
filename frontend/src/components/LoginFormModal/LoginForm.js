@@ -3,9 +3,11 @@ import ePalLogo from '../../assets/epal-logo.png'
 import React, {useState} from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [credential, setCredential] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +18,7 @@ function LoginForm() {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({credential, password}))
+      .then(() => history.push('/epals'))
       .catch(async (res) => { //if there is an error, then skip the res.ok and get the response
         const data = await res.json(); //parse the data again because we skipped the res.ok
         if (data && data.errors) setErrors(data.errors); //set the new Errors
@@ -26,6 +29,7 @@ function LoginForm() {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({credential: "demo@user.io", password: "password"}))
+      .then(() => history.push('/epals'))
       .catch(async (res) => { //if there is an error, then skip the res.ok and get the response
         const data = await res.json(); //parse the data again because we skipped the res.ok
         if (data && data.errors) setErrors(data.errors); //set the new Errors

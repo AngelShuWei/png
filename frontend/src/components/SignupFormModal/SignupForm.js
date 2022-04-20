@@ -3,9 +3,11 @@ import ePalLogo from '../../assets/epal-logo.png'
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
+import { useHistory } from 'react-router-dom';
 
-function SignupForm() {
+function SignupForm({setShowModal}) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -13,21 +15,23 @@ function SignupForm() {
   const [nickname, setNickname] = useState("");
   const [bio, setBio] = useState("");
   const [gender, setGender] = useState("");
-  const [profilePic, setProfilePic] = ("");
+  const [profilePic, setProfilePic] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password, nickname, bio, gender, profilePic }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      dispatch(sessionActions.signup({ email, username, password, nickname, bio, gender, profilePic }))
+      .then(() => history.push('/epals'))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
+
   return (
     <>
       <div className='login-modal-container'>
@@ -97,7 +101,7 @@ function SignupForm() {
           <label className='login-label-input'>
             Bio
             <textarea className='textarea' id='signup' rows="4"
-              placeholder='Write a short bio to introduct yourself'
+              placeholder='Write a short bio to introduce yourself (min 10 characters)'
               type="text"
               value={bio}
               onChange={(e) => setBio(e.target.value)}
@@ -107,7 +111,8 @@ function SignupForm() {
           </label>
           <label className='login-label-input'>
             Gender
-            <select className='login-input' value={gender} onChange={e => setGender(e.target.value)}>
+            <select className='login-input' value={gender} onChange={e => setGender(e.target.value)} >
+              <option value="" disabled>Select a gender</option>
               <option>Female</option>
               <option>Male</option>
               <option>Nonconforming</option>
@@ -120,7 +125,7 @@ function SignupForm() {
               placeholder='Please upload your avatar'
               type="text"
               value={profilePic}
-              onChange={(e) => setProfilePic(e.target.value)}
+              onChange={e => setProfilePic(e.target.value)}
               // required
             />
           </label>
