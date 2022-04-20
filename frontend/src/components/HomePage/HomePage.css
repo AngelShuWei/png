@@ -1,0 +1,139 @@
+.home-page-container {
+  background-color: #120e1b;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 50px;
+  overflow-y: scroll;
+}
+
+.sliding-bg {
+  width: 1846px;
+  height: 460px;
+  object-fit: cover;
+  opacity: 1;
+}
+
+.home-page-top-content {
+  position: absolute;
+  color: white;
+  top: 110px;
+  left: 275px;
+}
+
+.home-page-top-content-title {
+  margin-bottom: 24px;
+  font-size: 48px;
+  font-weight: 700;
+  /* line-height: 72px; */
+}
+
+.home-page-top-content-subtitle {
+  margin-bottom: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+}
+
+.home-page-submit-button {
+  border-radius: 20px;
+  background: linear-gradient(90deg,#625cff,#7041e6);
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 7px 24px;
+  min-width: 120px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.home-page-submit-button:hover {
+  background: linear-gradient(90deg,#7041e6,#7041e6);
+  /* transition: margin-right 3s ease-in; */
+}
+
+.home-page-middle-title {
+  color: white;
+  text-align: center;
+  margin-top: 160px;
+  margin-bottom: 64px;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.home-page-middle-game-cards {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  gap: 24px;
+}
+
+.lol-card-img, .valorant-card-img {
+  width: 417px;
+  height: 415px;
+}
+
+.lol-card-text, .valorant-card-text {
+  position: absolute;
+  top: 112px;
+  margin-left: 24px;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.lol-card-epal-count, .valorant-card-epal-count {
+  position: absolute;
+  color: white;
+  top: 160px;
+  margin-left: 24px;
+  padding: 3px 8px;
+  background: linear-gradient(90deg,#625cff,#8d65ea);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.apex-card {
+  position: relative;
+  background-color: #302f3d;
+  border-radius: 8px;
+  width: 417px;
+  height: 156px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+
+.apex-card-img {
+  position: absolute;
+  width: 219px;
+  height: 155px;
+}
+
+.apex-card-text {
+  position: absolute;
+  color: white;
+  top: 40px;
+  left: 231px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 24px;
+  z-index: 1;
+}
+
+.apex-card-epal-count {
+  position: absolute;
+  color: white;
+  top: 80px;
+  left: 231px;
+  font-size: 14px;
+}
+
+.apex-count {
+  margin-right: 4px;
+  font-size: 36px;
+  line-height: 36px;
+}

@@ -29,14 +29,14 @@ const validatePalInfo = [
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
-    .withMessage('Please provide an introduction with min 10 and max 50 characters.'),
+    .withMessage('Please provide an one-liner with min 10 and max 50 characters.'),
   check('description')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
-    .withMessage('Please provide an introduction at least 10 characters long.'),
+    .withMessage('Please provide a detailed self-introduction at least 10 characters long.'),
   check('price')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a valid price range'),
+    .isDecimal({ min: 2.00 , max: 999.99 })
+    .withMessage('Please provide a price between 2.00 - 999.99.'),
   check('address')
     // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
@@ -53,7 +53,7 @@ const validatePalInfo = [
   //   .withMessage('Please select a country'),
   check('palPic')
     .isURL()
-    .withMessage('Please upload a valid imageUrl'),
+    .withMessage('Please upload a valid cover image'),
     handleValidationErrors
 ];
 
@@ -88,14 +88,16 @@ router.post('/', restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
     state,
     country: "United States",
   });
-  return res.json(pal);
+
+  const newPal = await Pal.findByPk(pal.id, {include: Game});
+  return res.json(newPal);
 }));
 
-router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => {
+router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => { //'/:palId(\\d+)' regex
   // console.log("testing backend-------------", palId);
   const { palId } = req.params;
 
-  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body
+  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body;
 
   let pal = await Pal.findByPk(+palId);
 
@@ -127,7 +129,7 @@ router.delete('/:palId', asyncHandler(async(req, res) => {
 
   await pal.destroy();
   return res.json(pal.id);
-}))
+}));
 
 
 module.exports = router;

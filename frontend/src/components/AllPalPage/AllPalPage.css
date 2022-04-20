@@ -2,8 +2,13 @@
   background-color: rgb(18, 14, 27);
   position: relative;
   width: 100%;
-  /* height: 100%; */
+  height: 100%;
   top: 50px;
+}
+
+.pals-one-pal-bg {
+  position: absolute;
+  margin-left: 16%;
 }
 
 .for-you {
@@ -60,6 +65,7 @@
 }
 
 .pal-card-gamename {
+  position: relative;
   color: white;
   font-size: 12px;
   font-weight: 500;
@@ -73,7 +79,7 @@
   /* position: relative; */
 }
 
-/* .shadow-arrow, .pal-card-gamename, .pal-card {
+.shadow-arrow {
   position: absolute;
   right: 0px;
   top: 0px;
@@ -81,7 +87,7 @@
   height: 0px;
   border-bottom: 22px solid #302f3d;
   border-left: 10px solid transparent;
-} */
+}
 
 .pal-card-nickname {
   color: white;

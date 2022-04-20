@@ -1,0 +1,32 @@
+.signup-modal-button {
+  background: #7041e6;
+	color: white;
+  font-size: 14px;
+  font-weight: 500;
+	border: none;
+  width: 80px;
+  height: 32px;
+  border-radius: 4px;
+	/* padding: 0px 16px; */
+	cursor: pointer;
+}
+
+.signup-modal-button:hover {
+  background-color: rgb(141, 101, 234);
+  transition: 0.2s ease-in;
+}
+
+
+.signup-tab {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-bottom: 4px solid #7041e6;
+  width: 70px;
+  padding-bottom: 5px;
+}
+
+.signup-tab-line {
+  border-bottom: 1px solid #4f4e60;
+  margin-bottom: 50px;
+}

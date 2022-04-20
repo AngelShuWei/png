@@ -48,7 +48,6 @@ export const createPal = (pal) => async(dispatch) => {
 }
 
 export const updatePal = (pal) => async(dispatch) => { //have to take in whole pal obj to update, unlike delete which one requires id
-  console.log(pal.id);
   const response = await csrfFetch(`/api/pals/${pal.id}`, {
     method: 'PUT',
     body: JSON.stringify(pal),

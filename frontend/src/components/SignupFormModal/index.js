@@ -1,4 +1,4 @@
-import './SignupForm.css';
+// import './SignupForm.css';
 import React, { useState } from "react";
 import { Modal } from '../../context/Modal';
 import SignupForm from './SignupForm';
@@ -8,14 +8,14 @@ function SignupFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Sign up</button>
+      <button className='signup-modal-button' onClick={() => setShowModal(true)}>Sign up</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SignupForm />
+          <SignupForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
-}
+};
 
 export default SignupFormModal;
