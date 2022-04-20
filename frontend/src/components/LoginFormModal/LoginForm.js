@@ -36,7 +36,7 @@ function LoginForm() {
     <>
       <div className='login-modal-container'>
         <div className='login-modal-top'>
-          <div onClick={() => setShowModal(false)}><i className="fa-solid fa-xmark"/></div>
+          {/* <div onClick={() => setShowModal(false)}><i className="fa-solid fa-xmark"/></div> */}
             {/* {showModal && (
               <Modal onClose={() => setShowModal(false)}>
                 <LoginForm />
@@ -68,10 +68,10 @@ function LoginForm() {
                 // required
                 />
             </label>
-            {errors.map((error, idx) => <div key={idx}>{error}</div>)}
+            {errors.map((error, idx) => <div className='errors' key={idx}>{error}</div>)}
             <div className='login-buttons'>
               <button className='login-submit-button' type="submit">Log in</button>
-              <button className='login-submit-button' onClick={handleDemo}>Demo User</button>
+              <button className='login-submit-button' type="submit" onClick={handleDemo}>Demo User</button>
             </div>
             <div className='login-tab-line'/>
           </form>

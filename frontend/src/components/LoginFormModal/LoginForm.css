@@ -3,6 +3,7 @@
   border-radius: 8px 8px 8px 8px;
   width: 520px;
   height: 570px;
+  overflow-y: scroll;
 }
 
 .login-modal-top {
@@ -96,7 +97,6 @@
   background: #7041e6;
   color: #fff;
   width: 160px;
-  /* height: 40px; */
   border: none;
   box-shadow: none;
   font-weight: 500;

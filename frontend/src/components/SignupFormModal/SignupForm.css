@@ -1,0 +1,13 @@
+.signup-tab {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-bottom: 4px solid #7041e6;
+  width: 70px;
+  padding-bottom: 5px;
+}
+
+.signup-tab-line {
+  border-bottom: 1px solid #4f4e60;
+  margin-bottom: 50px;
+}
