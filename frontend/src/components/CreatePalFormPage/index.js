@@ -20,12 +20,12 @@ function CreatePalFormPage() {
   const [rank, setRank] = useState("");
   const [position, setPosition] = useState("");
   const [style, setStyle] = useState("");
-  const [gameStatsPic, setGameStatsPic] = useState("");
+  const [gameStatsPic, setGameStatsPic] = useState(null);
 
   const nickname = useSelector(state => state.session.user.nickname);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [palPic, setPalPic] = useState("");
+  const [palPic, setPalPic] = useState(null);
   const [price, setPrice] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -42,6 +42,16 @@ function CreatePalFormPage() {
       if (data && data.errors) setErrors(data.errors);
     })
   }
+
+  const updateFileGameStats = (e) => {
+    const file = e.target.files[0];
+    if (file) setGameStatsPic(file);
+  };
+
+  const updateFilePalPic = (e) => {
+    const file = e.target.files[0];
+    if (file) setPalPic(file);
+  };
 
   useEffect(() => {
     dispatch(loadAllGames());
@@ -107,9 +117,9 @@ function CreatePalFormPage() {
           <label className='screenshot-label'>Screenshot</label>
             <input className='input' id='screenshot'
               placeholder='Showcase your skills by uploading a screenshot'
-              type='text'
-              value={gameStatsPic}
-              onChange={e => setGameStatsPic(e.target.value)}
+              type="file"
+              // value={gameStatsPic}
+              onChange={updateFileGameStats}
             />
 
           <div className='bio-div'>Bio</div>
@@ -142,9 +152,9 @@ function CreatePalFormPage() {
           <label className='list-cover-label'>List Cover</label>
             <input className='input'
               placeholder='Please upload your selfie here as the service cover image'
-              type="text"
-              value={palPic}
-              onChange={e => setPalPic(e.target.value)}
+              type="file"
+              // value={palPic}
+              onChange={updateFilePalPic}
             />
 
           <div className='location-div'>Location</div>
