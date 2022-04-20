@@ -47,6 +47,8 @@ function OnePalPage() {
       return review.palId === +palId;
     });
 
+    console.log('allreivews',allReviews);
+
     // date = new Date(allReviews[0].createdAt);
     // console.log(date);
     userPals = pals.filter(pal => pal.userId === sessionUser.id);
@@ -62,9 +64,6 @@ function OnePalPage() {
   })
   const avgSum = (sum / allReviews.length).toFixed(1);
   // end of calculation
-
-  // console.log(allReviews.length)
-
 
   useEffect(() => { //eliminates possibilities of race conditions because need to complete all dispatches before page will load
     dispatch(loadAllReviews())
@@ -89,6 +88,7 @@ function OnePalPage() {
               <img className='one-pal-cover-pic' src={onePal[0]?.palPic}></img>
               <img className='one-pal-avatar-pic' src={allUsers[0]?.profilePic}></img>
               <div className='one-pal-nickname'>{allUsers[0]?.nickname}</div>
+              <div className='one-pal-avg-rating'><i className="fa-xs fa-solid fa-star"/> {allReviews.length ? avgSum : '---'} rating</div>
               <div className='one-pal-user-info'>
                 <div className='one-pal-bio-text'>Bio:</div>
                 <div className='one-pal-bio'>{allUsers[0]?.bio}</div>

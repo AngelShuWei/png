@@ -88,10 +88,21 @@
   font-size: 24px;
 }
 
+.one-pal-avg-rating {
+  background-color: #21212c;
+  border-radius: 4px;
+  padding: 16px;
+  width: 338px;
+  position: absolute;
+  top: 37%;
+  left: 6%;
+  font-size: 16px;
+}
+
 .one-pal-user-info {
   position: absolute;
   font-size: 14px;
-  top: 37%;
+  top: 45%;
 }
 
 .one-pal-bio-text {
