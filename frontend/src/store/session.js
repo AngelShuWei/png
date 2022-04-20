@@ -43,7 +43,7 @@ export const login = (user) => async(dispatch) => {
 }
 
 export const signup = (user) => async(dispatch) => {
-  const {email, password, username, nickname, bio, gender, image} = user;
+  const {email, password, username, nickname, bio, gender, profilePic} = user;
   console.log("this is user", user);
 
   const formData = new FormData();
@@ -53,7 +53,7 @@ export const signup = (user) => async(dispatch) => {
   formData.append("nickname", nickname);
   formData.append("bio", bio);
   formData.append("gender", gender);
-  if (image) formData.append("image", image);
+  if (profilePic) formData.append("profilePic", profilePic);
 
   console.log(formData);
 

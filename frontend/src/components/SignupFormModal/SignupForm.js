@@ -15,14 +15,14 @@ function SignupForm({setShowModal}) {
   const [nickname, setNickname] = useState("");
   const [bio, setBio] = useState("");
   const [gender, setGender] = useState("");
-  const [image, setImage] = useState(null);
+  const [profilePic, setProfilePic] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      dispatch(sessionActions.signup({ email, username, password, nickname, bio, gender, image }))
+      dispatch(sessionActions.signup({ email, username, password, nickname, bio, gender, profilePic }))
       .then(() => history.push('/epals'))
       .catch(async (res) => {
         const data = await res.json();
@@ -34,7 +34,7 @@ function SignupForm({setShowModal}) {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    if (file) setImage(file);
+    if (file) setProfilePic(file);
   };
 
   return (

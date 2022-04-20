@@ -51,11 +51,10 @@ router.get('/', asyncHandler(async(req, res) => {
 }))
 
 // Sign up
-router.post('/', singleMulterUpload("image"), validateSignup, asyncHandler(async (req, res) => {
-    console.log(req.body);
+router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(async (req, res) => {
     const { email, password, username, nickname, bio, gender } = req.body; //getting the info from the body
     const profilePic = await singlePublicFileUpload(req.file);
-    console.log("----backend prof pic",profilePic)
+
     const user = await User.signup({
       email,
       username,
