@@ -25,6 +25,7 @@ function OnePalPage() {
   const pals = useSelector(state => Object.values(state.pals));
   console.log("pals arr---", pals);
   const users = useSelector(state => Object.values(state.users));
+  console.log('users', users)
   const reviews = useSelector(state => Object.values(state.reviews));
   // const userPals = pals.filter(pal => pal.userId === sessionUser.id);
 
@@ -46,8 +47,6 @@ function OnePalPage() {
     allReviews = reviews.filter(review => {
       return review.palId === +palId;
     });
-
-    console.log('allreivews',allReviews);
 
     // date = new Date(allReviews[0].createdAt);
     // console.log(date);

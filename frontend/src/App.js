@@ -38,9 +38,9 @@ function App() {
           <Route exact path='/epals'>
             <AllPalPage/>
           </Route>
-          <Route exact path='/epals/:palId'>
+          <ProtectedRoute exact path='/epals/:palId'>
             <OnePalPage/>
-          </Route>
+          </ProtectedRoute>
           <ProtectedRoute exact path='/myepal'>
             <UserPalPage/>
           </ProtectedRoute>
