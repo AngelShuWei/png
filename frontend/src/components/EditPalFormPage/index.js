@@ -40,7 +40,7 @@ function EditPalFormPage() {
     e.preventDefault();
     setErrors([]);
     dispatch(updatePal({ id:pal.id, gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state }))
-    .then(() => history.push('/epals'))
+    .then(() => history.push(`/epals/${palId}`))
     .catch(async(res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);

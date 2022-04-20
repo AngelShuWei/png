@@ -1,7 +1,7 @@
 import './OnePalPage.css'
 import userPalBg from '../../assets/user-pal-bg.png'
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link} from "react-router-dom";
 import { loadAllReviews } from '../../store/reviews';
@@ -10,20 +10,28 @@ import { loadAllPals } from '../../store/pals';
 import { loadAllUsers } from '../../store/users';
 import ReviewFormModel from '../ReviewFormModal';
 import EditDeleteButton from './EditDeleteButton';
+import { deletePal } from '../../store/pals';
+// import PalEditDeleteButton from '../UserPalPage/PalEditDeleteButton';
 
 function OnePalPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { palId } = useParams();
 
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const sessionUser = useSelector(state => state.session.user);
+  console.log('sessionuser id---', sessionUser.id)
   const pals = useSelector(state => Object.values(state.pals));
+  console.log("pals arr---", pals);
   const users = useSelector(state => Object.values(state.users));
   const reviews = useSelector(state => Object.values(state.reviews));
+  // const userPals = pals.filter(pal => pal.userId === sessionUser.id);
 
   let onePal = [];
   let allUsers = [];
   let allReviews = [];
+  let userPals;
   let date;
 
   if (isLoaded) { //need conditional because only when page is loaded then we can get the filters, otherwise can break page if trying to stuff without stuff being there in state
@@ -41,6 +49,10 @@ function OnePalPage() {
 
     // date = new Date(allReviews[0].createdAt);
     // console.log(date);
+    userPals = pals.filter(pal => pal.userId === sessionUser.id);
+    console.log(userPals);
+    console.log("----userpals", userPals[0].userId)
+    console.log(userPals[0].userId === sessionUser.id)
   };
 
   //calculation to get avg ratings
@@ -80,6 +92,13 @@ function OnePalPage() {
               <div className='one-pal-user-info'>
                 <div className='one-pal-bio-text'>Bio:</div>
                 <div className='one-pal-bio'>{allUsers[0]?.bio}</div>
+                {userPals[0].userId === sessionUser.id && (
+                  <div className='one-pal-edit-delete-btn'>
+                    <Link to={`/myepal/${palId}/edit`}>
+                      <button className='submit-button'>Edit Game</button>
+                    </Link>
+                    <button className='submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
+                  </div>)}
               </div>
             </div>
           </div>
@@ -136,7 +155,8 @@ function OnePalPage() {
                       <i className="fa-xs fa-solid fa-star"/> {review?.rating.toFixed(1)}
                     </div>
                     <div className='one-pal-user-review-user-review'>{review?.content}</div>
-                    <EditDeleteButton review={review}/>
+                    {review.userId === sessionUser.id &&
+                    <EditDeleteButton review={review}/>}
                   </div>
                 )) : <div/>}
             </div>

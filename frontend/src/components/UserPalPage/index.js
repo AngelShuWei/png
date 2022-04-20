@@ -6,7 +6,7 @@ import { loadAllPals } from '../../store/pals';
 // import { loadAllReviews } from '../../store/reviews';
 // import { loadAllGames } from '../../store/games';
 // import { loadAllUsers } from '../../store/users';
-import EditDeleteButton from './EditDeleteButton';
+import EditDeleteButton from './PalEditDeleteButton';
 
 function UserPalPage() {
   const dispatch = useDispatch();

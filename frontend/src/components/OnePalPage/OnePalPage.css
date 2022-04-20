@@ -98,6 +98,13 @@
   color: #c4c3e6;
 }
 
+.one-pal-edit-delete-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 135%;
+  gap: 30px;
+}
+
 .one-pal-games {
   position: absolute;
   color: white;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { deletePal } from '../../store/pals';
 
-function EditDeleteButton({game}) {
+function PalEditDeleteButton({game}) {
   const dispatch = useDispatch();
 
   return (
@@ -18,4 +18,4 @@ function EditDeleteButton({game}) {
   )
 }
 
-export default EditDeleteButton;
+export default PalEditDeleteButton;
