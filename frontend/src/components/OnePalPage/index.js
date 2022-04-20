@@ -21,7 +21,7 @@ function OnePalPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
-  console.log('sessionuser id---', sessionUser.id)
+  // console.log('sessionuser id---', sessionUser.id)
   const pals = useSelector(state => Object.values(state.pals));
   console.log("pals arr---", pals);
   const users = useSelector(state => Object.values(state.users));
@@ -51,10 +51,10 @@ function OnePalPage() {
 
     // date = new Date(allReviews[0].createdAt);
     // console.log(date);
-    userPals = pals.filter(pal => pal.userId === sessionUser.id);
-    console.log(userPals);
-    console.log("----userpals", userPals[0].userId)
-    console.log(userPals[0].userId === sessionUser.id)
+    // userPals = pals.filter(pal => pal.userId === sessionUser.id);
+    // console.log(userPals);
+    // console.log("----userpals", userPals[0].userId)
+    // console.log(userPals[0].userId === sessionUser.id)
   };
 
   //calculation to get avg ratings
@@ -92,13 +92,14 @@ function OnePalPage() {
               <div className='one-pal-user-info'>
                 <div className='one-pal-bio-text'>Bio:</div>
                 <div className='one-pal-bio'>{allUsers[0]?.bio}</div>
-                {userPals[0].userId === sessionUser.id && (
+                {/* {userPals[0].userId === sessionUser.id && ( */}
                   <div className='one-pal-edit-delete-btn'>
                     <Link to={`/myepal/${palId}/edit`}>
                       <button className='submit-button'>Edit Game</button>
                     </Link>
                     <button className='submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
-                  </div>)}
+                  </div>
+                  {/* )} */}
               </div>
             </div>
           </div>

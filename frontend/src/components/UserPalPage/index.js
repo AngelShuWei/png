@@ -26,13 +26,16 @@ function UserPalPage() {
 
   return (
     <>
-        <div className='pals-page-container'>
+        <div className='user-pal-page-container'>
           {userPals.map(userPal => (
             <div key={userPal.id}>
               <Link to={`/epals/${userPal.id}`}>
-                <img className='user-pal-img' src={userPal.Game.gamePic}></img>
+                <div className='user-pal-game-container'>
+                  <img className='user-pal-img' src={userPal.Game.gamePic}></img>
+                  <div className='user-pal-gamename'>{userPal.Game.gameName}</div>
+                </div>
               </Link>
-              <EditDeleteButton game={userPal}/>
+              {/* <EditDeleteButton game={userPal}/> */}
             </div>
           ))}
         </div>

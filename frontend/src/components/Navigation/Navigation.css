@@ -3,10 +3,18 @@
   position: fixed;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
-  box-shadow: rgb(0 0 0 / 20%) 0px 0px 8px 0px;
+  height: 59px;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, .20);
   padding: 19px 7px 19px 7px;
   z-index: 2;
+}
+
+.png-logo#navbar{
+  width: 122px;
+  height: 40px;
+  margin-top: 4px;
 }
 
 .navlink-home, .navlink-ePal, .navlink-my-ePal {
@@ -14,14 +22,14 @@
   font-weight: 600;
 }
 
-.navlink-home:hover, .navlink-ePal:hover, .navlink-my-ePal:hover {
+.navlink-ePal:hover, .navlink-my-ePal:hover {
   color: #7041e6;
   border-bottom: 5px solid #7041e6;
   padding-bottom: 15px;
   transition: 0.2s ease-in;
 }
 
-.navlink-home:focus, .navlink-ePal:focus, .navlink-my-ePal:focus {
+.navlink-ePal:focus, .navlink-my-ePal:focus {
   color: #7041e6;
   border-bottom: 5px solid #7041e6;
   padding-bottom: 15px;
@@ -53,6 +61,21 @@
   height: 100%;
   opacity: 1;
   z-index: -2;
+}
+
+.nav-user-profile-button {
+  background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+  margin: 0;
+}
+
+.nav-user-profile-img {
+  border-radius: 100px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
 }
 
 .profile-dropdown {
