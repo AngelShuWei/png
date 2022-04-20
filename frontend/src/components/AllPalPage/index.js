@@ -32,7 +32,7 @@ function AllPalPage() {
   return (
     <>
       <div className='pals-page-container'>
-        <div><img className='pals-one-pal-bg' src={userPalBg}/></div>
+        {/* <div><img className='pals-one-pal-bg' src={userPalBg}/></div> */}
         <div className='for-you'>For You</div>
           <div className='pals-card-list'>
             {allPals.map(pal =>
