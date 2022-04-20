@@ -49,12 +49,12 @@ const validatePalInfo = [
   check('state')
     .isLength({ min: 0 })
     .withMessage('Please select a state'),
-  // check('country')
-  //   .isLength({ min: 0 })
-  //   .withMessage('Please select a country'),
-  // check('palPic')
-  //   .isURL()
-  //   .withMessage('Please upload a valid cover image'),
+    // check('palPic')
+    //   .isURL()
+    //   .withMessage('Please upload a valid cover image'),
+    // check('country')
+    //   .isLength({ min: 0 })
+    //   .withMessage('Please select a country'),
     handleValidationErrors
 ];
 
@@ -96,11 +96,14 @@ router.post('/', multipleMulterUpload("gameStatsPic"), restoreUser, validatePalI
   return res.json(newPal);
 }));
 
-router.put('/:palId', validatePalInfo, asyncHandler(async(req, res) => { //'/:palId(\\d+)' regex
-  // console.log("testing backend-------------", palId);
+router.put('/:palId', multipleMulterUpload("gameStatsPic"), validatePalInfo, asyncHandler(async(req, res) => { //'/:palId(\\d+)' regex
+
   const { palId } = req.params;
 
-  let { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = req.body;
+  let { gameId, server, rank, position, style, nickname, title, description, price, address, city, state } = req.body;
+  console.log(req.files);
+  const gameStatsPic = await singlePublicFileUpload(req.files[0]);
+  const palPic = await singlePublicFileUpload(req.files[1]);
 
   let pal = await Pal.findByPk(+palId);
 

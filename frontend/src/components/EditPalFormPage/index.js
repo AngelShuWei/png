@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory, useParams} from "react-router-dom";
 import { updatePal } from "../../store/pals";
+import { loadAllGames } from '../../store/games';
 import statesArr from '../CreatePalFormPage/StatesArr'
 
 function EditPalFormPage() {
@@ -9,7 +10,7 @@ function EditPalFormPage() {
   const history = useHistory();
   const { palId } = useParams();
 
-  const sessionUser = useSelector(state => state.session.user);
+  // const sessionUser = useSelector(state => state.session.user);
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
@@ -21,6 +22,8 @@ function EditPalFormPage() {
   const [style, setStyle] = useState(pal.style);
   const [gameStatsPic, setGameStatsPic] = useState(pal.gameStatsPic);
 
+  console.log("------gamestatpic", gameStatsPic)
+
   const nickname = useSelector(state => state.session.user.nickname);
   const [title, setTitle] = useState(pal.title);
   const [description, setDescription] = useState(pal.description);
@@ -30,6 +33,8 @@ function EditPalFormPage() {
   const [city, setCity] = useState(pal.city);
   const [state, setState] = useState(pal.state);
   const [errors, setErrors] = useState([]);
+
+  console.log("=====palpic", palPic)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -41,6 +46,20 @@ function EditPalFormPage() {
       if (data && data.errors) setErrors(data.errors);
     })
   }
+
+  const updateFileGameStats = (e) => {
+    const file = e.target.files[0];
+    if (file) setGameStatsPic(file);
+  };
+
+  const updateFilePalPic = (e) => {
+    const file = e.target.files[0];
+    if (file) setPalPic(file);
+  };
+
+  useEffect(() => {
+    dispatch(loadAllGames());
+  }, [dispatch]);
 
   return (
     <>
@@ -101,9 +120,9 @@ function EditPalFormPage() {
           <label className='screenshot-label'>Screenshot</label>
             <input className='input' id='screenshot'
               placeholder='Showcase your skills by uploading a screenshot'
-              type='text'
-              value={gameStatsPic}
-              onChange={e => setGameStatsPic(e.target.value)}
+              type='file'
+              // value={gameStatsPic}
+              onChange={updateFileGameStats}
             />
 
           <div className='bio-div'>Bio</div>
@@ -136,9 +155,9 @@ function EditPalFormPage() {
           <label className='list-cover-label'>List Cover</label>
             <input className='input'
               placeholder='Please upload your selfie here as the service cover image'
-              type="text"
-              value={palPic}
-              onChange={e => setPalPic(e.target.value)}
+              type="file"
+              // value={palPic}
+              onChange={updateFilePalPic}
             />
 
           <div className='location-div'>Location</div>
