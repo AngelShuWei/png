@@ -5,6 +5,7 @@ const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { User } = require('../../db/models');
+const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 const validateSignup = [
   check('email')
@@ -37,9 +38,9 @@ const validateSignup = [
   check('gender')
     .exists({ checkFalsy: true })
     .withMessage('Please select a gender.'),
-  check('profilePic')
-    .isURL()
-    .withMessage('Please upload a valid profile picture.'),
+  // check('profilePic')
+  //   .isURL()
+  //   .withMessage('Please upload a valid profile picture.'),
   handleValidationErrors
 ];
 
@@ -50,9 +51,20 @@ router.get('/', asyncHandler(async(req, res) => {
 }))
 
 // Sign up
-router.post('/', validateSignup, asyncHandler(async (req, res) => {
-    const { email, password, username, nickname, bio, gender, profilePic } = req.body; //getting the info from the body
-    const user = await User.signup({ email, username, password, nickname, bio, gender, profilePic});
+router.post('/', singleMulterUpload("image"), validateSignup, asyncHandler(async (req, res) => {
+    console.log(req.body);
+    const { email, password, username, nickname, bio, gender } = req.body; //getting the info from the body
+    const profilePic = await singlePublicFileUpload(req.file);
+    console.log("----backend prof pic",profilePic)
+    const user = await User.signup({
+      email,
+      username,
+      password,
+      nickname,
+      bio,
+      gender,
+      profilePic
+    });
 
     await setTokenCookie(res, user); //returns a JSON response w/ the user info
 

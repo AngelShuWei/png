@@ -43,19 +43,28 @@ export const login = (user) => async(dispatch) => {
 }
 
 export const signup = (user) => async(dispatch) => {
-  const {email, password, username, nickname, bio, gender, profilePic} = user;
+  const {email, password, username, nickname, bio, gender, image} = user;
+  console.log("this is user", user);
+
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("nickname", nickname);
+  formData.append("bio", bio);
+  formData.append("gender", gender);
+  if (image) formData.append("image", image);
+
+  console.log(formData);
+
   const response = await csrfFetch('/api/users', {
     method: 'POST',
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-      nickname,
-      bio,
-      gender,
-      profilePic,
-    }),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData, //json destorys formdata so need to send without json
   });
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data.user))

@@ -39,8 +39,8 @@ function OnePalPage() {
       return review.palId === +palId;
     });
 
-    date = new Date(allReviews[0].createdAt);
-    console.log(date);
+    // date = new Date(allReviews[0].createdAt);
+    // console.log(date);
   };
 
   //calculation to get avg ratings
@@ -51,7 +51,7 @@ function OnePalPage() {
   const avgSum = (sum / allReviews.length).toFixed(1);
   // end of calculation
 
-  // console.log(allReviews[0].createdAt)
+  // console.log(allReviews.length)
 
 
   useEffect(() => { //eliminates possibilities of race conditions because need to complete all dispatches before page will load
@@ -127,18 +127,18 @@ function OnePalPage() {
                 <ReviewFormModel/>
               </div>
               <div className='one-pal-user-reviews'></div>
-                {allReviews.map(review => (
-                  <div className='one-pal-user-review-container' key={review.id}>
-                    <img className='one-pal-user-review-profile-img' src={review.User.profilePic}/>
-                    <span className='one-pal-user-review-user-nickname'>{review.User.nickname} · </span>
-                    <span className='one-pal-user-review-user-date'> {date.getDay()} day(s) ago</span>
+                {allReviews.length ? allReviews.map(review => (
+                  <div className='one-pal-user-review-container' key={review?.id}>
+                    <img className='one-pal-user-review-profile-img' src={review?.User.profilePic}/>
+                    <span className='one-pal-user-review-user-nickname'>{review?.User.nickname} · </span>
+                    {/* <span className='one-pal-user-review-user-date'> {date?.getDay()} day(s) ago</span> */}
                     <div className='one-pal-user-review-user-rating'>
-                      <i className="fa-xs fa-solid fa-star"/> {review.rating.toFixed(1)}
+                      <i className="fa-xs fa-solid fa-star"/> {review?.rating.toFixed(1)}
                     </div>
-                    <div className='one-pal-user-review-user-review'>{review.content}</div>
+                    <div className='one-pal-user-review-user-review'>{review?.content}</div>
                     <EditDeleteButton review={review}/>
                   </div>
-                ))}
+                )) : <div/>}
             </div>
           </div>
         </div>
