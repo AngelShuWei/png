@@ -137,3 +137,17 @@
   font-size: 36px;
   line-height: 36px;
 }
+
+.mission-statement-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 180px;
+}
+
+.mission-statement {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+  width: 1300px;
+}

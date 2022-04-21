@@ -18,7 +18,7 @@ function HomePage() {
   const sessionUser = useSelector(state => state.session);
 
   const allPals = useSelector(state => Object.values(state.pals));
-  
+
   const league = useSelector(state => Object.values(state.pals).filter(pal => {
     return pal.Game.gameName === 'League of Legends';
   }));
@@ -52,6 +52,9 @@ function HomePage() {
           <div><img className='sliding-bg' src={nemesisBg}/></div>
         </div>
         <div className='home-page-middle-container'>
+          <div className='mission-statement-container'>
+            <div className='mission-statement'>"Our mission here at pals n' gamers is to ensure that you never battle alone. Need a coach or pal to bring your gameplay to the next never? Look no further because png is the site for you. Welcome to your new battleground."</div>
+          </div>
           <div className='home-page-middle-title'> {allPals.length} ePals are ready to battle alongside you</div>
           <div className='home-page-middle-game-cards'>
             <div className='lol-card'>
