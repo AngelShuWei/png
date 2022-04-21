@@ -16,6 +16,7 @@ function SignupForm({setShowModal}) {
   const [bio, setBio] = useState("");
   const [gender, setGender] = useState("");
   const [profilePic, setProfilePic] = useState(null);
+  const [profilePicLoaded, setProfilePicLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
@@ -34,7 +35,10 @@ function SignupForm({setShowModal}) {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    if (file) setProfilePic(file);
+    if (file) {
+      setProfilePic(file);
+      setProfilePicLoaded(true);
+    }
   };
 
   return (
@@ -63,6 +67,7 @@ function SignupForm({setShowModal}) {
               // required
               />
           </label>
+
           <label className='login-label-input'>
             Username
             <input className='login-input'
@@ -73,6 +78,7 @@ function SignupForm({setShowModal}) {
               // required
             />
           </label>
+
           <label className='login-label-input'>
             Password
             <input className='login-input'
@@ -83,6 +89,7 @@ function SignupForm({setShowModal}) {
               // required
             />
           </label>
+
           <label className='login-label-input'>
             Confirm Password
             <input className='login-input'
@@ -93,6 +100,7 @@ function SignupForm({setShowModal}) {
               // required
               />
           </label>
+
           <label className='login-label-input'>
             Nickname
             <input className='login-input'
@@ -103,6 +111,7 @@ function SignupForm({setShowModal}) {
               // required
             />
           </label>
+
           <label className='login-label-input'>
             Bio
             <textarea className='textarea' id='signup' rows="4"
@@ -114,6 +123,7 @@ function SignupForm({setShowModal}) {
             />
             <div className='textarea-counter'>{bio.length}/500</div>
           </label>
+
           <label className='login-label-input'>
             Gender
             <select className='login-input' value={gender} onChange={e => setGender(e.target.value)} >
@@ -124,16 +134,24 @@ function SignupForm({setShowModal}) {
               {/* required */}
             </select>
           </label>
-          <label className='login-label-input'>
-            Avatar
-            <input className='login-input'
-              // placeholder='Please upload your avatar'
-              type="file"
-              // value={profilePic}
-              onChange={updateFile}
-              // required
-            />
-          </label>
+
+          <div className='upload-an-avatar-text'>Upload an Avatar
+            <label className='avatar-input-label' htmlFor="avatar">
+              {!profilePic &&
+                <i className="fa-lg fa-regular fa-image"/>
+              }
+              {/* {profilePicLoaded && <i className="fa-solid fa-check"/>} */}
+              {profilePic &&
+                <img className='signup-loaded-img' src={URL.createObjectURL(profilePic)}/>
+              }
+              </label>
+          </div>
+              <input className='input' id='avatar'
+                type="file"
+                onChange={updateFile}
+                style={{visibility:"hidden"}}
+              />
+
           {errors.map((error, idx) => <div className='errors' key={idx}>{error}</div>)}
           <div className='login-buttons'>
             <button className='login-submit-button' type="submit">Sign Up</button>

@@ -29,3 +29,32 @@
   border-bottom: 1px solid #4f4e60;
   margin-bottom: 50px;
 }
+
+.upload-an-avatar-text {
+  display: flex;
+  flex-direction: column;
+  color: #c4c3e6;
+  align-items: center;
+  /* border-bottom: 5px; */
+  font-size: 14px;
+}
+
+.avatar-input-label {
+  background-color: #21212c;
+  width: 104px;
+  height: 104px;
+  border-radius: 100px;
+  border: 2px dashed #4f4e60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.signup-loaded-img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 100px;
+}

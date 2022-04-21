@@ -34,8 +34,6 @@ function CreatePalFormPage() {
   const [palPicLoaded, setPalPicLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  console.log(palPicLoaded);
-
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
