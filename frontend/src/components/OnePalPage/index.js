@@ -34,7 +34,7 @@ function OnePalPage() {
   let allReviews = [];
   let userReview = [];
   let userPals;
-  let date;
+  let date
 
   if (isLoaded) { //need conditional because only when page is loaded then we can get the filters, otherwise can break page if trying to stuff without stuff being there in state
     onePal = pals.filter(pal => {
@@ -53,7 +53,8 @@ function OnePalPage() {
       return oneReview.userId === sessionUser.id
     })
 
-    // date = new Date(allReviews[0].createdAt);
+    // date = new Date(allReviews[0].updatedAt);
+
     // console.log(date);
     // userPals = pals.filter(pal => pal.userId === sessionUser.id);
     // console.log(userPals);
@@ -150,12 +151,12 @@ function OnePalPage() {
                 {allReviews.length ? avgSum : '---'} · {allReviews.length} Review(s)
                 {userReview.length < 1 && <ReviewFormModel/> }
               </div>
-              <div className='one-pal-user-reviews'></div>
+              <div className='one-pal-user-reviews'>
                 {allReviews.length ? allReviews.reverse().map(review => (
                   <div className='one-pal-user-review-container' key={review?.id}>
                     <img className='one-pal-user-review-profile-img' src={review?.User.profilePic}/>
                     <span className='one-pal-user-review-user-nickname'>{review?.User.nickname} · </span>
-                    {/* <span className='one-pal-user-review-user-date'> {date?.getDay()} day(s) ago</span> */}
+                    {/* <span className='one-pal-user-review-user-date'> {date?.getDay()} {date?.getDay() > 1 ? 'days' : 'day'} ago</span> */}
                     <div className='one-pal-user-review-user-rating'>
                       <i className="fa-xs fa-solid fa-star"/> {review?.rating.toFixed(1)}
                     </div>
@@ -164,6 +165,7 @@ function OnePalPage() {
                     <EditDeleteButton review={review}/>}
                   </div>
                 )) : <div/>}
+              </div>
             </div>
           </div>
         </div>
