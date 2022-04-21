@@ -126,21 +126,20 @@ function CreatePalFormPage() {
 
           <div className='screenshot-label'>Screenshot</div>
           <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-              <label className='screenshot-input-label' htmlFor="screenshot">
-                {!gameStatsPic &&
-                  <i className="fa-lg fa-regular fa-image"/>
-                }
-                {gameStatsPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
-              </label>
-                {gameStatsPic &&
-                  <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}></img>
-                }
-              <input className='input' id='screenshot'
-                type="file"
-                onChange={updateFileGameStats}
-                style={{visibility:"hidden"}}
-                // required
-              />
+            <label className='screenshot-input-label' htmlFor="screenshot">
+              {!gameStatsPic &&
+                <i className="fa-lg fa-regular fa-image"/>
+              }
+              {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
+            </label>
+              {gameStatsPic &&
+                <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}/>
+              }
+            <input className='input' id='screenshot'
+              type="file"
+              onChange={updateFileGameStats}
+              style={{visibility:"hidden"}}
+            />
 
           <div className='bio-div'>Bio</div>
           <label className='intro-label'>Introduction</label>
@@ -175,7 +174,7 @@ function CreatePalFormPage() {
                 {!palPic &&
                   <i className="fa-lg fa-regular fa-image"/>
                 }
-                {palPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
+                {palPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
                 {palPic &&
                   <img className='loaded-img' src={URL.createObjectURL(palPic)}></img>

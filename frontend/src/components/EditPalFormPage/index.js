@@ -69,6 +69,8 @@ function EditPalFormPage() {
   const [address, setAddress] = useState(pal?.address);
   const [city, setCity] = useState(pal?.city);
   const [state, setState] = useState(pal?.state);
+  const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
+  const [palPicLoaded, setPalPicLoaded] = useState(true);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
@@ -84,12 +86,18 @@ function EditPalFormPage() {
 
   const updateFileGameStats = (e) => {
     const file = e.target.files[0];
-    if (file) setGameStatsPic(file);
+    if (file) {
+      setGameStatsPic(file);
+      setGameStatsPicLoaded(true);
+    }
   };
 
   const updateFilePalPic = (e) => {
     const file = e.target.files[0];
-    if (file) setPalPic(file);
+    if (file) {
+      setPalPic(file);
+      setPalPicLoaded(true);
+    }
   };
 
   useEffect(() => {
@@ -155,8 +163,13 @@ function EditPalFormPage() {
               onChange={e => setStyle(e.target.value)}
             />
           <div className='screenshot-label'>Screenshot</div>
-          <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-            <label className='screenshot-input-label' htmlFor="screenshot"><i className="fa-lg fa-regular fa-image"/></label>
+            <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
+              <label className='screenshot-input-label' htmlFor="screenshot">
+                  {!gameStatsPic &&
+                    <i className="fa-lg fa-regular fa-image"/>
+                  }
+                  {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
+              </label>
               <input className='input' id='screenshot'
                 placeholder='Showcase your skills by uploading a screenshot'
                 type='file'
@@ -191,9 +204,11 @@ function EditPalFormPage() {
               onChange={e => setPrice(e.target.value)}
             />
 
-            <div className='list-cover-label'>List Cover</div>
+          <div className='list-cover-label'>List Cover</div>
             <div className='intro-description'>Please upload your selfie here as the service cover image</div>
-              <label className='list-cover-input-label' htmlFor="cover"><i className="fa-lg fa-regular fa-image"/></label>
+              <label className='list-cover-input-label' htmlFor="cover">
+                <i className="fa-lg fa-regular fa-image"/>
+              </label>
                 <input className='input'
                   placeholder='Please upload your selfie here as the service cover image'
                   type="file" id='cover'
