@@ -1,0 +1,22 @@
+.sleepy-kirby-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.sleepy-kirby-gif {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  height: 105px;
+}
+.testing {
+  position: fixed;
+  background-color: #302F3D;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  width: auto;
+  bottom: 1%;
+  left: 8%;
+  border-radius: 8px;
+}
