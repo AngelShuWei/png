@@ -9,7 +9,28 @@
   z-index: 1;
   height: 105px;
 }
-.testing {
+
+.click-me-text {
+  position: fixed;
+  color: white;
+  bottom: 9%;
+  left: 2%;
+  z-index: 1;
+}
+
+.tech-icons-triangle {
+  /* width: 0px; */
+  /* height: 0px; */
+  position: fixed;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #302F3D;
+  bottom: 4%;
+  left: 144px;
+  z-index: 1;
+}
+
+.tech-icons-container {
   position: fixed;
   background-color: #302F3D;
   display: flex;
@@ -18,5 +39,15 @@
   width: auto;
   bottom: 1%;
   left: 8%;
+  gap: 10px;
   border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid gray;
+  padding-left: 10px;
 }
