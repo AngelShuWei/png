@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory, useParams} from "react-router-dom";
-import { updatePal } from "../../store/pals";
+import { loadAllPals, updatePal } from "../../store/pals";
 import { loadAllGames } from '../../store/games';
 import statesArr from '../CreatePalFormPage/StatesArr'
 
@@ -10,27 +10,65 @@ function EditPalFormPage() {
   const history = useHistory();
   const { palId } = useParams();
 
-  // const sessionUser = useSelector(state => state.session.user);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // let pal;
+  // let allGames;
+
+  // let gameId;
+  // let setGameId;
+
+  // let server;
+  // let setServer;
+
+  // let rank;
+  // let setRank;
+
+  // let position;
+  // let setPosition;
+  // let style;
+  // let setStyle;
+  // let gameStatsPic;
+  // let setGameStatsPic;
+
+  // let nickname;
+  // let title;
+  // let setTitle;
+  // let description;
+  // let setDescription;
+  // let palPic;
+  // let setPalPic;
+  // let price;
+  // let setPrice;
+  // let address;
+  // let setAddress;
+  // let city;
+  // let setCity;
+  // let state;
+  // let setState;
+  // let errors;
+
+  // if (isLoaded) {
+  // }
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [gameId, setGameId] = useState(pal.Game.id);
+  const [gameId, setGameId] = useState(pal?.Game?.id);
 
-  const [server, setServer] = useState(pal.server);
-  const [rank, setRank] = useState(pal.rank);
-  const [position, setPosition] = useState(pal.position);
-  const [style, setStyle] = useState(pal.style);
-  const [gameStatsPic, setGameStatsPic] = useState(pal.gameStatsPic);
+  const [server, setServer] = useState(pal?.server);
+  const [rank, setRank] = useState(pal?.rank);
+  const [position, setPosition] = useState(pal?.position);
+  const [style, setStyle] = useState(pal?.style);
+  const [gameStatsPic, setGameStatsPic] = useState(pal?.gameStatsPic);
 
   const nickname = useSelector(state => state.session.user.nickname);
-  const [title, setTitle] = useState(pal.title);
-  const [description, setDescription] = useState(pal.description);
-  const [palPic, setPalPic] = useState(pal.palPic);
-  const [price, setPrice] = useState(pal.price);
-  const [address, setAddress] = useState(pal.address);
-  const [city, setCity] = useState(pal.city);
-  const [state, setState] = useState(pal.state);
+  const [title, setTitle] = useState(pal?.title);
+  const [description, setDescription] = useState(pal?.description);
+  const [palPic, setPalPic] = useState(pal?.palPic);
+  const [price, setPrice] = useState(pal?.price);
+  const [address, setAddress] = useState(pal?.address);
+  const [city, setCity] = useState(pal?.city);
+  const [state, setState] = useState(pal?.state);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
@@ -55,6 +93,7 @@ function EditPalFormPage() {
   };
 
   useEffect(() => {
+    dispatch(loadAllPals())
     dispatch(loadAllGames())
     .then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -142,7 +181,7 @@ function EditPalFormPage() {
                 value={description}
                 onChange={e => setDescription(e.target.value)}
               />
-              <div className='textarea-counter'>{description.length}/500</div>
+              <div className='textarea-counter'>{description?.length}/500</div>
 
           <label className='label-input'>Price</label>
             <input className='input' id='price'

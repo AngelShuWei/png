@@ -30,7 +30,11 @@ function CreatePalFormPage() {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(false);
+  const [palPicLoaded, setPalPicLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
+
+  console.log(palPicLoaded);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -45,12 +49,18 @@ function CreatePalFormPage() {
 
   const updateFileGameStats = (e) => {
     const file = e.target.files[0];
-    if (file) setGameStatsPic(file);
+    if (file) {
+      setGameStatsPic(file);
+      setGameStatsPicLoaded(true);
+    }
   };
 
   const updateFilePalPic = (e) => {
     const file = e.target.files[0];
-    if (file) setPalPic(file);
+    if (file) {
+      setPalPic(file);
+      setPalPicLoaded(true);
+    }
   };
 
   useEffect(() => {
@@ -116,7 +126,10 @@ function CreatePalFormPage() {
 
           <div className='screenshot-label'>Screenshot</div>
           <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-            <label className='screenshot-input-label' htmlFor="screenshot"><i className="fa-lg fa-regular fa-image"/></label>
+            <label className='screenshot-input-label' htmlFor="screenshot">
+              <i className="fa-lg fa-regular fa-image"/>
+            </label>
+              {gameStatsPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
               <input className='input' id='screenshot'
                 type="file"
                 onChange={updateFileGameStats}
@@ -154,6 +167,7 @@ function CreatePalFormPage() {
           <div className='list-cover-label'>List Cover</div>
             <div className='intro-description'>Please upload your selfie here as the service cover image</div>
             <label className='list-cover-input-label' htmlFor="cover"><i className="fa-lg fa-regular fa-image"/></label>
+            {palPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
             <input className='input' id='cover'
               type="file"
               onChange={updateFilePalPic}
