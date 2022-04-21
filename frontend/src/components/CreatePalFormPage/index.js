@@ -126,10 +126,15 @@ function CreatePalFormPage() {
 
           <div className='screenshot-label'>Screenshot</div>
           <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-            <label className='screenshot-input-label' htmlFor="screenshot">
-              <i className="fa-lg fa-regular fa-image"/>
-            </label>
-              {gameStatsPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
+              <label className='screenshot-input-label' htmlFor="screenshot">
+                {!gameStatsPic &&
+                  <i className="fa-lg fa-regular fa-image"/>
+                }
+                {gameStatsPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
+              </label>
+                {gameStatsPic &&
+                  <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}></img>
+                }
               <input className='input' id='screenshot'
                 type="file"
                 onChange={updateFileGameStats}
@@ -166,14 +171,21 @@ function CreatePalFormPage() {
 
           <div className='list-cover-label'>List Cover</div>
             <div className='intro-description'>Please upload your selfie here as the service cover image</div>
-            <label className='list-cover-input-label' htmlFor="cover"><i className="fa-lg fa-regular fa-image"/></label>
-            {palPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
-            <input className='input' id='cover'
-              type="file"
-              onChange={updateFilePalPic}
-              style={{visibility:"hidden"}}
-              // required
-            />
+              <label className='list-cover-input-label' htmlFor="cover">
+                {!palPic &&
+                  <i className="fa-lg fa-regular fa-image"/>
+                }
+                {palPicLoaded ? <i className="fa-solid fa-check"/> : <i className="fa-solid fa-xmark"/>}
+              </label>
+                {palPic &&
+                  <img className='loaded-img' src={URL.createObjectURL(palPic)}></img>
+                }
+              <input className='input' id='cover'
+                type="file"
+                onChange={updateFilePalPic}
+                style={{visibility:"hidden"}}
+                // required
+              />
 
           <div className='location-div'>Location</div>
           <label className='label-input'>Address</label>

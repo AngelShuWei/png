@@ -67,6 +67,14 @@
   border-top: 1px solid #4f4e60;
 }
 
+.loaded-img {
+  width: 510px;
+  height: 287px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
 .line-div {
   border-top: 1px solid #4f4e60;
   padding-bottom: 30px;
