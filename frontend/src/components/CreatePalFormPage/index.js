@@ -114,15 +114,15 @@ function CreatePalFormPage() {
               onChange={e => setStyle(e.target.value)}
             />
 
-          <label className='screenshot-label'>Screenshot</label>
+          <div className='screenshot-label'>Screenshot</div>
           <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-            <input className='input' id='screenshot'
-              // placeholder='Showcase your skills by uploading a screenshot'
-              type="file"
-              // value={gameStatsPic}
-              onChange={updateFileGameStats}
-              required
-            />
+            <label className='screenshot-input-label' htmlFor="screenshot"><i className="fa-lg fa-regular fa-image"/></label>
+              <input className='input' id='screenshot'
+                type="file"
+                onChange={updateFileGameStats}
+                style={{visibility:"hidden"}}
+                // required
+              />
 
           <div className='bio-div'>Bio</div>
           <label className='intro-label'>Introduction</label>
@@ -151,16 +151,15 @@ function CreatePalFormPage() {
               onChange={e => setPrice(e.target.value)}
             />
 
-          <label className='list-cover-label'>List Cover</label>
+          <div className='list-cover-label'>List Cover</div>
             <div className='intro-description'>Please upload your selfie here as the service cover image</div>
-            <input className='input' id='screenshot'
-              // placeholder='Please upload your selfie here as the service cover image'
+            <label className='list-cover-input-label' htmlFor="cover"><i className="fa-lg fa-regular fa-image"/></label>
+            <input className='input' id='cover'
               type="file"
-              // value={palPic}
               onChange={updateFilePalPic}
-              required
+              style={{visibility:"hidden"}}
+              // required
             />
-            {/* <i class="fa-regular fa-image"></i> */}
 
           <div className='location-div'>Location</div>
           <label className='label-input'>Address</label>
@@ -170,7 +169,7 @@ function CreatePalFormPage() {
               value={address}
               onChange={e => setAddress(e.target.value)}
             />
-          <label className='label-input'>City </label>
+          <label className='label-input'>City</label>
             <input className='input'
               placeholder='Please enter your city name'
               type="text"

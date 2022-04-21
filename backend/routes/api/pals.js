@@ -27,22 +27,18 @@ const validatePalInfo = [
   check('style')
     .isLength({ min: 1 }, { max: 15})
     .withMessage('Please provide a playstyle with max 15 characters.'),
-  check('gameStatsPic')
-    .custom(async (value, {req}) => {
-      if (req.file) {
-        const fileType = req.file.mimetype;
-        if (!fileType.startsWith('image/') && !fileType.endsWith('gif') ) {
-          return await Promise.reject('Please upload a valid cover image')
-        };
-      };
-    }),
+  // check('gameStatsPic')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please upload a valid screenshot.'),
   check('title')
-    // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
     .withMessage('Please provide an one-liner with min 10 and max 50 characters.'),
   check('description')
     .isLength({ min: 10 }, { max: 500 })
     .withMessage('Please provide a detailed self-introduction at least 10 characters long.'),
+  // check('palPic')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please upload a valid cover image.'),
   check('price')
     .isDecimal({ min: 2.00 , max: 999.99 })
     .withMessage('Please provide a price between 2.00 - 999.99.'),

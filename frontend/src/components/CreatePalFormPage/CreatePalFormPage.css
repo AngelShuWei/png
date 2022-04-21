@@ -43,6 +43,22 @@
   margin-bottom: 12px;
 }
 
+.list-cover-input-label, .screenshot-input-label {
+  background-color: #21212c;
+  width: 104px;
+  height: 104px;
+  border-radius: 8px;
+  border: 2px dashed #4f4e60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fa-lg.fa-regular.fa-image {
+  color: #4f4e60;
+}
+
 .choose-a-game-div, .game-info, .bio-div, .location-div {
   font-size: 24px;
   font-weight: 500;
@@ -68,7 +84,6 @@
   color: white;
   border-radius: 4px;
   height: 36px;
-  /* width: 800px; */
   margin-bottom: 20px;
   font-weight: 500;
   padding: 8px 11px;
@@ -87,15 +102,14 @@
   box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
 }
 
-.input#screenshot {
+.input#screenshot, input#cover {
   background-color: #21212c;
   width: 104px;
   height: 104px;
   border-radius: 8px;
   border: 2px dashed #4f4e60;
   text-align: center;
-  /* display: none; */
-  /* visibility: hidden; */
+  margin-bottom: 0;
 }
 
 .textarea {

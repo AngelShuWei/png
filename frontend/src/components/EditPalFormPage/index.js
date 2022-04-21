@@ -117,15 +117,15 @@ function EditPalFormPage() {
               value={style}
               onChange={e => setStyle(e.target.value)}
             />
-
-          <label className='screenshot-label'>Screenshot</label>
-            <input className='input' id='screenshot'
-              placeholder='Showcase your skills by uploading a screenshot'
-              type='file'
-              // value={gameStatsPic}
-              onChange={updateFileGameStats}
-              required
-            />
+          <div className='screenshot-label'>Screenshot</div>
+          <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
+            <label className='screenshot-input-label' htmlFor="screenshot"><i className="fa-lg fa-regular fa-image"/></label>
+              <input className='input' id='screenshot'
+                placeholder='Showcase your skills by uploading a screenshot'
+                type='file'
+                onChange={updateFileGameStats}
+                style={{visibility:"hidden"}}
+              />
 
           <div className='bio-div'>Bio</div>
           <label className='intro-label'>Introduction</label>
@@ -154,14 +154,16 @@ function EditPalFormPage() {
               onChange={e => setPrice(e.target.value)}
             />
 
-          <label className='list-cover-label'>List Cover</label>
-            <input className='input'
-              placeholder='Please upload your selfie here as the service cover image'
-              type="file"
-              // value={palPic}
-              onChange={updateFilePalPic}
-              required
-            />
+            <div className='list-cover-label'>List Cover</div>
+            <div className='intro-description'>Please upload your selfie here as the service cover image</div>
+              <label className='list-cover-input-label' htmlFor="cover"><i className="fa-lg fa-regular fa-image"/></label>
+                <input className='input'
+                  placeholder='Please upload your selfie here as the service cover image'
+                  type="file" id='cover'
+                  onChange={updateFilePalPic}
+                  style={{visibility:"hidden"}}
+                  // required
+                />
 
           <div className='location-div'>Location</div>
           <label className='label-input'>Address</label>
