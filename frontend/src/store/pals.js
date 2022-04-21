@@ -25,7 +25,6 @@ const deleteOne = (pal) => ({
   pal
 })
 
-
 export const loadAllPals = () => async(dispatch) => {
   const response = await csrfFetch(`/api/pals`);
   if (response.ok) {
@@ -36,9 +35,30 @@ export const loadAllPals = () => async(dispatch) => {
 }
 
 export const createPal = (pal) => async(dispatch) => {
+  const { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = pal;
+  const formData = new FormData();
+  formData.append("gameId", gameId);
+  formData.append("server", server);
+  formData.append("rank", rank);
+  formData.append("position", position);
+  formData.append("style", style);
+  formData.append("nickname", nickname);
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("price", price);
+  formData.append("address", address);
+  formData.append("city", city);
+  formData.append("state", state);
+
+  if (gameStatsPic) formData.append("gameStatsPic", gameStatsPic);
+  if (palPic) formData.append("gameStatsPic", palPic);
+
   const response = await csrfFetch(`/api/pals`, {
     method: 'POST',
-    body: JSON.stringify(pal),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
   if (response.ok) {
     const data = await response.json();
@@ -48,9 +68,31 @@ export const createPal = (pal) => async(dispatch) => {
 }
 
 export const updatePal = (pal) => async(dispatch) => { //have to take in whole pal obj to update, unlike delete which one requires id
+  const { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = pal;
+
+  const formData = new FormData();
+  formData.append("gameId", gameId);
+  formData.append("server", server);
+  formData.append("rank", rank);
+  formData.append("position", position);
+  formData.append("style", style);
+  formData.append("nickname", nickname);
+  formData.append("title", title);
+  formData.append("description", description);
+  formData.append("price", price);
+  formData.append("address", address);
+  formData.append("city", city);
+  formData.append("state", state);
+
+  if (gameStatsPic) formData.append("gameStatsPic", gameStatsPic);
+  if (palPic) formData.append("gameStatsPic", palPic);
+
   const response = await csrfFetch(`/api/pals/${pal.id}`, {
     method: 'PUT',
-    body: JSON.stringify(pal),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
   if (response.ok) {
     const data = await response.json();

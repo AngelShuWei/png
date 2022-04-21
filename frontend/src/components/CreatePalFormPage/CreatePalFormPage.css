@@ -1,18 +1,18 @@
 .create-pal-page-container {
   background-color: rgb(18, 14, 27);
-  position: fixed;
+  position: relative;
   width: 100%;
-  height: 100%;
-  margin-top: 50px;
+  min-height: 100vh;
+  top: 50px;
+  display: flex;
+  justify-content: center;
 }
 
 .form-container {
-  position: absolute;
   display: flex;
   flex-direction: column;
   color: white;
   font-weight: 400;
-  margin-top: 100px;
   width: 645px;
   left: 34%;
 }
@@ -43,12 +43,36 @@
   margin-bottom: 12px;
 }
 
+.list-cover-input-label, .screenshot-input-label {
+  background-color: #21212c;
+  width: 104px;
+  height: 104px;
+  border-radius: 8px;
+  border: 2px dashed #4f4e60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fa-lg.fa-regular.fa-image {
+  color: #4f4e60;
+}
+
 .choose-a-game-div, .game-info, .bio-div, .location-div {
   font-size: 24px;
   font-weight: 500;
   padding-top: 40px;
   padding-bottom: 30px;
   border-top: 1px solid #4f4e60;
+}
+
+.loaded-img {
+  width: 510px;
+  height: 287px;
+  border-radius: 4px;
+  object-fit: cover;
+  margin-top: 20px;
 }
 
 .line-div {
@@ -68,7 +92,6 @@
   color: white;
   border-radius: 4px;
   height: 36px;
-  /* width: 800px; */
   margin-bottom: 20px;
   font-weight: 500;
   padding: 8px 11px;

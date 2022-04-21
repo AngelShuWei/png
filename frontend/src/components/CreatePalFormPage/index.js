@@ -20,16 +20,18 @@ function CreatePalFormPage() {
   const [rank, setRank] = useState("");
   const [position, setPosition] = useState("");
   const [style, setStyle] = useState("");
-  const [gameStatsPic, setGameStatsPic] = useState("");
+  const [gameStatsPic, setGameStatsPic] = useState(null);
 
   const nickname = useSelector(state => state.session.user.nickname);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [palPic, setPalPic] = useState("");
+  const [palPic, setPalPic] = useState(null);
   const [price, setPrice] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(false);
+  const [palPicLoaded, setPalPicLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
@@ -43,6 +45,22 @@ function CreatePalFormPage() {
     })
   }
 
+  const updateFileGameStats = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setGameStatsPic(file);
+      setGameStatsPicLoaded(true);
+    }
+  };
+
+  const updateFilePalPic = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setPalPic(file);
+      setPalPicLoaded(true);
+    }
+  };
+
   useEffect(() => {
     dispatch(loadAllGames());
     // dispatch(loadAllUsers());
@@ -51,7 +69,7 @@ function CreatePalFormPage() {
 
   return (
     <>
-      <div className='create-pal-page-container'></div>
+      <div className='create-pal-page-container'>
         <form className='form-container' onSubmit={handleSubmit}>
           <div className='choose-a-game-div'>Choose a Game</div>
           <div className='game-select'>
@@ -104,12 +122,21 @@ function CreatePalFormPage() {
               onChange={e => setStyle(e.target.value)}
             />
 
-          <label className='screenshot-label'>Screenshot</label>
+          <div className='screenshot-label'>Screenshot</div>
+          <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
+            <label className='screenshot-input-label' htmlFor="screenshot">
+              {!gameStatsPic &&
+                <i className="fa-lg fa-regular fa-image"/>
+              }
+              {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
+            </label>
+              {gameStatsPic &&
+                <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}/>
+              }
             <input className='input' id='screenshot'
-              placeholder='Showcase your skills by uploading a screenshot'
-              type='text'
-              value={gameStatsPic}
-              onChange={e => setGameStatsPic(e.target.value)}
+              type="file"
+              onChange={updateFileGameStats}
+              style={{visibility:"hidden"}}
             />
 
           <div className='bio-div'>Bio</div>
@@ -139,13 +166,23 @@ function CreatePalFormPage() {
               onChange={e => setPrice(e.target.value)}
             />
 
-          <label className='list-cover-label'>List Cover</label>
-            <input className='input'
-              placeholder='Please upload your selfie here as the service cover image'
-              type="text"
-              value={palPic}
-              onChange={e => setPalPic(e.target.value)}
-            />
+          <div className='list-cover-label'>List Cover</div>
+            <div className='intro-description'>Please upload your selfie here as the service cover image</div>
+              <label className='list-cover-input-label' htmlFor="cover">
+                {!palPic &&
+                  <i className="fa-lg fa-regular fa-image"/>
+                }
+                {palPicLoaded && <i className="fa-solid fa-check"/>}
+              </label>
+                {palPic &&
+                  <img className='loaded-img' src={URL.createObjectURL(palPic)}></img>
+                }
+              <input className='input' id='cover'
+                type="file"
+                onChange={updateFilePalPic}
+                style={{visibility:"hidden"}}
+                // required
+              />
 
           <div className='location-div'>Location</div>
           <label className='label-input'>Address</label>
@@ -155,7 +192,7 @@ function CreatePalFormPage() {
               value={address}
               onChange={e => setAddress(e.target.value)}
             />
-          <label className='label-input'>City </label>
+          <label className='label-input'>City</label>
             <input className='input'
               placeholder='Please enter your city name'
               type="text"
@@ -181,6 +218,7 @@ function CreatePalFormPage() {
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
           <button className='submit-button' type='submit'>Submit</button>
         </form>
+      </div>
     </>
   )
 }

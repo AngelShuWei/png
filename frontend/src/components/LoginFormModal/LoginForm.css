@@ -18,7 +18,7 @@
 
 .login-modal-container {
   background-color: #302f3d;
-  border-radius: 8px 8px 8px 8px;
+  border-radius: 8px;
   width: 520px;
   height: 570px;
   overflow-y: scroll;
@@ -39,7 +39,7 @@
   right: 25px;
 }
 
-.epal-logo {
+.png-logo {
   width: 205px;
   height: 68px;
 }

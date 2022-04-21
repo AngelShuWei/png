@@ -1,5 +1,5 @@
 import './SignupForm.css';
-import ePalLogo from '../../assets/epal-logo.png'
+import pngLogo from '../../assets/png-logo.png'
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as sessionActions from "../../store/session";
@@ -15,7 +15,8 @@ function SignupForm({setShowModal}) {
   const [nickname, setNickname] = useState("");
   const [bio, setBio] = useState("");
   const [gender, setGender] = useState("");
-  const [profilePic, setProfilePic] = useState("");
+  const [profilePic, setProfilePic] = useState(null);
+  const [profilePicLoaded, setProfilePicLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
@@ -32,6 +33,14 @@ function SignupForm({setShowModal}) {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setProfilePic(file);
+      setProfilePicLoaded(true);
+    }
+  };
+
   return (
     <>
       <div className='login-modal-container'>
@@ -42,7 +51,7 @@ function SignupForm({setShowModal}) {
                   <LoginForm />
                 </Modal>
               )} */}
-            <div><img className='epal-logo' src={ePalLogo}/></div>
+            <div><img className='png-logo' src={pngLogo}/></div>
           </div>
         <div className='login-modal-wrapper'>
         <div className='signup-tab'>Sign Up</div>
@@ -58,6 +67,7 @@ function SignupForm({setShowModal}) {
               // required
               />
           </label>
+
           <label className='login-label-input'>
             Username
             <input className='login-input'
@@ -68,6 +78,7 @@ function SignupForm({setShowModal}) {
               // required
             />
           </label>
+
           <label className='login-label-input'>
             Password
             <input className='login-input'
@@ -78,6 +89,7 @@ function SignupForm({setShowModal}) {
               // required
             />
           </label>
+
           <label className='login-label-input'>
             Confirm Password
             <input className='login-input'
@@ -88,6 +100,7 @@ function SignupForm({setShowModal}) {
               // required
               />
           </label>
+
           <label className='login-label-input'>
             Nickname
             <input className='login-input'
@@ -98,6 +111,7 @@ function SignupForm({setShowModal}) {
               // required
             />
           </label>
+
           <label className='login-label-input'>
             Bio
             <textarea className='textarea' id='signup' rows="4"
@@ -109,6 +123,7 @@ function SignupForm({setShowModal}) {
             />
             <div className='textarea-counter'>{bio.length}/500</div>
           </label>
+
           <label className='login-label-input'>
             Gender
             <select className='login-input' value={gender} onChange={e => setGender(e.target.value)} >
@@ -119,16 +134,24 @@ function SignupForm({setShowModal}) {
               {/* required */}
             </select>
           </label>
-          <label className='login-label-input'>
-            Avatar
-            <input className='login-input'
-              placeholder='Please upload your avatar'
-              type="text"
-              value={profilePic}
-              onChange={e => setProfilePic(e.target.value)}
-              // required
-            />
-          </label>
+
+          <div className='upload-an-avatar-text'>Upload an Avatar
+            <label className='avatar-input-label' htmlFor="avatar">
+              {!profilePic &&
+                <i className="fa-lg fa-regular fa-image"/>
+              }
+              {/* {profilePicLoaded && <i className="fa-solid fa-check"/>} */}
+              {profilePic &&
+                <img className='signup-loaded-img' src={URL.createObjectURL(profilePic)}/>
+              }
+              </label>
+          </div>
+              <input className='input' id='avatar'
+                type="file"
+                onChange={updateFile}
+                style={{visibility:"hidden"}}
+              />
+
           {errors.map((error, idx) => <div className='errors' key={idx}>{error}</div>)}
           <div className='login-buttons'>
             <button className='login-submit-button' type="submit">Sign Up</button>

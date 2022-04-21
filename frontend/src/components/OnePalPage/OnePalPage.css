@@ -88,14 +88,32 @@
   font-size: 24px;
 }
 
+.one-pal-avg-rating {
+  background-color: #21212c;
+  border-radius: 4px;
+  padding: 16px;
+  width: 338px;
+  position: absolute;
+  top: 37%;
+  left: 6%;
+  font-size: 16px;
+}
+
 .one-pal-user-info {
   position: absolute;
   font-size: 14px;
-  top: 37%;
+  top: 45%;
 }
 
 .one-pal-bio-text {
   color: #c4c3e6;
+}
+
+.one-pal-edit-delete-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 135%;
+  gap: 30px;
 }
 
 .one-pal-games {
@@ -247,12 +265,11 @@
   background-color: #302f3d;
   width: 900px;
   height: 156px;
+  /* height: auto; */
   padding: 24px;
   border-radius: 8px;
   margin-bottom: 15px;
-  /* position: absolute; */
-  /* left: 35%;
-  top: 110%; */
+  overflow-y: scroll;
 }
 
 .one-pal-user-review-container:hover .one-pal-user-edit-btn {
@@ -264,7 +281,8 @@
 }
 
 .one-pal-user-review-container:hover {
-  height: 190px;
+  /* height: 180px; */
+  height: auto;
 }
 
 .one-pal-user-review-profile-img {
@@ -293,7 +311,7 @@
 }
 
 .one-pal-user-delete-edit-btn {
-  padding: 10px 0px 10px 0px;
+  padding-top: 10px;
 }
 
 .one-pal-user-edit-btn, .one-pal-user-delete-btn {

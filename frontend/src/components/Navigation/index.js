@@ -1,10 +1,11 @@
+import './Navigation.css';
+import pngLogo from '../../assets/png-logo.png'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import './Navigation.css';
 
 function Navigation({isLoaded}) {
   const sessionUser = useSelector(state => state.session.user);
@@ -26,7 +27,7 @@ function Navigation({isLoaded}) {
   return (
     <nav className='navbar-c'>
       <div>
-        <NavLink className='navlink-home' exact to="/">Home</NavLink>
+        <NavLink className='navlink-home' exact to="/"><img className='png-logo' id='navbar' src={pngLogo}/></NavLink>
       </div>
       <div>
         <NavLink className='navlink-ePal' exact to="/epals">ePal</NavLink>

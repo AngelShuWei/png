@@ -15,6 +15,7 @@ import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
 import EditReviewForm from './components/EditReviewFormModal/EditReviewForm';
+import Footer from './components/FooterModal/Footer';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
   return ( //if isLoaded is true, then load all of the routes
     <>
       <Navigation isLoaded={isLoaded} />
+      <Footer />
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
@@ -38,9 +40,9 @@ function App() {
           <Route exact path='/epals'>
             <AllPalPage/>
           </Route>
-          <Route exact path='/epals/:palId'>
+          <ProtectedRoute exact path='/epals/:palId'>
             <OnePalPage/>
-          </Route>
+          </ProtectedRoute>
           <ProtectedRoute exact path='/myepal'>
             <UserPalPage/>
           </ProtectedRoute>

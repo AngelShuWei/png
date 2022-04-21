@@ -1,5 +1,5 @@
 import './LoginForm.css'
-import ePalLogo from '../../assets/epal-logo.png'
+import pngLogo from '../../assets/png-logo.png'
 import React, {useState} from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,7 +46,7 @@ function LoginForm() {
                 <LoginForm />
               </Modal>
             )} */}
-          <div><img className='epal-logo' src={ePalLogo}/></div>
+          <div><img className='png-logo' src={pngLogo}/></div>
         </div>
         <div className='login-modal-wrapper'>
         <div className='login-tab'>Log In</div>
