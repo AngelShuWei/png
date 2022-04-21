@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Pal, Game } = require('../../db/models');
+const { Pal, Game, User} = require('../../db/models');
 const { multipleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 const validatePalInfo = [

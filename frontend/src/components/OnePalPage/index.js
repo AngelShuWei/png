@@ -16,25 +16,22 @@ import { deletePal } from '../../store/pals';
 function OnePalPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { palId } = useParams();
 
   const [isLoaded, setIsLoaded] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
-  // console.log('sessionuser id---', sessionUser.id)
   const pals = useSelector(state => Object.values(state.pals));
-  console.log("pals arr---", pals);
   const users = useSelector(state => Object.values(state.users));
-  console.log('users', users)
   const reviews = useSelector(state => Object.values(state.reviews));
-  // const userPals = pals.filter(pal => pal.userId === sessionUser.id);
 
   let onePal = [];
   let allUsers = [];
   let allReviews = [];
   let userReview = [];
   let userPals;
-  let date
+  let date;
 
   if (isLoaded) { //need conditional because only when page is loaded then we can get the filters, otherwise can break page if trying to stuff without stuff being there in state
     onePal = pals.filter(pal => {
@@ -53,13 +50,11 @@ function OnePalPage() {
       return oneReview.userId === sessionUser.id
     })
 
+    userPals = pals.filter(pal => pal.id === +palId);
+
     // date = new Date(allReviews[0].updatedAt);
 
     // console.log(date);
-    // userPals = pals.filter(pal => pal.userId === sessionUser.id);
-    // console.log(userPals);
-    // console.log("----userpals", userPals[0].userId)
-    // console.log(userPals[0].userId === sessionUser.id)
   };
 
   //calculation to get avg ratings
@@ -97,14 +92,13 @@ function OnePalPage() {
               <div className='one-pal-user-info'>
                 <div className='one-pal-bio-text'>Bio:</div>
                 <div className='one-pal-bio'>{allUsers[0]?.bio}</div>
-                {/* {userPals[0].userId === sessionUser.id && ( */}
+                {userPals[0].userId === sessionUser.id &&
                   <div className='one-pal-edit-delete-btn'>
                     <Link to={`/myepal/${palId}/edit`}>
                       <button className='submit-button'>Edit Game</button>
                     </Link>
                     <button className='submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
-                  </div>
-                  {/* )} */}
+                  </div> }
               </div>
             </div>
           </div>
