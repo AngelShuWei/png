@@ -88,7 +88,8 @@
   width: 200px;
   height: auto;
   outline: 1px solid black;
-  margin-top: 50px;
+  margin-top: 7.5%;
+  margin-left: 73%;
   border-radius: 3px;
   padding-bottom: 15px;
   padding-top: 1px;
@@ -96,6 +97,15 @@
 }
 
 .logout-button {
-  margin-left: 40px;
+  margin-left: 70px;
   cursor: pointer;
+  border: none;
+  background: none;
+  color: white;
+}
+
+.logout-button:hover {
+  background-color: #7041e6;
+  width: 100%;
+  margin-left: 0%;
 }
