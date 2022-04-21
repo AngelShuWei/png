@@ -61,7 +61,7 @@ function CreatePalFormPage() {
 
   return (
     <>
-      <div className='create-pal-page-container'></div>
+      <div className='create-pal-page-container'>
         <form className='form-container' onSubmit={handleSubmit}>
           <div className='choose-a-game-div'>Choose a Game</div>
           <div className='game-select'>
@@ -195,6 +195,7 @@ function CreatePalFormPage() {
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
           <button className='submit-button' type='submit'>Submit</button>
         </form>
+      </div>
     </>
   )
 }

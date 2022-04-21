@@ -14,6 +14,7 @@ function EditPalFormPage() {
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
+  const [isLoaded, setIsLoaded] = useState(false);
   const [gameId, setGameId] = useState(pal.Game.id);
 
   const [server, setServer] = useState(pal.server);
@@ -21,8 +22,6 @@ function EditPalFormPage() {
   const [position, setPosition] = useState(pal.position);
   const [style, setStyle] = useState(pal.style);
   const [gameStatsPic, setGameStatsPic] = useState(pal.gameStatsPic);
-
-  console.log("------gamestatpic", gameStatsPic)
 
   const nickname = useSelector(state => state.session.user.nickname);
   const [title, setTitle] = useState(pal.title);
@@ -33,8 +32,6 @@ function EditPalFormPage() {
   const [city, setCity] = useState(pal.city);
   const [state, setState] = useState(pal.state);
   const [errors, setErrors] = useState([]);
-
-  console.log("=====pal", pal)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -57,14 +54,15 @@ function EditPalFormPage() {
     if (file) setPalPic(file);
   };
 
-
   useEffect(() => {
-    dispatch(loadAllGames());
+    dispatch(loadAllGames())
+    .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
-      <div className='create-pal-page-container'></div>
+    {isLoaded && (
+      <div className='create-pal-page-container'>
         <form className='form-container' onSubmit={handleSubmit}>
           <div className='choose-a-game-div'>Choose a Game</div>
           <div className='game-select'>
@@ -199,6 +197,8 @@ function EditPalFormPage() {
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
           <button className='submit-button' type='submit'>Submit</button>
         </form>
+        </div>
+      )}
     </>
   )
 }
