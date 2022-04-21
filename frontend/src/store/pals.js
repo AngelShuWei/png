@@ -69,6 +69,7 @@ export const createPal = (pal) => async(dispatch) => {
 
 export const updatePal = (pal) => async(dispatch) => { //have to take in whole pal obj to update, unlike delete which one requires id
   const { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = pal;
+
   const formData = new FormData();
   formData.append("gameId", gameId);
   formData.append("server", server);

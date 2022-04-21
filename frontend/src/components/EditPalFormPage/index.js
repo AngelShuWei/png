@@ -34,7 +34,7 @@ function EditPalFormPage() {
   const [state, setState] = useState(pal.state);
   const [errors, setErrors] = useState([]);
 
-  console.log("=====palpic", palPic)
+  console.log("=====pal", pal)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -56,6 +56,7 @@ function EditPalFormPage() {
     const file = e.target.files[0];
     if (file) setPalPic(file);
   };
+
 
   useEffect(() => {
     dispatch(loadAllGames());
@@ -123,6 +124,7 @@ function EditPalFormPage() {
               type='file'
               // value={gameStatsPic}
               onChange={updateFileGameStats}
+              required
             />
 
           <div className='bio-div'>Bio</div>
@@ -158,6 +160,7 @@ function EditPalFormPage() {
               type="file"
               // value={palPic}
               onChange={updateFilePalPic}
+              required
             />
 
           <div className='location-div'>Location</div>

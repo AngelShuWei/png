@@ -87,6 +87,17 @@
   box-shadow: 0 0 0 2px rgba(112, 65, 230, .20);
 }
 
+.input#screenshot {
+  background-color: #21212c;
+  width: 104px;
+  height: 104px;
+  border-radius: 8px;
+  border: 2px dashed #4f4e60;
+  text-align: center;
+  /* display: none; */
+  /* visibility: hidden; */
+}
+
 .textarea {
   background-color: #21212C;
   border-top: 1px solid #4F4E60;

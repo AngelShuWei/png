@@ -1,8 +1,6 @@
 .user-pal-page-container {
   background-color: rgb(18, 14, 27);
-  /* position: relative; */
-  height: 100vh;
-  /* overflow-y: scroll; */
+  min-height: 100vh;
   padding-top: 100px;
   display: flex;
   flex-direction: column;

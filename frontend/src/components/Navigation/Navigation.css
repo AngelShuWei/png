@@ -1,6 +1,8 @@
 .navbar-c {
   background-color: #302F3D;
   position: fixed;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
   display: flex;
   justify-content: space-around;
   align-items: center;

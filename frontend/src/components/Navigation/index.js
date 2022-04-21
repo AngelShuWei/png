@@ -1,11 +1,11 @@
+import './Navigation.css';
+import pngLogo from '../../assets/png-logo.png'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-import './Navigation.css';
-import pngLogo from '../../assets/png-logo.png'
 
 function Navigation({isLoaded}) {
   const sessionUser = useSelector(state => state.session.user);

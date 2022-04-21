@@ -28,46 +28,45 @@ const validatePalInfo = [
     .isLength({ min: 1 }, { max: 15})
     .withMessage('Please provide a playstyle with max 15 characters.'),
   check('gameStatsPic')
-  .custom(async (value, {req}) => {
-    if (req.file) {
-      const fileType = req.file.mimetype;
-      if (!fileType.startsWith('image/') && !fileType.endsWith('gif') ) {
-        return await Promise.reject('Please upload a valid cover image')
+    .custom(async (value, {req}) => {
+      if (req.file) {
+        const fileType = req.file.mimetype;
+        if (!fileType.startsWith('image/') && !fileType.endsWith('gif') ) {
+          return await Promise.reject('Please upload a valid cover image')
+        };
       };
-    };
-  }),
+    }),
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
     .withMessage('Please provide an one-liner with min 10 and max 50 characters.'),
   check('description')
-    // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 500 })
     .withMessage('Please provide a detailed self-introduction at least 10 characters long.'),
   check('price')
     .isDecimal({ min: 2.00 , max: 999.99 })
     .withMessage('Please provide a price between 2.00 - 999.99.'),
   check('address')
-    // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide an address with min 5 and max 30 characters.'),
   check('city')
-    // .exists({ checkFalsy: true })
     .isLength({ min: 5}, { max: 30})
     .withMessage('Please provide a city with min 5 and max 30 characters.'),
   check('state')
     .exists({ checkFalsy: true })
     .withMessage('Please select a state.'),
-  check('palPic')
-    .custom(async (value, { req }) => {
-        if (req.file) {
-            const fileType = req.file.mimetype;
+  // check('palPic')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please upload your selfie as the pal cover image.'),
+    // .custom(async (value, { req }) => {
+    //     if (req.file) {
+    //         const fileType = req.file.mimetype;
 
-            if (!fileType.startsWith('image/') && !fileType.endsWith('gif')) {
-                return await Promise.reject('File needs to be an image')
-            };
-        };
-    }),
+    //         if (!fileType.startsWith('image/') && !fileType.endsWith('gif')) {
+    //             return await Promise.reject('File needs to be an image')
+    //         };
+    //     };
+    // }),
     handleValidationErrors
 ];
 
@@ -83,6 +82,7 @@ router.get('/', asyncHandler(async(req, res) => {
 router.post('/', multipleMulterUpload("gameStatsPic"), restoreUser, validatePalInfo, asyncHandler(async(req, res) => {
   const { user } = req;
   let { gameId, server, rank, position, style, nickname, title, description, price, address, city, state } = req.body;
+
   const gameStatsPic = await singlePublicFileUpload(req.files[0]);
   const palPic = await singlePublicFileUpload(req.files[1]);
 
@@ -113,10 +113,19 @@ router.put('/:palId', multipleMulterUpload("gameStatsPic"), validatePalInfo, asy
 
   const { palId } = req.params;
 
-  let { gameId, server, rank, position, style, nickname, title, description, price, address, city, state } = req.body;
-  console.log(req.files);
-  const gameStatsPic = await singlePublicFileUpload(req.files[0]);
-  const palPic = await singlePublicFileUpload(req.files[1]);
+  let { gameId, server, rank, position, style, gameStatsPic, palPic, nickname, title, description, price, address, city, state } = req.body;
+
+  console.log('#####', gameStatsPic);
+  if (req.files.length > 0) {
+    gameStatsPic = await singlePublicFileUpload(req.files[0]);
+    palPic = await singlePublicFileUpload(req.files[1]);
+  } else {
+    palPic = gameStatsPic[1].palPic;
+    gameStatsPic = gameStatsPic[0];
+  }
+
+  console.log('----gamestatspic', gameStatsPic)
+  console.log('----palpic', palPic)
 
   let pal = await Pal.findByPk(+palId);
 

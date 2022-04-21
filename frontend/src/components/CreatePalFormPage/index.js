@@ -115,11 +115,13 @@ function CreatePalFormPage() {
             />
 
           <label className='screenshot-label'>Screenshot</label>
+          <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
             <input className='input' id='screenshot'
-              placeholder='Showcase your skills by uploading a screenshot'
+              // placeholder='Showcase your skills by uploading a screenshot'
               type="file"
               // value={gameStatsPic}
               onChange={updateFileGameStats}
+              required
             />
 
           <div className='bio-div'>Bio</div>
@@ -150,12 +152,15 @@ function CreatePalFormPage() {
             />
 
           <label className='list-cover-label'>List Cover</label>
-            <input className='input'
-              placeholder='Please upload your selfie here as the service cover image'
+            <div className='intro-description'>Please upload your selfie here as the service cover image</div>
+            <input className='input' id='screenshot'
+              // placeholder='Please upload your selfie here as the service cover image'
               type="file"
               // value={palPic}
               onChange={updateFilePalPic}
+              required
             />
+            {/* <i class="fa-regular fa-image"></i> */}
 
           <div className='location-div'>Location</div>
           <label className='label-input'>Address</label>
