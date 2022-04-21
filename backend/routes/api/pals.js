@@ -12,6 +12,9 @@ const validatePalInfo = [
   //   .exists({ checkFalsy: true })
   //   .isLength({ min: 3 }, { max: 30 })
   //   .withMessage('Please a nickname with min 3 and max 30 characters.'),
+  check('gameId')
+    .exists({ checkFalsy: true })
+    .withMessage('Please select a game.'),
   check('server')
     .isLength({ min: 1 }, { max: 30 })
     .withMessage('Please provide a server with max 30 characters.'),
@@ -24,9 +27,15 @@ const validatePalInfo = [
   check('style')
     .isLength({ min: 1 }, { max: 15})
     .withMessage('Please provide a playstyle with max 15 characters.'),
-  // check('gameStatsPic')
-  //   .isURL()
-  //   .withMessage('Please upload a valid imageUrl.'),
+  check('gameStatsPic')
+  .custom(async (value, {req}) => {
+    if (req.file) {
+      const fileType = req.file.mimetype;
+      if (!fileType.startsWith('image/') && !fileType.endsWith('gif') ) {
+        return await Promise.reject('Please upload a valid cover image')
+      };
+    };
+  }),
   check('title')
     // .exists({ checkFalsy: true })
     .isLength({ min: 10 }, { max: 50 })
@@ -49,12 +58,16 @@ const validatePalInfo = [
   check('state')
     .exists({ checkFalsy: true })
     .withMessage('Please select a state.'),
-    // check('palPic')
-    //   .isURL()
-    //   .withMessage('Please upload a valid cover image'),
-    // check('country')
-    //   .isLength({ min: 0 })
-    //   .withMessage('Please select a country'),
+  check('palPic')
+    .custom(async (value, { req }) => {
+        if (req.file) {
+            const fileType = req.file.mimetype;
+
+            if (!fileType.startsWith('image/') && !fileType.endsWith('gif')) {
+                return await Promise.reject('File needs to be an image')
+            };
+        };
+    }),
     handleValidationErrors
 ];
 

@@ -33,7 +33,7 @@ function ReviewForm({setShowModal}) {
           <div className='review-form-content'>
             <label className='label-input'>Describe Your Experience</label>
               <textarea className='textarea' id='review' rows="4"
-                placeholder='write a public review(optional)'
+                placeholder='Write a public review(optional)'
                 type="text"
                 value={content}
                 onChange={e => setContent(e.target.value)}

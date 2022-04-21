@@ -15,6 +15,10 @@ function HomePage() {
 
   const [showModal, setShowModal] = useState(false);
 
+  const sessionUser = useSelector(state => state.session);
+
+  const allPals = useSelector(state => Object.values(state.pals));
+  
   const league = useSelector(state => Object.values(state.pals).filter(pal => {
     return pal.Game.gameName === 'League of Legends';
   }));
@@ -27,8 +31,6 @@ function HomePage() {
     return pal.Game.gameName === 'Apex Legends';
   }));
 
-  console.log(apex)
-
   useEffect(() => {
     dispatch(loadAllPals());
   }, [dispatch])
@@ -39,7 +41,8 @@ function HomePage() {
           <div className='home-page-top-content'>
             <div className='home-page-top-content-title'>Teammates On-Demand</div>
             <div className='home-page-top-content-subtitle'>Hire and play with the most engaging gamers, creators, and pros!</div>
-            <button className='home-page-submit-button' onClick={() => setShowModal(true)}>Start now</button>
+            {!sessionUser.user &&
+            <button className='home-page-submit-button' onClick={() => setShowModal(true)}>Start now</button> }
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                   <SignupForm />
@@ -49,7 +52,7 @@ function HomePage() {
           <div><img className='sliding-bg' src={nemesisBg}/></div>
         </div>
         <div className='home-page-middle-container'>
-          <div className='home-page-middle-title'>100,000 ePals are ready to battle alongside you</div>
+          <div className='home-page-middle-title'> {allPals.length} ePals are ready to battle alongside you</div>
           <div className='home-page-middle-game-cards'>
             <div className='lol-card'>
               <div className='lol-card-text'>League of Legends</div>

@@ -32,6 +32,7 @@ function OnePalPage() {
   let onePal = [];
   let allUsers = [];
   let allReviews = [];
+  let userReview = [];
   let userPals;
   let date;
 
@@ -47,6 +48,10 @@ function OnePalPage() {
     allReviews = reviews.filter(review => {
       return review.palId === +palId;
     });
+
+    userReview = allReviews.filter(oneReview => {
+      return oneReview.userId === sessionUser.id
+    })
 
     // date = new Date(allReviews[0].createdAt);
     // console.log(date);
@@ -143,10 +148,10 @@ function OnePalPage() {
               <div className='one-pal-reviews-details'>
                 <i className="fa-xs fa-solid fa-star"/>
                 {allReviews.length ? avgSum : '---'} · {allReviews.length} Review(s)
-                <ReviewFormModel/>
+                {userReview.length < 1 && <ReviewFormModel/> }
               </div>
               <div className='one-pal-user-reviews'></div>
-                {allReviews.length ? allReviews.map(review => (
+                {allReviews.length ? allReviews.reverse().map(review => (
                   <div className='one-pal-user-review-container' key={review?.id}>
                     <img className='one-pal-user-review-profile-img' src={review?.User.profilePic}/>
                     <span className='one-pal-user-review-user-nickname'>{review?.User.nickname} · </span>
