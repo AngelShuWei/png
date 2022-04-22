@@ -12,6 +12,10 @@ function EditReviewForm({setShowModal, review}) {
   const [rating, setRating] = useState(review.rating);
   const [errors, setErrors] = useState([]);
 
+  const isFormValid = () => {
+    return (rating >= 1);
+  }
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
@@ -47,7 +51,12 @@ function EditReviewForm({setShowModal, review}) {
               />
           </div>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          <button className='submit-button' type='submit'>Submit</button>
+          <div className="submit-button-container">
+            {isFormValid() ?
+              <button className='submit-button' type='submit'>Submit</button> :
+              <button className='disabled-button' type='submit' disabled={!isFormValid()}>Submit</button>
+            }
+          </div>
         </form>
       </div>
     </>

@@ -14,6 +14,10 @@ function LoginForm() {
   const [errors, setErrors] = useState([]);
   const [showModal, setShowModal] = useState(true);
 
+  const isFormValid = () => {
+    return (credential.length >= 1 && password.length >= 1)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -74,7 +78,10 @@ function LoginForm() {
             </label>
             {errors.map((error, idx) => <div className='errors' key={idx}>{error}</div>)}
             <div className='login-buttons'>
-              <button className='login-submit-button' type="submit">Log in</button>
+            {isFormValid() ?
+              <button className='login-submit-button' type="submit">Log in</button> :
+              <button className='disabled-login-button' type='submit' disabled={true}>Log in</button>
+            }
               <button className='login-submit-button' type="submit" onClick={handleDemo}>Demo User</button>
             </div>
             <div className='login-tab-line'/>

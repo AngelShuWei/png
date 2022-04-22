@@ -40,6 +40,7 @@
   transition: 0.2s ease-in;
 }
 
-.submit-button#review {
-  margin-left: 35%;
+.submit-button-container {
+  display: flex;
+  justify-content: center;
 }

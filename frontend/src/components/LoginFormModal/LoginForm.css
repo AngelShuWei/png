@@ -111,8 +111,8 @@
 }
 
 .login-submit-button {
-  border-radius: 20px;
   background: #7041e6;
+  border-radius: 20px;
   color: #fff;
   width: 160px;
   border: none;
@@ -122,6 +122,19 @@
   padding: 6px 24px;
   margin-bottom: 10px;
   cursor: pointer;
+  align-items: center;
+}
+
+.disabled-login-button {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 20px;
+  color: gray;
+  border: 1px solid gray;
+  width: 160px;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 6px 24px;
+  margin-bottom: 10px;
   align-items: center;
 }
 

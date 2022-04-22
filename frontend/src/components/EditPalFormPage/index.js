@@ -104,7 +104,7 @@ function EditPalFormPage() {
   };
 
   const isFormValid = () => {
-    return (gameId > 0 && server.length >= 1 && rank.length >= 1 && position.length >= 1 && style.length >= 1 && gameStatsPic !== null && title.length >= 1 && description.length >= 1 && palPic !== null, price >= 2 && address.length >= 1 && city.length >= 1 && state.length >= 1)
+    return (gameId > 0 && server.length >= 1 && rank.length >= 1 && position.length >= 1 && style.length >= 1 && gameStatsPic !== null && title.length >= 1 && description.length >= 1 && palPic !== null, price >= 2 && address.length >= 1 && city.length >= 1 && state.length >= 1);
   }
 
   useEffect(() => {
@@ -266,8 +266,8 @@ function EditPalFormPage() {
           <div className='line-div'/>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
           {isFormValid() ?
-            <button className='submit-button' type='submit' disabled={!isFormValid()}>Submit</button> :
-            <button className='disabled-button' type='submit' disabled={!isFormValid()}>Submit</button>
+            <button className='submit-button' type='submit'>Submit</button> :
+            <button className='disabled-button' type='submit' disabled={true}>Submit</button>
           }
         </form>
         </div>

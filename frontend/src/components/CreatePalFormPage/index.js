@@ -237,8 +237,8 @@ function CreatePalFormPage() {
           <div className='line-div'/>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
           {isFormValid() ?
-            <button className='submit-button' type='submit' disabled={!isFormValid()}>Submit</button> :
-            <button className='disabled-button' type='submit' disabled={!isFormValid()}>Submit</button>
+            <button className='submit-button' type='submit'>Submit</button> :
+            <button className='disabled-button' type='submit' disabled={true}>Submit</button>
           }
         </form>
       </div>

@@ -19,6 +19,19 @@ function SignupForm({setShowModal}) {
   const [profilePicLoaded, setProfilePicLoaded] = useState(false);
   const [errors, setErrors] = useState([]);
 
+  // console.log(email.length >= 1)
+  // console.log(username.length >= 1)
+  // console.log(password.length >= 1)
+  // console.log(confirmPassword.length >= 1)
+  // console.log(nickname.length >= 1)
+  // console.log(bio.length >= 1)
+  // console.log(gender.length >= 1)
+  // console.log(profilePic !== null)
+
+  const isFormValid = () => {
+    return (email.length >= 1 && username.length >= 1 && password.length >= 1 && confirmPassword.length >= 1 && nickname.length >= 1 && bio.length >= 1 && gender.length >= 1 && profilePic !== null)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
@@ -154,7 +167,10 @@ function SignupForm({setShowModal}) {
 
           {errors.map((error, idx) => <div className='errors' key={idx}>{error}</div>)}
           <div className='login-buttons'>
-            <button className='login-submit-button' type="submit">Sign Up</button>
+            {isFormValid() ?
+              <button className='login-submit-button' type="submit">Sign up</button> :
+              <button className='disabled-login-button' type='submit' disabled={true}>Sign up</button>
+            }
           </div>
           <div className='signup-tab-line'/>
         </form>
