@@ -73,6 +73,9 @@ function EditPalFormPage() {
   const [palPicLoaded, setPalPicLoaded] = useState(true);
   const [errors, setErrors] = useState([]);
 
+  console.log('gamestatspic----', gameStatsPic);
+  console.log('palpic====', palPic)
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
@@ -170,6 +173,9 @@ function EditPalFormPage() {
                   }
                   {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
+                {gameStatsPic &&
+                  <img className='loaded-img' src={gameStatsPic}/>
+                }
               <input className='input' id='screenshot'
                 placeholder='Showcase your skills by uploading a screenshot'
                 type='file'
@@ -207,8 +213,14 @@ function EditPalFormPage() {
           <div className='list-cover-label'>List Cover</div>
             <div className='intro-description'>Please upload your selfie here as the service cover image</div>
               <label className='list-cover-input-label' htmlFor="cover">
-                <i className="fa-lg fa-regular fa-image"/>
+                {!palPic &&
+                  <i className="fa-lg fa-regular fa-image"/>
+                }
+                  {palPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
+                {palPic &&
+                  <img className='loaded-img' src={palPic}/>
+                }
                 <input className='input'
                   placeholder='Please upload your selfie here as the service cover image'
                   type="file" id='cover'

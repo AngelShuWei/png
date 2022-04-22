@@ -172,10 +172,10 @@ function CreatePalFormPage() {
                 {!palPic &&
                   <i className="fa-lg fa-regular fa-image"/>
                 }
-                {palPicLoaded && <i className="fa-solid fa-check"/>}
+                  {palPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
                 {palPic &&
-                  <img className='loaded-img' src={URL.createObjectURL(palPic)}></img>
+                  <img className='loaded-img' src={URL.createObjectURL(palPic)}/>
                 }
               <input className='input' id='cover'
                 type="file"
