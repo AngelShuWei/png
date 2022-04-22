@@ -110,6 +110,10 @@
   color: #c4c3e6;
 }
 
+.one-pal-bio {
+  width: 338px;
+}
+
 .one-pal-edit-delete-btn {
   display: flex;
   justify-content: center;
