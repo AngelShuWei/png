@@ -110,8 +110,10 @@ router.put('/:palId', multipleMulterUpload("gameStatsPic"), validatePalInfo, asy
   const { palId } = req.params;
 
   let { gameId, server, rank, position, style, gameStatsPic, palPic, nickname, title, description, price, address, city, state } = req.body;
-
+  console.log('reqonlyyy!!!!!', req);
+  console.log('reqfilessss@@@@', req.files);
   console.log('#####', gameStatsPic);
+
   if (req.files.length > 0) {
     gameStatsPic = await singlePublicFileUpload(req.files[0]);
     palPic = await singlePublicFileUpload(req.files[1]);
