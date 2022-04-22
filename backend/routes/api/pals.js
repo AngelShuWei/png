@@ -102,32 +102,31 @@ router.put('/:palId', multiPartUpload("gameStatsPic", "palPic"), validatePalInfo
 
   let { gameId, server, rank, position, style, gameStatsPic, palPic, nickname, title, description, price, address, city, state } = req.body;
 
-  console.log('req', req)
+  // console.log('req', req)
   console.log('reqfilessss@@@@', req.files);
-  console.log('^^^^', gameStatsPic);
-  console.log('!!!', palPic)
+  console.log('^^^^', req.files.gameStatsPic);
+  console.log('!!!', req.files.palPic)
+  console.log('this api route workinggggggg')
+  let fileLength = 0;
+  for (key in req.files) {
+    fileLength += 1;
+  }
 
-  if (req.files.length === 2) {
+  if (fileLength === 2) {
     gameStatsPic = await singlePublicFileUpload(req.files.gameStatsPic[0]);
     palPic = await singlePublicFileUpload(req.files.palPic[0]);
-  } else if (req.files.length === 1 ) {
+  } else if (fileLength === 1 ) {
       if (req.files.gameStatsPic && !req.files.palPic) {
         gameStatsPic = await singlePublicFileUpload(req.files.gameStatsPic[0]);
-        palPic = palPic[0];
+        palPic = palPic;
       } else if (req.files.palPic && !req.files.gameStatsPic) {
         palPic = await singlePublicFileUpload(req.files.palPic[0]);
-        gameStatsPic = gameStatsPic[0];
+        gameStatsPic = gameStatsPic;
       }
   } else {
-    gameStatsPic = gameStatsPic[0];
-    palPic = palPic[0];
+    gameStatsPic = gameStatsPic;
+    palPic = palPic;
   }
-  // else {
-  //   // palPic = gameStatsPic[1].palPic;
-  //   // gameStatsPic = gameStatsPic[0];
-  //   gameStatsPic = gameStatsPic[0];
-  //   palPic = palPic[0];
-  // }
 
   console.log('----gamestatspic', gameStatsPic)
   console.log('----palpic', palPic)

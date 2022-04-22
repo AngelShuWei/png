@@ -73,6 +73,7 @@ function EditPalFormPage() {
   const [palPicLoaded, setPalPicLoaded] = useState(true);
   const [errors, setErrors] = useState([]);
 
+
   console.log('gamestatspic----', gameStatsPic);
   console.log('palpic====', palPic)
 
@@ -109,7 +110,7 @@ function EditPalFormPage() {
 
   useEffect(() => {
     dispatch(loadAllPals())
-    dispatch(loadAllGames())
+    .then(() => dispatch(loadAllGames()))
     .then(() => setIsLoaded(true));
   }, [dispatch]);
 
