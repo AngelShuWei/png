@@ -8,7 +8,7 @@ function ReviewForm({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { palId } = useParams(); //palId is a string here a
+  const { palId } = useParams(); //palId is a string here
 
   const [content, setContent] = useState("");
   const [rating, setRating] = useState("");
