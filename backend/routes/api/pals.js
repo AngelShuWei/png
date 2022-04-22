@@ -40,8 +40,8 @@ const validatePalInfo = [
   //   .exists({ checkFalsy: true })
   //   .withMessage('Please upload a valid cover image.'),
   check('price')
-    .isDecimal({ min: 2.00 , max: 999.99 })
-    // .isInt({ min: 2 })
+    .isDecimal({ min: 2.00, max: 999.99 })
+    // .isInt({ min: 2, max: 999})
     .withMessage('Please provide a price between 2.00 - 999.99.'),
   check('address')
     .isLength({ min: 5}, { max: 30})
