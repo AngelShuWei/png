@@ -51,7 +51,7 @@ export const createPal = (pal) => async(dispatch) => {
   formData.append("state", state);
 
   if (gameStatsPic) formData.append("gameStatsPic", gameStatsPic);
-  if (palPic) formData.append("gameStatsPic", palPic);
+  if (palPic) formData.append("palPic", palPic);
 
   const response = await csrfFetch(`/api/pals`, {
     method: 'POST',
@@ -85,7 +85,7 @@ export const updatePal = (pal) => async(dispatch) => { //have to take in whole p
   formData.append("state", state);
 
   if (gameStatsPic) formData.append("gameStatsPic", gameStatsPic);
-  if (palPic) formData.append("gameStatsPic", palPic);
+  if (palPic) formData.append("palPic", palPic);
 
   for (const pair of formData.entries()) {
     console.log('%%%%%%%', pair);
