@@ -95,9 +95,9 @@ function OnePalPage() {
                 {userPals[0].userId === sessionUser.id &&
                   <div className='one-pal-edit-delete-btn'>
                     <Link to={`/myepal/${palId}/edit`}>
-                      <button className='submit-button'>Edit Game</button>
+                      <button className='edit-pal-submit-button'>Edit Game</button>
                     </Link>
-                    <button className='submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
+                    <button className='delete-submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
                   </div> }
               </div>
             </div>

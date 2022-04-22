@@ -177,10 +177,12 @@ function EditPalFormPage() {
                   }
                   {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
-                {gameStatsPic ?
-                  <img className='loaded-img' src={gameStatsPic}/> :
-                  <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}/>
+                {gameStatsPic &&
+                  <img className='loaded-img' src={gameStatsPic}/>
                 }
+                {/* {gameStatsPic &&
+                  <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}/>
+                } */}
               <input className='input' id='screenshot'
                 placeholder='Showcase your skills by uploading a screenshot'
                 type='file'
