@@ -61,6 +61,8 @@ function CreatePalFormPage() {
     }
   };
 
+  // const objErrors = Object.assign({}, errors)
+
   useEffect(() => {
     dispatch(loadAllGames());
     // dispatch(loadAllUsers());

@@ -7,7 +7,7 @@
   width: 100%;
   height: 59px;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, .20);
-  padding: 19px 15px 19px 15px;
+  padding: 0 15px 0 15px;
   z-index: 2;
 }
 
@@ -32,14 +32,14 @@
 .navlink-ePal:hover {
   color: #7041e6;
   border-bottom: 5px solid #7041e6;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
   transition: 0.2s ease-in;
 }
 
 .navlink-ePal:focus {
   color: #7041e6;
   border-bottom: 5px solid #7041e6;
-  padding-bottom: 15px;
+  padding-bottom: 12px;
 }
 
 .navlink-apply-ePal {
@@ -48,9 +48,6 @@
   padding: 7px 15px 7px 15px;
   color: white;
   border-radius: 20px;
-  top: 0;
-  left: 0;
-  width: 100%;
   height: 100%;
   opacity: 1;
   z-index: -2;

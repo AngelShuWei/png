@@ -9,6 +9,7 @@ import SignupFormModal from '../SignupFormModal';
 
 function Navigation({isLoaded}) {
   const sessionUser = useSelector(state => state.session.user);
+  console.log(sessionUser);
 
   let sessionLinks;
   if (sessionUser) { //if there is a sessionUser
@@ -31,7 +32,11 @@ function Navigation({isLoaded}) {
         <div><NavLink className='navlink-ePal' exact to="/epals">ePal</NavLink></div>
       </div>
       <div className='navbar-content'>
-        <NavLink className='navlink-apply-ePal' exact to="/applyepal">Become an ePal</NavLink>
+        {sessionUser &&
+          <div>
+            <NavLink className='navlink-apply-ePal' exact to="/applyepal">Become an ePal</NavLink>
+          </div>
+        }
         {isLoaded && sessionLinks}
       </div>
     </nav>
