@@ -27,6 +27,7 @@ function UserPalPage() {
   return (
     <>
         <div className='user-pal-page-container'>
+          <div className='user-pal-my-services-text'>My Services</div>
           {userPals.map(userPal => (
             <div key={userPal.id}>
               <Link to={`/epals/${userPal.id}`}>

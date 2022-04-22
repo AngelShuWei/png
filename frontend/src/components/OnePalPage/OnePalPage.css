@@ -134,6 +134,10 @@
   cursor: pointer;
 }
 
+/* .one-pal-right-container {
+  position: relative;
+} */
+
 .one-pal-games {
   position: absolute;
   color: white;

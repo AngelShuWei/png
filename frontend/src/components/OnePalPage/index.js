@@ -103,6 +103,7 @@ function OnePalPage() {
             </div>
           </div>
           <div className='one-pal-right-container'>
+            {/* <div className='one-pal-right-content'> */}
             <div className='one-pal-games'>Games</div>
             <div className='one-pal-service-list'><img className='service-list-img' src={onePal[0].Game.gamePic}/></div>
             <div className='one-pal-game-content'>
@@ -160,6 +161,7 @@ function OnePalPage() {
                   </div>
                 )) : <div/>}
               </div>
+            {/* </div> */}
             </div>
           </div>
         </div>
