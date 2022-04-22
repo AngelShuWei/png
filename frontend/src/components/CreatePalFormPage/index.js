@@ -61,19 +61,19 @@ function CreatePalFormPage() {
     }
   };
 
-  console.log(gameId > 0)
-  console.log(server.length >= 1)
-  console.log(rank.length >= 1 )
-  console.log(position.length >= 1)
-  console.log(style.length >= 1)
-  console.log('gamestatpics', gameStatsPic !== null)
-  console.log(title.length >= 1)
-  console.log(description.length >= 1)
-  console.log('palpic', palPic !== null)
-  console.log(price >= 0)
-  console.log(address.length >= 1)
-  console.log(city.length >= 1)
-  console.log(state.length >= 1);
+  // console.log(gameId > 0)
+  // console.log(server.length >= 1)
+  // console.log(rank.length >= 1 )
+  // console.log(position.length >= 1)
+  // console.log(style.length >= 1)
+  // console.log('gamestatpics', gameStatsPic !== null)
+  // console.log(title.length >= 1)
+  // console.log(description.length >= 1)
+  // console.log('palpic', palPic !== null)
+  // console.log(price >= 0)
+  // console.log(address.length >= 1)
+  // console.log(city.length >= 1)
+  // console.log(state.length >= 1);
 
   const isFormValid = () => {
     return (gameId > 0 && server.length >= 1 && rank.length >= 1 && position.length >= 1 && style.length >= 1 && gameStatsPic !== null && title.length >= 1 && description.length >= 1 && palPic !== null && price >= 2 && address.length >= 1 && city.length >= 1 && state.length >= 1)

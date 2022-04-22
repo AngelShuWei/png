@@ -70,7 +70,9 @@ function EditPalFormPage() {
   const [city, setCity] = useState(pal?.city);
   const [state, setState] = useState(pal?.state);
   const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
+  const [isGameStatsUploaded, setIsGameStatsUploaded] = useState(true);
   const [palPicLoaded, setPalPicLoaded] = useState(true);
+  const [isPalPicUploaded, setIsPalPicUploaded] = useState(true);
   const [errors, setErrors] = useState([]);
 
 
@@ -90,9 +92,11 @@ function EditPalFormPage() {
 
   const updateFileGameStats = (e) => {
     const file = e.target.files[0];
+
     if (file) {
       setGameStatsPic(file);
       setGameStatsPicLoaded(true);
+      setIsGameStatsUploaded(false);
     }
   };
 
@@ -101,6 +105,7 @@ function EditPalFormPage() {
     if (file) {
       setPalPic(file);
       setPalPicLoaded(true);
+      setIsPalPicUploaded(false);
     }
   };
 
@@ -172,18 +177,18 @@ function EditPalFormPage() {
             />
           <div className='screenshot-label'>Screenshot</div>
             <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-              <label className='screenshot-input-label' htmlFor="screenshot">
+              <label className='screenshot-input-label' id='output' htmlFor="screenshot">
                   {!gameStatsPic &&
                     <i className="fa-lg fa-regular fa-image"/>
                   }
                   {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
-                {gameStatsPic &&
+                {isGameStatsUploaded &&
                   <img className='loaded-img' src={gameStatsPic}/>
                 }
-                {/* {gameStatsPic &&
+                {!isGameStatsUploaded &&
                   <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}/>
-                } */}
+                }
               <input className='input' id='screenshot'
                 placeholder='Showcase your skills by uploading a screenshot'
                 type='file'
@@ -226,8 +231,11 @@ function EditPalFormPage() {
                 }
                   {palPicLoaded && <i className="fa-solid fa-check"/>}
               </label>
-                {palPic &&
+                {isPalPicUploaded &&
                   <img className='loaded-img' src={palPic}/>
+                }
+                {!isPalPicUploaded &&
+                  <img className='loaded-img' src={URL.createObjectURL(palPic)}/>
                 }
                 <input className='input'
                   placeholder='Please upload your selfie here as the service cover image'
