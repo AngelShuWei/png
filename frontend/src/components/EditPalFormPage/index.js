@@ -69,9 +69,9 @@ function EditPalFormPage() {
   const [address, setAddress] = useState(pal?.address);
   const [city, setCity] = useState(pal?.city);
   const [state, setState] = useState(pal?.state);
-  const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
+  // const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
   const [isGameStatsUploaded, setIsGameStatsUploaded] = useState(true);
-  const [palPicLoaded, setPalPicLoaded] = useState(true);
+  // const [palPicLoaded, setPalPicLoaded] = useState(true);
   const [isPalPicUploaded, setIsPalPicUploaded] = useState(true);
   const [errors, setErrors] = useState([]);
 
@@ -95,7 +95,7 @@ function EditPalFormPage() {
 
     if (file) {
       setGameStatsPic(file);
-      setGameStatsPicLoaded(true);
+      // setGameStatsPicLoaded(true);
       setIsGameStatsUploaded(false);
     }
   };
@@ -104,7 +104,7 @@ function EditPalFormPage() {
     const file = e.target.files[0];
     if (file) {
       setPalPic(file);
-      setPalPicLoaded(true);
+      // setPalPicLoaded(true);
       setIsPalPicUploaded(false);
     }
   };
@@ -181,7 +181,7 @@ function EditPalFormPage() {
                   {!gameStatsPic &&
                     <i className="fa-lg fa-regular fa-image"/>
                   }
-                  {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
+                  <i className="fa-solid fa-check"/>
               </label>
                 {isGameStatsUploaded &&
                   <img className='loaded-img' src={gameStatsPic}/>
@@ -229,7 +229,7 @@ function EditPalFormPage() {
                 {!palPic &&
                   <i className="fa-lg fa-regular fa-image"/>
                 }
-                  {palPicLoaded && <i className="fa-solid fa-check"/>}
+                <i className="fa-solid fa-check"/>
               </label>
                 {isPalPicUploaded &&
                   <img className='loaded-img' src={palPic}/>
