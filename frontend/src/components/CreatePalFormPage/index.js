@@ -181,7 +181,7 @@ function CreatePalFormPage() {
 
           <label className='label-input'>Price</label>
             <input className='input' id='price'
-              placeholder='The price range is 2.00-999.00'
+              placeholder='The price range is 2.00-999.00 per game'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}
