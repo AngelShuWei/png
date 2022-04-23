@@ -50,28 +50,30 @@ function EditPalFormPage() {
 
   // if (isLoaded) {
   // }
+
+  const nickname = useSelector(state => state.session.user.nickname);
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
-  const [gameId, setGameId] = useState(pal?.Game?.id);
+  const [gameId, setGameId] = useState(null);
 
-  const [server, setServer] = useState(pal?.server);
-  const [rank, setRank] = useState(pal?.rank);
-  const [position, setPosition] = useState(pal?.position);
-  const [style, setStyle] = useState(pal?.style);
-  const [gameStatsPic, setGameStatsPic] = useState(pal?.gameStatsPic);
+  const [server, setServer] = useState(null);
+  const [rank, setRank] = useState(null);
+  const [position, setPosition] = useState(null);
+  const [style, setStyle] = useState(null);
+  const [gameStatsPic, setGameStatsPic] = useState(null);
 
-  const nickname = useSelector(state => state.session.user.nickname);
-  const [title, setTitle] = useState(pal?.title);
-  const [description, setDescription] = useState(pal?.description);
-  const [palPic, setPalPic] = useState(pal?.palPic);
-  const [price, setPrice] = useState(pal?.price);
-  const [address, setAddress] = useState(pal?.address);
-  const [city, setCity] = useState(pal?.city);
-  const [state, setState] = useState(pal?.state);
-  const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [palPic, setPalPic] = useState(null);
+  const [price, setPrice] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [city, setCity] = useState(null);
+  const [state, setState] = useState(null);
+
+  // const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
   const [isGameStatsUploaded, setIsGameStatsUploaded] = useState(true);
-  const [palPicLoaded, setPalPicLoaded] = useState(true);
+  // const [palPicLoaded, setPalPicLoaded] = useState(true);
   const [isPalPicUploaded, setIsPalPicUploaded] = useState(true);
   const [errors, setErrors] = useState([]);
 
@@ -95,7 +97,7 @@ function EditPalFormPage() {
 
     if (file) {
       setGameStatsPic(file);
-      setGameStatsPicLoaded(true);
+      // setGameStatsPicLoaded(true);
       setIsGameStatsUploaded(false);
     }
   };
@@ -104,7 +106,7 @@ function EditPalFormPage() {
     const file = e.target.files[0];
     if (file) {
       setPalPic(file);
-      setPalPicLoaded(true);
+      // setPalPicLoaded(true);
       setIsPalPicUploaded(false);
     }
   };
@@ -115,9 +117,34 @@ function EditPalFormPage() {
 
   useEffect(() => {
     dispatch(loadAllPals())
-    .then(() => dispatch(loadAllGames()))
-    .then(() => setIsLoaded(true));
+    dispatch(loadAllGames())
+    // .then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (pal && allGames) {
+      setIsLoaded(true)
+      setGameId(pal.Game?.id)
+      setServer(pal.server);
+      setRank(pal.rank);
+      setPosition(pal.position);
+      setStyle(pal.style);
+      setGameStatsPic(pal.gameStatsPic);
+
+      setTitle(pal.title);
+      setDescription(pal.description);
+      setPalPic(pal.palPic);
+      setPrice(pal.price);
+      setAddress(pal.address);
+      setCity(pal.city);
+      setState(pal.state);
+
+      // setGameStatsPicLoaded(true);
+      setIsGameStatsUploaded(true);
+      // setPalPicLoaded(true);
+      setIsPalPicUploaded(true);
+    }
+  }, [pal, allGames])
 
   return (
     <>
@@ -126,7 +153,7 @@ function EditPalFormPage() {
         <form className='form-container' onSubmit={handleSubmit}>
           <div className='choose-a-game-div'>Choose a Game</div>
           <div className='game-select'>
-            {allGames.map(game => ( //needs to be a label so can click on the image. otherwise only can click on circle
+            {allGames?.map(game => ( //needs to be a label so can click on the image. otherwise only can click on circle
                 <label htmlFor={game.id} key={game.id}>
                   <img className='game-img' src={game.gamePic}/>
                     <div>{game.gameName}
@@ -181,7 +208,7 @@ function EditPalFormPage() {
                   {!gameStatsPic &&
                     <i className="fa-lg fa-regular fa-image"/>
                   }
-                  {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
+                  <i className="fa-solid fa-check"/>
               </label>
                 {isGameStatsUploaded &&
                   <img className='loaded-img' src={gameStatsPic}/>
@@ -229,7 +256,7 @@ function EditPalFormPage() {
                 {!palPic &&
                   <i className="fa-lg fa-regular fa-image"/>
                 }
-                  {palPicLoaded && <i className="fa-solid fa-check"/>}
+                  <i className="fa-solid fa-check"/>
               </label>
                 {isPalPicUploaded &&
                   <img className='loaded-img' src={palPic}/>
