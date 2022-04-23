@@ -85,7 +85,9 @@ function OnePalPage() {
             <div className='one-pal-left-content'>
               <img className='one-pal-cover-pic' src={onePal[0]?.palPic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
               <img className='one-pal-avatar-pic' src={allUsers[0]?.profilePic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
-              <div className='one-pal-nickname'>{allUsers[0]?.nickname}</div>
+              <div className='test'>
+                <div className='one-pal-nickname'>{allUsers[0]?.nickname}</div>
+              </div>
               <div className='one-pal-avg-rating'><i className="fa-xs fa-solid fa-star"/> {allReviews.length ? avgSum : '---'} rating</div>
               <div className='one-pal-user-info'>
                 <div className='one-pal-bio-text'>Bio:</div>
