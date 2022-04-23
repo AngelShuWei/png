@@ -38,12 +38,12 @@ function ProfileButton({user}) {
     <>
       <button className="nav-user-profile-button" onClick= {openMenu}>
         {/* <i className= "fas fa-user-circle" /> */}
-        <img className='nav-user-profile-img' src={user.profilePic}></img>
+        <img className='nav-user-profile-img' src={user.profilePic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
       </button>
       {showMenu && (
         <div className="profile-dropdown">
           <div className='profile-dropdown-top'>
-            <img className='profile-dropdown-img' src={user.profilePic}/>
+            <img className='profile-dropdown-img' src={user.profilePic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
             <div>{user.username}</div>
           </div>
           <div className='profile-dropdown-bottom'>

@@ -121,7 +121,7 @@
   max-height: 200px;
   border-radius: 4px 4px 0 0;
   resize: none;
-  overflow-y: hidden;
+  overflow-y: scroll;
   padding: 8px 11px;
   /* width: 800px; */
 }

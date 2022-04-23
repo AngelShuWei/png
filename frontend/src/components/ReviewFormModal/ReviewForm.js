@@ -17,7 +17,7 @@ function ReviewForm({setShowModal}) {
   const isFormValid = () => {
     return (rating >= 1);
   }
-  
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
