@@ -53,8 +53,6 @@ function OnePalPage() {
     userPals = pals.filter(pal => pal.id === +palId);
 
     // date = new Date(allReviews[0].updatedAt);
-
-    // console.log(date);
   };
 
   //calculation to get avg ratings
@@ -85,9 +83,11 @@ function OnePalPage() {
         <div className='one-pal-bottom'>
           <div className='one-pal-left-container'>
             <div className='one-pal-left-content'>
-              <img className='one-pal-cover-pic' src={onePal[0]?.palPic}></img>
-              <img className='one-pal-avatar-pic' src={allUsers[0]?.profilePic}></img>
-              <div className='one-pal-nickname'>{allUsers[0]?.nickname}</div>
+              <img className='one-pal-cover-pic' src={onePal[0]?.palPic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
+              <img className='one-pal-avatar-pic' src={allUsers[0]?.profilePic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
+              <div className='test'>
+                <div className='one-pal-nickname'>{allUsers[0]?.nickname}</div>
+              </div>
               <div className='one-pal-avg-rating'><i className="fa-xs fa-solid fa-star"/> {allReviews.length ? avgSum : '---'} rating</div>
               <div className='one-pal-user-info'>
                 <div className='one-pal-bio-text'>Bio:</div>
@@ -95,14 +95,15 @@ function OnePalPage() {
                 {userPals[0].userId === sessionUser.id &&
                   <div className='one-pal-edit-delete-btn'>
                     <Link to={`/myepal/${palId}/edit`}>
-                      <button className='submit-button'>Edit Game</button>
+                      <button className='edit-pal-submit-button'>Edit Game</button>
                     </Link>
-                    <button className='submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
+                    <button className='delete-submit-button' onClick={() => dispatch(deletePal(palId)).then(history.push('/epals'))}>Delete Game</button>
                   </div> }
               </div>
             </div>
           </div>
           <div className='one-pal-right-container'>
+            {/* <div className='one-pal-right-content'> */}
             <div className='one-pal-games'>Games</div>
             <div className='one-pal-service-list'><img className='service-list-img' src={onePal[0].Game.gamePic}/></div>
             <div className='one-pal-game-content'>
@@ -111,7 +112,7 @@ function OnePalPage() {
                 <i className="fa-xs fa-solid fa-star"/> {allReviews.length ? avgSum : '---'} rating
               </div>
               <div className='one-pal-long-description'>{onePal[0]?.description}</div>
-              <div className='one-pal-game-stat'><img className='one-pal-game-stat-img' src={onePal[0]?.gameStatsPic}/></div>
+              <div className='one-pal-game-stat'><img className='one-pal-game-stat-img' src={onePal[0]?.gameStatsPic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/></div>
             </div>
             <div className='one-pal-service-details-container'>
               <div className='one-pal-service-details-content'>
@@ -148,9 +149,13 @@ function OnePalPage() {
               <div className='one-pal-user-reviews'>
                 {allReviews.length ? allReviews.reverse().map(review => (
                   <div className='one-pal-user-review-container' key={review?.id}>
-                    <img className='one-pal-user-review-profile-img' src={review?.User.profilePic}/>
-                    <span className='one-pal-user-review-user-nickname'>{review?.User.nickname} · </span>
-                    {/* <span className='one-pal-user-review-user-date'> {date?.getDay()} {date?.getDay() > 1 ? 'days' : 'day'} ago</span> */}
+                    <div className='one-pal-user-review-info-content'>
+                      <img className='one-pal-user-review-profile-img' src={review?.User.profilePic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
+                      <div className='one-pal-user-review-info'>
+                        <div className='one-pal-user-review-user-nickname'>{review?.User.nickname} · </div>
+                        {/* <div className='one-pal-user-review-user-date'> {date?.getDay()} {date?.getDay() > 1 ? 'days' : 'day'} ago</div> */}
+                      </div>
+                    </div>
                     <div className='one-pal-user-review-user-rating'>
                       <i className="fa-xs fa-solid fa-star"/> {review?.rating.toFixed(1)}
                     </div>
@@ -160,6 +165,7 @@ function OnePalPage() {
                   </div>
                 )) : <div/>}
               </div>
+            {/* </div> */}
             </div>
           </div>
         </div>

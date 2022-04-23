@@ -19,7 +19,6 @@ router.get('/', restoreUser, (req, res) => {
 
 const validateLogin = [
   check('credential')
-    .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Please provide a valid email or username.'),
   check('password')

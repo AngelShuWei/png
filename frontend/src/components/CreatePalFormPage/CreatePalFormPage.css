@@ -121,7 +121,7 @@
   max-height: 200px;
   border-radius: 4px 4px 0 0;
   resize: none;
-  overflow-y: hidden;
+  overflow-y: scroll;
   padding: 8px 11px;
   /* width: 800px; */
 }
@@ -173,4 +173,16 @@
 .submit-button:hover {
   background-color: rgb(141, 101, 234);
   transition: 0.2s ease-in;
+}
+
+.disabled-button {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 20px;
+  border: 1px solid gray;
+  color: gray;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 24px;
+  min-width: 120px;
+  margin-bottom: 30px;
 }

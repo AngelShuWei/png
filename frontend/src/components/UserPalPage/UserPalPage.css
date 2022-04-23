@@ -1,3 +1,9 @@
+.user-pal-my-services-text {
+  color: white;
+  font-size: 46px;
+  font-weight: 500;
+}
+
 .user-pal-page-container {
   background-color: rgb(18, 14, 27);
   min-height: 100vh;

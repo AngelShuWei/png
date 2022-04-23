@@ -8,11 +8,15 @@ function ReviewForm({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { palId } = useParams(); //palId is a string here a
+  const { palId } = useParams(); //palId is a string here
 
   const [content, setContent] = useState("");
   const [rating, setRating] = useState("");
   const [errors, setErrors] = useState([]);
+
+  const isFormValid = () => {
+    return (rating >= 1);
+  }
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -49,7 +53,12 @@ function ReviewForm({setShowModal}) {
               />
           </div>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          <button className='submit-button' id='review' type='submit'>Submit</button>
+          <div className="submit-button-container">
+            {isFormValid() ?
+              <button className='submit-button' type='submit'>Submit</button> :
+              <button className='disabled-button' type='submit' disabled={!isFormValid()}>Submit</button>
+            }
+          </div>
         </form>
       </div>
     </>

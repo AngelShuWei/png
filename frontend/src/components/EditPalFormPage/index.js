@@ -69,9 +69,15 @@ function EditPalFormPage() {
   const [address, setAddress] = useState(pal?.address);
   const [city, setCity] = useState(pal?.city);
   const [state, setState] = useState(pal?.state);
-  const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
-  const [palPicLoaded, setPalPicLoaded] = useState(true);
+  // const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(true);
+  const [isGameStatsUploaded, setIsGameStatsUploaded] = useState(true);
+  // const [palPicLoaded, setPalPicLoaded] = useState(true);
+  const [isPalPicUploaded, setIsPalPicUploaded] = useState(true);
   const [errors, setErrors] = useState([]);
+
+
+  console.log('gamestatspic----', gameStatsPic);
+  console.log('palpic====', palPic)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -86,9 +92,11 @@ function EditPalFormPage() {
 
   const updateFileGameStats = (e) => {
     const file = e.target.files[0];
+
     if (file) {
       setGameStatsPic(file);
-      setGameStatsPicLoaded(true);
+      // setGameStatsPicLoaded(true);
+      setIsGameStatsUploaded(false);
     }
   };
 
@@ -96,13 +104,18 @@ function EditPalFormPage() {
     const file = e.target.files[0];
     if (file) {
       setPalPic(file);
-      setPalPicLoaded(true);
+      // setPalPicLoaded(true);
+      setIsPalPicUploaded(false);
     }
   };
 
+  const isFormValid = () => {
+    return (gameId > 0 && server.length >= 1 && rank.length >= 1 && position.length >= 1 && style.length >= 1 && gameStatsPic !== null && title.length >= 1 && description.length >= 1 && palPic !== null && price >= 2 && address.length >= 1 && city.length >= 1 && state.length >= 1);
+  }
+
   useEffect(() => {
     dispatch(loadAllPals())
-    dispatch(loadAllGames())
+    .then(() => dispatch(loadAllGames()))
     .then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -164,12 +177,18 @@ function EditPalFormPage() {
             />
           <div className='screenshot-label'>Screenshot</div>
             <div className='intro-description'>Showcase your skills by uploading a screenshot</div>
-              <label className='screenshot-input-label' htmlFor="screenshot">
+              <label className='screenshot-input-label' id='output' htmlFor="screenshot">
                   {!gameStatsPic &&
                     <i className="fa-lg fa-regular fa-image"/>
                   }
-                  {gameStatsPicLoaded && <i className="fa-solid fa-check"/>}
+                  <i className="fa-solid fa-check"/>
               </label>
+                {isGameStatsUploaded &&
+                  <img className='loaded-img' src={gameStatsPic}/>
+                }
+                {!isGameStatsUploaded &&
+                  <img className='loaded-img' src={URL.createObjectURL(gameStatsPic)}/>
+                }
               <input className='input' id='screenshot'
                 placeholder='Showcase your skills by uploading a screenshot'
                 type='file'
@@ -207,14 +226,22 @@ function EditPalFormPage() {
           <div className='list-cover-label'>List Cover</div>
             <div className='intro-description'>Please upload your selfie here as the service cover image</div>
               <label className='list-cover-input-label' htmlFor="cover">
-                <i className="fa-lg fa-regular fa-image"/>
+                {!palPic &&
+                  <i className="fa-lg fa-regular fa-image"/>
+                }
+                <i className="fa-solid fa-check"/>
               </label>
+                {isPalPicUploaded &&
+                  <img className='loaded-img' src={palPic}/>
+                }
+                {!isPalPicUploaded &&
+                  <img className='loaded-img' src={URL.createObjectURL(palPic)}/>
+                }
                 <input className='input'
                   placeholder='Please upload your selfie here as the service cover image'
                   type="file" id='cover'
                   onChange={updateFilePalPic}
                   style={{visibility:"hidden"}}
-                  // required
                 />
 
           <div className='location-div'>Location</div>
@@ -249,7 +276,10 @@ function EditPalFormPage() {
             </select>
           <div className='line-div'/>
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          <button className='submit-button' type='submit'>Submit</button>
+          {isFormValid() ?
+            <button className='submit-button' type='submit'>Submit</button> :
+            <button className='disabled-button' type='submit' disabled={true}>Submit</button>
+          }
         </form>
         </div>
       )}
