@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { setTokenCookie, requireAuth, restoreUser} = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Pal, Game, User} = require('../../db/models');
+const { Pal, Game, Review} = require('../../db/models');
 const { multipleMulterUpload, singlePublicFileUpload, multiPartUpload } = require('../../awsS3');
 
 const validatePalInfo = [
@@ -68,7 +68,7 @@ router.post('/', multiPartUpload("gameStatsPic", "palPic"), restoreUser, validat
   const { user } = req;
   let { gameId, server, rank, position, style, nickname, title, description, price, address, city, state } = req.body;
 
-  console.log('reqfilessss@@@@@@@@@', req.files);
+  // console.log('reqfilessss@@@@@@@@@', req.files);
 
   const gameStatsPic = await singlePublicFileUpload(req.files.gameStatsPic[0]);
   const palPic = await singlePublicFileUpload(req.files.palPic[0]);
@@ -102,11 +102,10 @@ router.put('/:palId', multiPartUpload("gameStatsPic", "palPic"), validatePalInfo
 
   let { gameId, server, rank, position, style, gameStatsPic, palPic, nickname, title, description, price, address, city, state } = req.body;
 
-  // console.log('req', req)
-  console.log('reqfilessss@@@@', req.files);
-  console.log('^^^^', req.files.gameStatsPic);
-  console.log('!!!', req.files.palPic)
-  console.log('this api route workinggggggg')
+  // console.log('reqfilessss@@@@', req.files);
+  // console.log('^^^^', req.files.gameStatsPic);
+  // console.log('!!!', req.files.palPic)
+  // console.log('this api route workinggggggg')
   let fileLength = 0;
   for (key in req.files) {
     fileLength += 1;
