@@ -14,44 +14,6 @@ function EditPalFormPage() {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // let pal;
-  // let allGames;
-
-  // let gameId;
-  // let setGameId;
-
-  // let server;
-  // let setServer;
-
-  // let rank;
-  // let setRank;
-
-  // let position;
-  // let setPosition;
-  // let style;
-  // let setStyle;
-  // let gameStatsPic;
-  // let setGameStatsPic;
-
-  // let nickname;
-  // let title;
-  // let setTitle;
-  // let description;
-  // let setDescription;
-  // let palPic;
-  // let setPalPic;
-  // let price;
-  // let setPrice;
-  // let address;
-  // let setAddress;
-  // let city;
-  // let setCity;
-  // let state;
-  // let setState;
-  // let errors;
-
-  // if (isLoaded) {
-  // }
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
@@ -78,9 +40,6 @@ function EditPalFormPage() {
 
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
-
-
-  console.log('gamestatspic----', gameStatsPic);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
