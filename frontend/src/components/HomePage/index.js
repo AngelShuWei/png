@@ -1,5 +1,11 @@
 import './HomePage.css';
+import fundyBg from '../../assets/fundy-bg.jpg';
+import puffyBg from '../../assets/puffy-bg.jpg';
 import nemesisBg from '../../assets/lol-nemesis-bg.jpg';
+import vkimmBg from '../../assets/vkimm-bg.jpg';
+import IMLSBg from '../../assets/IMLS-bg.jpg';
+import supCaitlinBg from '../../assets/supcaitlin-bg.jpg';
+import tilterellaBg from '../../assets/tilterella-bg.jpg';
 import lolCard from '../../assets/lol-card.png';
 import valorantCard from '../../assets/valorant-card.png';
 import apexCard from '../../assets/apex-card-bg.png'
@@ -31,9 +37,27 @@ function HomePage() {
     return pal.Game.gameName === 'Apex Legends';
   }));
 
+  const [imgNum, setImgNum] = useState(0);
+
+  const imgBg = [fundyBg, puffyBg, nemesisBg, vkimmBg, IMLSBg, supCaitlinBg, tilterellaBg];
+
   useEffect(() => {
     dispatch(loadAllPals());
   }, [dispatch])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImgNum(e => {
+        if (e + 1 === 7) {
+          e = 0
+          return e
+        } else {
+          return e + 1
+        }
+      })
+    }, 3500)
+    return () => clearInterval(interval)
+  }, []);
 
   return (
     <>
@@ -50,7 +74,18 @@ function HomePage() {
                 </Modal>
               )}
           </div>
-          <div><img className='sliding-bg' src={nemesisBg}/></div>
+          <div className='slider-container'>
+            <div className='slider-imgs'>
+              <img className='slides' src={imgBg[imgNum]}/>
+              {/* <img className='sliding-bg' src={fundyBg}/>
+              <img className='sliding-bg' src={puffyBg}/>
+              <img className='sliding-bg' src={nemesisBg}/>
+              <img className='sliding-bg' src={vkimmBg}/>
+              <img className='sliding-bg' src={IMLSBg}/>
+              <img className='sliding-bg' src={supCaitlinBg}/>
+              <img className='sliding-bg' src={tilterellaBg}/> */}
+            </div>
+          </div>
         </div>
         <div className='home-page-middle-container'>
           <div className='mission-statement-container'>

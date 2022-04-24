@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, Link } from 'react-router-dom';
 import { loadAllPals } from '../../store/pals';
 import { loadAllReviews } from '../../store/reviews';
-import userPalBg from '../../assets/user-pal-bg.png'
+import userPalBg from '../../assets/png-bg-blur.png'
 
 function AllPalPage() {
   const dispatch = useDispatch();
@@ -16,13 +16,13 @@ function AllPalPage() {
   // });
   // console.log("====", reviews);
 
-  // //calc to get avg ratings
+  //calculation to get avg ratings
   // let sum = 0;
   // allReviews.forEach(review => {
   //   sum += review.rating;
   // })
   // const avgSum = (sum / allReviews.length).toFixed(1);
-  // //end of calc
+  // end of calculation
 
   useEffect(() => {
     dispatch(loadAllPals());
@@ -32,7 +32,9 @@ function AllPalPage() {
   return (
     <>
       <div className='pals-page-container'>
-        {/* <div><img className='pals-one-pal-bg' src={userPalBg}/></div> */}
+        <div className='pals-page-top-container'>
+          <img className='pals-one-pal-bg' src={userPalBg}/>
+        </div>
         <div className='for-you'>For You</div>
           <div className='pals-card-list'>
             {allPals.map(pal =>
@@ -53,11 +55,6 @@ function AllPalPage() {
                   </div>
                   <div>
                     <span className='pal-card-footer'>{pal.price}/Game</span>
-                    {/* <span>
-                      {reviews.map(review => (
-                        review.rating
-                      ))}
-                    </span> */}
                   </div>
                 </Link>
               </div>

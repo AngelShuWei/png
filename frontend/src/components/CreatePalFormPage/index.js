@@ -78,8 +78,10 @@ function CreatePalFormPage() {
   const isFormValid = () => {
     return (gameId > 0 && server.length >= 1 && rank.length >= 1 && position.length >= 1 && style.length >= 1 && gameStatsPic !== null && title.length >= 1 && description.length >= 1 && palPic !== null && price >= 2 && address.length >= 1 && city.length >= 1 && state.length >= 1)
   }
-  console.log('form valid?', isFormValid())
 
+  window.onbeforeunload = function() {
+    return "Data will be lost if you refresh/leave the page, are you sure?";
+  };
   // const objErrors = Object.assign({}, errors)
 
   useEffect(() => {
@@ -181,7 +183,7 @@ function CreatePalFormPage() {
 
           <label className='label-input'>Price</label>
             <input className='input' id='price'
-              placeholder='The price range is 2.00-999.00'
+              placeholder='The price range is 2.00-999.00 per game'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}
