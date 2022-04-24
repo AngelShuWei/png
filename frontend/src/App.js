@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 import {NavLink, Route, Switch} from 'react-router-dom';
 import * as sessionActions from "./store/session";
-// import { loadAllPals } from './store/pals';
+import { loadAllPals } from './store/pals';
 // import { loadAllGames } from './store/games';
 // import { loadAllUsers } from './store/users';
 // import { loadAllReviews } from './store/reviews';
@@ -22,9 +22,9 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
+    dispatch(loadAllPals());
     // dispatch(loadAllGames());
     // dispatch(loadAllUsers());
-    // dispatch(loadAllPals());
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));  //if there is user, then set load to true
   }, [dispatch]);
 

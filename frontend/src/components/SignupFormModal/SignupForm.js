@@ -29,7 +29,14 @@ function SignupForm({setShowModal}) {
   // console.log(profilePic !== null)
 
   const isFormValid = () => {
-    return (email.length >= 1 && username.length >= 1 && password.length >= 1 && confirmPassword.length >= 1 && nickname.length >= 1 && bio.length >= 1 && gender.length >= 1 && profilePic !== null)
+    return (email.length >= 6 &&
+      username.length >= 4 &&
+      password.length >= 6 &&
+      confirmPassword.length >= 1 &&
+      nickname.length >= 1 &&
+      bio.length >= 10 &&
+      gender.length >= 1 &&
+      profilePic !== null)
   }
 
   const handleSubmit = (e) => {
@@ -72,32 +79,43 @@ function SignupForm({setShowModal}) {
         <form className='login-form' onSubmit={handleSubmit}>
           <label className='login-label-input'>
             Email
+            {email.length < 6 &&
+                <div className='alert'>6 characters minimum</div>
+            }
             <input className='login-input'
               placeholder='Please enter your email'
               type="text"
               value={email}
+              maxLength={50}
               onChange={(e) => setEmail(e.target.value)}
-              // required
               />
           </label>
 
           <label className='login-label-input'>
             Username
+            {username.length < 4 &&
+                <div className='alert'>4 characters minimum</div>
+            }
             <input className='login-input'
               placeholder='Please enter your username'
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              maxLength={30}
               // required
             />
           </label>
 
           <label className='login-label-input'>
             Password
+            {password.length < 6 &&
+                <div className='alert'>6 characters minimum</div>
+            }
             <input className='login-input'
               placeholder='Please enter your password'
               type="password"
               value={password}
+              maxLength={15}
               onChange={(e) => setPassword(e.target.value)}
               // required
             />
@@ -109,6 +127,7 @@ function SignupForm({setShowModal}) {
               placeholder='Please confirm your password'
               type="password"
               value={confirmPassword}
+              maxLength={15}
               onChange={(e) => setConfirmPassword(e.target.value)}
               // required
               />
@@ -120,6 +139,7 @@ function SignupForm({setShowModal}) {
               placeholder='Please enter your nickname'
               type="text"
               value={nickname}
+              maxLength={30}
               onChange={(e) => setNickname(e.target.value)}
               // required
             />
@@ -127,12 +147,15 @@ function SignupForm({setShowModal}) {
 
           <label className='login-label-input'>
             Bio
+            {bio.length < 10 &&
+                <div className='alert'>10 characters minimum</div>
+            }
             <textarea className='textarea' id='signup' rows="4"
               placeholder='Write a short bio to introduce yourself (min 10 characters)'
               type="text"
               value={bio}
+              maxLength={500}
               onChange={(e) => setBio(e.target.value)}
-              // required
             />
             <div className='textarea-counter'>{bio.length}/500</div>
           </label>
@@ -144,7 +167,6 @@ function SignupForm({setShowModal}) {
               <option>Female</option>
               <option>Male</option>
               <option>Nonconforming</option>
-              {/* required */}
             </select>
           </label>
 

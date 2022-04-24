@@ -14,44 +14,6 @@ function EditPalFormPage() {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // let pal;
-  // let allGames;
-
-  // let gameId;
-  // let setGameId;
-
-  // let server;
-  // let setServer;
-
-  // let rank;
-  // let setRank;
-
-  // let position;
-  // let setPosition;
-  // let style;
-  // let setStyle;
-  // let gameStatsPic;
-  // let setGameStatsPic;
-
-  // let nickname;
-  // let title;
-  // let setTitle;
-  // let description;
-  // let setDescription;
-  // let palPic;
-  // let setPalPic;
-  // let price;
-  // let setPrice;
-  // let address;
-  // let setAddress;
-  // let city;
-  // let setCity;
-  // let state;
-  // let setState;
-  // let errors;
-
-  // if (isLoaded) {
-  // }
   const pal = useSelector(state => state.pals[palId]);
   const allGames = useSelector(state => Object.values(state.games));
 
@@ -78,10 +40,6 @@ function EditPalFormPage() {
 
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
-
-
-  console.log('gamestatspic----', gameStatsPic);
-  console.log('palpic====', palPic)
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -128,13 +86,13 @@ function EditPalFormPage() {
       state.length >= 1)
   }
 
-  window.onbeforeunload = function() {
-    return "Data will be lost if you refresh/leave the page, are you sure?";
-  };
+  // window.onbeforeunload = function() {
+  //   return "Data will be lost if you refresh/leave the page, are you sure?";
+  // };
 
   useEffect(() => {
-    dispatch(loadAllPals())
-    .then(() => dispatch(loadAllGames()))
+    // dispatch(loadAllPals())
+    dispatch(loadAllGames())
     .then(() => setIsLoaded(true));
   }, [dispatch]);
 
@@ -221,7 +179,7 @@ function EditPalFormPage() {
           <div className='bio-div'>Bio</div>
           <label className='intro-label'>Introduction</label>
             <div className='intro-description'>Use an eye-catching one-liner to gain potential clients</div>
-            {title.length < 10 &&
+            {title?.length < 10 &&
               <div className='alert'>10 characters minimum</div>
             }
             <input className='input'
@@ -233,7 +191,7 @@ function EditPalFormPage() {
             />
 
           <label className='label-input' id='detailed-description'>Detailed self-introduction</label>
-              {description.length < 10 &&
+              {description?.length < 10 &&
                 <div className='alert'>10 characters minimum</div>
               }
               <textarea className='textarea' rows="4"
