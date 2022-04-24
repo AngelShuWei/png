@@ -19,14 +19,14 @@ const validatePalInfo = [
     .isLength({ min: 1 }, { max: 30 })
     .withMessage('Please provide a server with max 30 characters.'),
   check('rank')
-    .isLength({ min: 1 }, { max: 15 })
-    .withMessage('Please provide a rank with max 15 characters.'),
+    .isLength({ min: 1 }, { max: 30 })
+    .withMessage('Please provide a rank with max 30 characters.'),
   check('position')
-    .isLength({ min: 1 }, { max: 15 })
-    .withMessage('Please provide a position with max 15 characters.'),
+    .isLength({ min: 1 }, { max: 30 })
+    .withMessage('Please provide a position with max 30 characters.'),
   check('style')
-    .isLength({ min: 1 }, { max: 15})
-    .withMessage('Please provide a playstyle with max 15 characters.'),
+    .isLength({ min: 1 }, { max: 30})
+    .withMessage('Please provide a playstyle with max 30 characters.'),
   // check('gameStatsPic')
   //   .exists({ checkFalsy: true })
   //   .withMessage('Please upload a valid screenshot.'),
@@ -44,10 +44,10 @@ const validatePalInfo = [
     // .isInt({ min: 2, max: 999})
     .withMessage('Please provide a price between 2.00 - 999.99.'),
   check('address')
-    .isLength({ min: 5}, { max: 30})
+    .isLength({ min: 1}, { max: 30})
     .withMessage('Please provide an address with min 5 and max 30 characters.'),
   check('city')
-    .isLength({ min: 5}, { max: 30})
+    .isLength({ min: 1}, { max: 30})
     .withMessage('Please provide a city with min 5 and max 30 characters.'),
   check('state')
     .exists({ checkFalsy: true })

@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, Link, useHistory} from "react-router-dom";
 import { createPal } from "../../store/pals";
 import { loadAllGames } from '../../store/games';
+import { Modal } from '../../context/Modal';
+import LoadingScreen from '../LoadingScreen';
+import statesArr from './StatesArr';
 // import { loadAllPals } from '../../store/pals';
 // import { loadAllUsers } from '../../store/users';
-import statesArr from './StatesArr';
 
 function CreatePalFormPage() {
   const dispatch = useDispatch();
@@ -26,12 +28,14 @@ function CreatePalFormPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [palPic, setPalPic] = useState(null);
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(2);
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [gameStatsPicLoaded, setGameStatsPicLoaded] = useState(false);
   const [palPicLoaded, setPalPicLoaded] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
@@ -76,7 +80,19 @@ function CreatePalFormPage() {
   // console.log(state.length >= 1);
 
   const isFormValid = () => {
-    return (gameId > 0 && server.length >= 1 && rank.length >= 1 && position.length >= 1 && style.length >= 1 && gameStatsPic !== null && title.length >= 1 && description.length >= 1 && palPic !== null && price >= 2 && address.length >= 1 && city.length >= 1 && state.length >= 1)
+    return (gameId > 0 &&
+      server.length >= 1 &&
+      rank.length >= 1 &&
+      position.length >= 1 &&
+      style.length >= 1 &&
+      gameStatsPic !== null &&
+      title.length >= 10 &&
+      description.length >= 10 &&
+      palPic !== null &&
+      (price >= 2 && price <= 999.99) &&
+      address.length >= 1 &&
+      city.length >= 1 &&
+      state.length >= 1)
   }
 
   window.onbeforeunload = function() {
@@ -117,6 +133,7 @@ function CreatePalFormPage() {
               placeholder='Please enter server'
               type='text'
               value={server}
+              maxLength={30}
               onChange={e => setServer(e.target.value)}
             />
 
@@ -125,6 +142,7 @@ function CreatePalFormPage() {
               placeholder='Please enter rank'
               type='text'
               value={rank}
+              maxLength={30}
               onChange={e => setRank(e.target.value)}
             />
 
@@ -133,6 +151,7 @@ function CreatePalFormPage() {
               placeholder='Please enter your position'
               type='text'
               value={position}
+              maxLength={30}
               onChange={e => setPosition(e.target.value)}
             />
 
@@ -141,6 +160,7 @@ function CreatePalFormPage() {
               placeholder='Please enter your playstyle'
               type='text'
               value={style}
+              maxLength={30}
               onChange={e => setStyle(e.target.value)}
             />
 
@@ -164,25 +184,36 @@ function CreatePalFormPage() {
           <div className='bio-div'>Bio</div>
           <label className='intro-label'>Introduction</label>
             <div className='intro-description'>Use an eye-catching one-liner to gain potential clients</div>
+            {title.length < 10 &&
+              <div className='alert'>10 characters minimum</div>
+            }
             <input className='input'
               placeholder='This sentence will be shown on the ePal list. 10 characters minimum.'
               type="text"
               value={title}
+              maxLength={50}
               onChange={e => setTitle(e.target.value)}
             />
 
           <label className='label-input' id='detailed-description'>Detailed self-introduction</label>
+              {description.length < 10 &&
+                <div className='alert'>10 characters minimum</div>
+              }
               <textarea className='textarea' rows="4"
                 placeholder='10 characters minimum'
                 type="text"
                 value={description}
+                maxLength={500}
                 onChange={e => setDescription(e.target.value)}
               />
               <div className='textarea-counter'>{description.length}/500</div>
 
           <label className='label-input'>Price</label>
+            {(price < 2 || price > 999.99) &&
+              <div className='alert'>The price range is 2.00 - 999.99 per game</div>
+            }
             <input className='input' id='price'
-              placeholder='The price range is 2.00-999.00 per game'
+              placeholder='The price range is 2.00-999.99 per game'
               type="number"
               value={price}
               onChange={e => setPrice(e.target.value)}
@@ -203,7 +234,6 @@ function CreatePalFormPage() {
                 type="file"
                 onChange={updateFilePalPic}
                 style={{visibility:"hidden"}}
-                // required
               />
 
           <div className='location-div'>Location</div>
@@ -212,6 +242,7 @@ function CreatePalFormPage() {
               placeholder='Please enter your address'
               type="text"
               value={address}
+              maxLength={30}
               onChange={e => setAddress(e.target.value)}
             />
           <label className='label-input'>City</label>
@@ -219,6 +250,7 @@ function CreatePalFormPage() {
               placeholder='Please enter your city name'
               type="text"
               value={city}
+              maxLength={30}
               onChange={e => setCity(e.target.value)}
             />
 
@@ -236,12 +268,21 @@ function CreatePalFormPage() {
                 </option>
               ))}
             </select>
+
           <div className='line-div'/>
+
           {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
-          {isFormValid() ?
-            <button className='submit-button' type='submit'>Submit</button> :
+
+          {isFormValid()?
+            <button className='submit-button' type='submit' onClick={() => setShowModal(true)}>Submit</button>:
             <button className='disabled-button' type='submit' disabled={true}>Submit</button>
           }
+          
+          {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <LoadingScreen/>
+              </Modal>
+            )}
         </form>
       </div>
     </>
