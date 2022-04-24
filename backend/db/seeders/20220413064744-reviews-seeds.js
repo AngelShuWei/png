@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Reviews', [
       {
         userId: 1,
-        palId: 1,
+        palId: 5,
         content: "Never a dull moment",
         rating: 5,
         createdAt: new Date(),
@@ -13,7 +13,7 @@ module.exports = {
       },
       {
         userId: 2,
-        palId: 2,
+        palId: 15,
         content: "Made my day",
         rating: 5,
         createdAt: new Date(),
