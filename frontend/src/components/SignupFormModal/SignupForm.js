@@ -29,7 +29,7 @@ function SignupForm({setShowModal}) {
   // console.log(profilePic !== null)
 
   const isFormValid = () => {
-    return (email.length >= 1 &&
+    return (email.length >= 6 &&
       username.length >= 4 &&
       password.length >= 6 &&
       confirmPassword.length >= 1 &&
@@ -79,11 +79,14 @@ function SignupForm({setShowModal}) {
         <form className='login-form' onSubmit={handleSubmit}>
           <label className='login-label-input'>
             Email
+            {email.length < 6 &&
+                <div className='alert'>6 characters minimum</div>
+            }
             <input className='login-input'
               placeholder='Please enter your email'
               type="text"
               value={email}
-              maxLength={256}
+              maxLength={50}
               onChange={(e) => setEmail(e.target.value)}
               />
           </label>
@@ -112,6 +115,7 @@ function SignupForm({setShowModal}) {
               placeholder='Please enter your password'
               type="password"
               value={password}
+              maxLength={15}
               onChange={(e) => setPassword(e.target.value)}
               // required
             />
@@ -123,6 +127,7 @@ function SignupForm({setShowModal}) {
               placeholder='Please confirm your password'
               type="password"
               value={confirmPassword}
+              maxLength={15}
               onChange={(e) => setConfirmPassword(e.target.value)}
               // required
               />
@@ -151,7 +156,6 @@ function SignupForm({setShowModal}) {
               value={bio}
               maxLength={500}
               onChange={(e) => setBio(e.target.value)}
-              // required
             />
             <div className='textarea-counter'>{bio.length}/500</div>
           </label>
@@ -163,7 +167,6 @@ function SignupForm({setShowModal}) {
               <option>Female</option>
               <option>Male</option>
               <option>Nonconforming</option>
-              {/* required */}
             </select>
           </label>
 

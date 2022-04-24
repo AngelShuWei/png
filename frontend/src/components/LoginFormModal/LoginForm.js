@@ -15,7 +15,8 @@ function LoginForm() {
   const [showModal, setShowModal] = useState(true);
 
   const isFormValid = () => {
-    return (credential.length >= 1 && password.length >= 1)
+    return (credential.length >= 4 &&
+      password.length >= 6)
   }
 
   const handleSubmit = (e) => {
@@ -62,6 +63,7 @@ function LoginForm() {
                 placeholder='Please enter your Username or Email'
                 type="text"
                 value={credential}
+                maxLength={50}
                 onChange={e => setCredential(e.target.value)}
                 // required
               />
@@ -72,6 +74,7 @@ function LoginForm() {
                 placeholder='Please enter your password'
                 type="password"
                 value={password}
+                maxLength={15}
                 onChange={(e) => setPassword(e.target.value)}
                 // required
                 />
