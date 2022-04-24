@@ -3,7 +3,7 @@ import {useDispatch} from 'react-redux';
 import {NavLink, Route, Switch} from 'react-router-dom';
 import * as sessionActions from "./store/session";
 import { loadAllPals } from './store/pals';
-import { loadAllGames } from './store/games';
+// import { loadAllGames } from './store/games';
 // import { loadAllUsers } from './store/users';
 // import { loadAllReviews } from './store/reviews';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';

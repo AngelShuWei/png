@@ -19,7 +19,7 @@ const validateSignup = [
     //   })
     // }),
   check('username')
-    .isLength({ min: 4 })
+    .isLength({ min: 4, max: 30 })
     .withMessage('Please provide an unique username with at least 4 characters.'),
   check('username')
     .not()
