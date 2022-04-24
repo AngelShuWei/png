@@ -132,17 +132,16 @@ function EditPalFormPage() {
           <div className='game-select'>
             {allGames.map(game => ( //needs to be a label so can click on the image. otherwise only can click on circle
                 <label htmlFor={game.id} key={game.id}>
+                  <input id={game.id}
+                    name='game' //binds all the inputs to one name so now can only select one out of the options
+                    type="radio"
+                    value={game.id}
+                    defaultChecked={game.id === gameId}
+                    onChange={e => setGameId(e.target.value)}
+                    style={{visibility:"hidden"}}
+                    />
                   <img className='game-img' src={game.gamePic}/>
-                    <div>{game.gameName}
-                      <input id={game.id}
-                        name='game' //binds all the inputs to one name so now can only select one out of the options
-                        type="radio"
-                        value={game.id}
-                        defaultChecked={game.id === gameId}
-                        onChange={e => setGameId(e.target.value)}
-                        // required
-                      />
-                    </div>
+                  <div>{game.gameName}</div>
                 </label>
             ))}
           </div>

@@ -24,7 +24,7 @@
 
 .game-select {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -36,6 +36,14 @@
 
 .game-img:hover {
   border: 2px solid #7041E6;
+}
+
+input[type=radio]:checked ~ img {
+  border: 2px solid #7041E6;
+}
+
+.test {
+  display: flex;
 }
 
 .label-input, .intro-label, .screenshot-label, .state-label, .list-cover-label {
