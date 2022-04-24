@@ -96,8 +96,7 @@ function EditPalFormPage() {
 
   const updateFileGameStats = (e) => {
     const file = e.target.files[0];
-
-    if (file) {
+    if (file && file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
       setGameStatsPic(file);
       // setGameStatsPicLoaded(true);
       setIsGameStatsUploaded(false);
@@ -106,7 +105,7 @@ function EditPalFormPage() {
 
   const updateFilePalPic = (e) => {
     const file = e.target.files[0];
-    if (file) {
+    if (file && file.name.match(/\.(jpg|jpeg|png|gif)$/)) {
       setPalPic(file);
       // setPalPicLoaded(true);
       setIsPalPicUploaded(false);
@@ -319,7 +318,7 @@ function EditPalFormPage() {
             <button className='submit-button' type='submit' onClick={() => setShowModal(true)}>Submit</button> :
             <button className='disabled-button' type='submit' disabled={true}>Submit</button>
           }
-        
+
           {showModal && (
               <Modal onClose={() => setShowModal(false)}>
                 <LoadingScreen/>
