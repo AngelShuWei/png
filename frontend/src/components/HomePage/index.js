@@ -41,9 +41,9 @@ function HomePage() {
 
   const imgBg = [fundyBg, puffyBg, nemesisBg, vkimmBg, IMLSBg, supCaitlinBg, tilterellaBg];
 
-  useEffect(() => {
-    dispatch(loadAllPals());
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(loadAllPals());
+  // }, [dispatch])
 
   useEffect(() => {
     const interval = setInterval(() => {

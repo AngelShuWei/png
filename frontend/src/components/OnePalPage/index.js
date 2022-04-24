@@ -33,6 +33,8 @@ function OnePalPage() {
   let userPals;
   let date;
 
+  console.log('reviews', reviews);
+
   if (isLoaded) { //need conditional because only when page is loaded then we can get the filters, otherwise can break page if trying to stuff without stuff being there in state
     onePal = pals.filter(pal => {
       return pal.id === +palId;
@@ -65,9 +67,9 @@ function OnePalPage() {
 
   useEffect(() => { //eliminates possibilities of race conditions because need to complete all dispatches before page will load
     dispatch(loadAllReviews())
-    .then(() => dispatch(loadAllGames()))
     .then(() => dispatch(loadAllUsers()))
-    .then(() => dispatch(loadAllPals()))
+    // .then(() => dispatch(loadAllGames()))
+    // .then(() => dispatch(loadAllPals()))
     .then(() => setIsLoaded(true));
   }, [dispatch]);
 

@@ -17,12 +17,13 @@ function UserPalPage() {
 
   const userPals = pals.filter(pal => pal.userId === sessionUser.id);
 
-  useEffect(() => {
-    // dispatch(loadAllReviews());
-    // dispatch(loadAllGames());
-    // dispatch(loadAllUsers());
-    dispatch(loadAllPals());
-  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(loadAllReviews());
+  //   dispatch(loadAllGames());
+  //   dispatch(loadAllUsers());
+  //   dispatch(loadAllPals());
+  // }, [dispatch]);
 
   return (
     <>

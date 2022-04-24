@@ -97,15 +97,12 @@ function CreatePalFormPage() {
       state.length >= 1)
   }
 
-  window.onbeforeunload = function() {
-    return "Data will be lost if you refresh/leave the page, are you sure?";
-  };
-  // const objErrors = Object.assign({}, errors)
+  // window.onbeforeunload = function() {
+  //   return "Data will be lost if you refresh/leave the page, are you sure?";
+  // };
 
   useEffect(() => {
     dispatch(loadAllGames());
-    // dispatch(loadAllUsers());
-    // dispatch(loadAllPals());
   }, [dispatch]);
 
   return (

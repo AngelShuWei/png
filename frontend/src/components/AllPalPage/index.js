@@ -10,6 +10,7 @@ function AllPalPage() {
   const dispatch = useDispatch();
   const allPals = useSelector(state => Object.values(state.pals));
   const reviews = useSelector(state => Object.values(state.reviews));
+  console.log('reviewss', reviews)
 
   // const allReviews = reviews.filter(review => {
   //   return review.palId === palId;
@@ -25,7 +26,7 @@ function AllPalPage() {
   // end of calculation
 
   useEffect(() => {
-    dispatch(loadAllPals());
+    // dispatch(loadAllPals());
     dispatch(loadAllReviews());
   }, [dispatch])
 
