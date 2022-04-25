@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf"; //used to fetch a CRSF token. App must send req header called X-SRF-TOKEN w/ the vale fetch
 
 export const SET_USER = "session/setUser";
+export const UPDATE_USER = "session/updateUser";
 export const REMOVE_USER = "session/removeUser";
 
 const setUser = (user) => {
@@ -9,6 +10,13 @@ const setUser = (user) => {
     user
   };
 };
+
+const updateUser = (user) => {
+  return {
+    type: UPDATE_USER,
+    user
+  }
+}
 
 const removeUser = () => {
   return {
@@ -44,7 +52,6 @@ export const login = (user) => async(dispatch) => {
 
 export const signup = (user) => async(dispatch) => {
   const {email, password, username, nickname, bio, gender, profilePic} = user;
-  console.log("this is user", user);
 
   const formData = new FormData();
   formData.append("username", username);
@@ -53,6 +60,7 @@ export const signup = (user) => async(dispatch) => {
   formData.append("nickname", nickname);
   formData.append("bio", bio);
   formData.append("gender", gender);
+
   if (profilePic) formData.append("profilePic", profilePic);
 
   console.log(formData);
@@ -68,6 +76,34 @@ export const signup = (user) => async(dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data.user))
+  }
+  return response;
+}
+
+export const updateProfile = (user) => {
+  const {email, password, username, nickname, bio, gender, profilePic} = user;
+
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("nickname", nickname);
+  formData.append("bio", bio);
+  formData.append("gender", gender);
+
+  if (profilePic) formData.append("profilePic", profilePic);
+
+  const response = await csrfFetch('/api/users', {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData, //json destorys formdata so need to send without json
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(updateUser(data.user))
   }
   return response;
 }
@@ -91,6 +127,8 @@ const sessionReducer = (state = initialState, action) => {
     newState = {...state};
     newState.user = action.user;
     return newState;
+  case UPDATE_USER:
+    newState[action.user.id] = action.user;
    case REMOVE_USER:
     newState = {...state};
     newState.user = null;

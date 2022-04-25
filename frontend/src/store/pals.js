@@ -36,6 +36,7 @@ export const loadAllPals = () => async(dispatch) => {
 
 export const createPal = (pal) => async(dispatch) => {
   const { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = pal;
+
   const formData = new FormData();
   formData.append("gameId", gameId);
   formData.append("server", server);

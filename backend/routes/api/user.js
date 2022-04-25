@@ -74,4 +74,28 @@ router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(
   })
 );
 
+//edit profile
+router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(async (req, res) => {
+  const { email, password, username, nickname, bio, gender, profilePic} = req.body; //getting the info from the body
+
+  profilePic = await singlePublicFileUpload(req.file);
+
+  const user = await User.signup({
+    email,
+    username,
+    password,
+    nickname,
+    bio,
+    gender,
+    profilePic
+  });
+
+  await setTokenCookie(res, user); //returns a JSON response w/ the user info
+
+  return res.json({ //return the json response w/ user info
+    user //if creation of the user is unsucessful, sequelize validation error will be pasesd onto next error-handling middleware
+  });
+})
+);
+
 module.exports = router;
