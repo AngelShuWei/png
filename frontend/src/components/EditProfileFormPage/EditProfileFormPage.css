@@ -30,6 +30,13 @@
   gap: 15px;
 }
 
+/* .avatar-input-label-overlay {
+  position: absolute;
+  background-color: rgba(0, 0 0, .442);
+  border-radius: 100px;
+  margin-top: 6px;
+} */
+
 .avatar-img-req-text {
   font-size: 12px;
   font-weight: 400;

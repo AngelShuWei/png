@@ -46,7 +46,7 @@ function App() {
           <ProtectedRoute exact path='/myepal'>
             <UserPalPage/>
           </ProtectedRoute>
-          <ProtectedRoute exact path='/profile'>
+          <ProtectedRoute exact path='/profile/:userId/edit'>
             <EditProfileFormPage />
           </ProtectedRoute>
           <ProtectedRoute exact path='/myepal/:palId/edit'>

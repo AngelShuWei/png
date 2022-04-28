@@ -8,10 +8,10 @@ const { User } = require('../../db/models');
 const { singleMulterUpload, singlePublicFileUpload } = require('../../awsS3');
 
 const validateSignup = [
-  check('email')
-    .isEmail()
-    .isLength({ min: 6, max: 50 })
-    .withMessage('Please provide a valid email.'),
+  // check('email')
+  //   .isEmail()
+  //   .isLength({ min: 6, max: 50 })
+  //   .withMessage('Please provide a valid email.'),
     // .custom(value => {
     //   console.log("=======",User.findOne({ where: {email: value} }))
     //   return User.findOne({ where: {email: value} })
@@ -19,17 +19,17 @@ const validateSignup = [
     //     return Promise.reject('Email is already taken')
     //   })
     // }),
-  check('username')
-    .isLength({ min: 4, max: 30 })
-    .withMessage('Please provide an unique username with at least 4 characters.'),
-  check('username')
-    .not()
-    .isEmail()
-    .withMessage('Username cannot be an email.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .isLength({ min: 6, max: 15})
-    .withMessage('Password must be 6 characters or more.'),
+  // check('username')
+  //   .isLength({ min: 4, max: 30 })
+  //   .withMessage('Please provide an unique username with at least 4 characters.'),
+  // check('username')
+  //   .not()
+  //   .isEmail()
+  //   .withMessage('Username cannot be an email.'),
+  // check('password')
+  //   .exists({ checkFalsy: true })
+  //   .isLength({ min: 6, max: 15})
+  //   .withMessage('Password must be 6 characters or more.'),
   check('nickname')
     .isLength({ min: 1}, {max: 30})
     .withMessage('Please provide a nickname maximum 30 characters.'),
@@ -75,12 +75,20 @@ router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(
 );
 
 //edit profile
-router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(async (req, res) => {
-  const { email, password, username, nickname, bio, gender, profilePic} = req.body; //getting the info from the body
+router.put('/:userId', singleMulterUpload("profilePic"), validateSignup, asyncHandler(async (req, res) => {
+  const { userId } = req.params;
 
-  profilePic = await singlePublicFileUpload(req.file);
+  let { nickname, bio, gender, profilePic } = req.body; //getting the info from the body
 
-  const user = await User.signup({
+  if (req.files > 0) {
+    profilePic = await singlePublicFileUpload(req.file);
+  } else {
+    profilePic = profilePic
+  }
+
+  let user = await User.findByPk(+userId);
+
+  await user.update({
     email,
     username,
     password,
@@ -90,11 +98,12 @@ router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(
     profilePic
   });
 
+  // user = await User.findByPk(+userId);
   await setTokenCookie(res, user); //returns a JSON response w/ the user info
 
-  return res.json({ //return the json response w/ user info
+  return res.json( //return the json response w/ user info
     user //if creation of the user is unsucessful, sequelize validation error will be pasesd onto next error-handling middleware
-  });
+  );
 })
 );
 

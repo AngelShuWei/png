@@ -8,8 +8,9 @@ function EditProfileFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const { userId } = useParams();
+
   const sessionUser = useSelector(state => state.session.user);
-  console.log("test", sessionUser);
 
   const [nickname, setNickname] = useState(sessionUser.nickname);
   const [bio, setBio] = useState(sessionUser.bio);
@@ -23,8 +24,8 @@ function EditProfileFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(updateProfile({ nickname, bio, gender, profilePic }))
-    .then(() => history.push(`/profile`))
+    dispatch(updateProfile({ id:+userId, email:sessionUser.email, username:sessionUser.username, password:sessionUser.password, nickname, bio, gender, profilePic }))
+    .then(() => history.push(`/profile/${userId}/edit`))
     .catch(async(res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
@@ -60,21 +61,23 @@ function EditProfileFormPage() {
             <div className='avatar-text'>Avatar</div>
             <div className='profile-avatar-content'>
               <label className='avatar-input-label' htmlFor="avatar">
+                {/* <div className='avatar-input-label-overlay'> */}
                 {isProfilePicUploaded &&
                   <img className='signup-loaded-img' src={profilePic}/>
                 }
                 {!isProfilePicUploaded &&
                   <img className='signup-loaded-img' src={URL.createObjectURL(profilePic)}></img>
                 }
+                {/* </div> */}
               </label>
 
-              <div className='avatar-img-req-text'>Avatar must be .JPG, .JPEG, .PNG, or .GIF</div>
+              <div className='avatar-img-req-text'>Avatar must be .JPG, .JPEG, .PNG, or .GIF.</div>
 
-                <input className='input' id='avatar'
-                  type="file"
-                  onChange={updateProfilePic}
-                  style={{visibility:"hidden"}}
-                />
+              <input className='input' id='avatar'
+                type="file"
+                onChange={updateProfilePic}
+                style={{visibility:"hidden"}}
+              />
             </div>
 
             <div className='profile-line-div'/>

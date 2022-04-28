@@ -63,8 +63,6 @@ export const signup = (user) => async(dispatch) => {
 
   if (profilePic) formData.append("profilePic", profilePic);
 
-  console.log(formData);
-
   const response = await csrfFetch('/api/users', {
     method: 'POST',
     headers: {
@@ -81,19 +79,19 @@ export const signup = (user) => async(dispatch) => {
 }
 
 export const updateProfile = (user) => async(dispatch) => {
-  const {email, password, username, nickname, bio, gender, profilePic} = user;
+  const { nickname, bio, gender, profilePic } = user;
 
   const formData = new FormData();
-  formData.append("username", username);
-  formData.append("email", email);
-  formData.append("password", password);
+  // formData.append("username", username);
+  // formData.append("email", email);
+  // formData.append("password", password);
   formData.append("nickname", nickname);
   formData.append("bio", bio);
   formData.append("gender", gender);
 
   if (profilePic) formData.append("profilePic", profilePic);
 
-  const response = await csrfFetch('/api/users', {
+  const response = await csrfFetch(`/api/users/${user.id}`, {
     method: 'PUT',
     headers: {
       "Content-Type": "multipart/form-data",
@@ -102,8 +100,9 @@ export const updateProfile = (user) => async(dispatch) => {
   });
 
   if (response.ok) {
+    console.log(data)
     const data = await response.json();
-    dispatch(updateUser(data.user))
+    dispatch(updateUser(data))
   }
   return response;
 }
@@ -127,7 +126,7 @@ const sessionReducer = (state = initialState, action) => {
     newState = {...state};
     newState.user = action.user;
     return newState;
-  case UPDATE_USER:
+   case UPDATE_USER:
     newState[action.user.id] = action.user;
    case REMOVE_USER:
     newState = {...state};
