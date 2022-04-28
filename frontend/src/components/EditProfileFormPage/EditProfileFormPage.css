@@ -1,0 +1,11 @@
+.profile-page-container {
+  position: relative;
+  background-color: rgb(18, 14, 27);
+  min-height: 100vh;
+  top: 50px;
+}
+
+.profile-page-content {
+  display: flex;
+  justify-content: center;
+}

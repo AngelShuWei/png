@@ -27,10 +27,10 @@
 
 .game-select {
   display: flex;
-  /* flex-wrap: wrap; */
   gap: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
+  /* flex-wrap: wrap; */
 }
 
 .game-img {

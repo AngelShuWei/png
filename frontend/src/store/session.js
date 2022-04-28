@@ -80,7 +80,7 @@ export const signup = (user) => async(dispatch) => {
   return response;
 }
 
-export const updateProfile = (user) => {
+export const updateProfile = (user) => async(dispatch) => {
   const {email, password, username, nickname, bio, gender, profilePic} = user;
 
   const formData = new FormData();

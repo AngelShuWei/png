@@ -54,7 +54,7 @@
   flex-direction: column;
 }
 
-.my-epal-button, .logout-button {
+.my-epal-button, .edit-profile-button, .logout-button {
   color: white;
   cursor: pointer;
   font-size: 14px;
@@ -64,7 +64,12 @@
   border-radius: 4px;
 }
 
-.my-epal-button:hover, .logout-button:hover {
+.my-epal-button:hover, .edit-profile-button:hover, .logout-button:hover {
   background-color: rgb(18, 14,27);
   width: 100%;
 }
+
+/* .my-epal-button:focus, .edit-profile-button:focus, .logout-button:focus {
+  background-color: rgb(18, 14,27);
+  width: 100%;
+} */

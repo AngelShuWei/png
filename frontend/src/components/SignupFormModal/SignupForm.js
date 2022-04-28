@@ -29,7 +29,8 @@ function SignupForm({setShowModal}) {
   // console.log(profilePic !== null)
 
   const isFormValid = () => {
-    return (email.length >= 6 &&
+    return (
+      email.length >= 6 &&
       username.length >= 4 &&
       password.length >= 6 &&
       confirmPassword.length >= 1 &&
@@ -53,7 +54,7 @@ function SignupForm({setShowModal}) {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
-  const updateFile = (e) => {
+  const updateProfilePic = (e) => {
     const file = e.target.files[0];
     if (file) {
       setProfilePic(file);
@@ -183,7 +184,7 @@ function SignupForm({setShowModal}) {
           </div>
               <input className='input' id='avatar'
                 type="file"
-                onChange={updateFile}
+                onChange={updateProfilePic}
                 style={{visibility:"hidden"}}
               />
 

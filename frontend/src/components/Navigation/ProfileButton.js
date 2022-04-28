@@ -46,6 +46,7 @@ function ProfileButton({user}) {
           </div>
           <div className='profile-dropdown-bottom'>
             <NavLink className='my-epal-button' exact to="/myepal">My ePal</NavLink>
+            <NavLink className='edit-profile-button'exact to="/profile">Edit Profile</NavLink>
             <div className='logout-button' onClick={logout}>Log Out</div>
           </div>
         </div>
