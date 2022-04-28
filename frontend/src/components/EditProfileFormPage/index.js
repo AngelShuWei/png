@@ -17,7 +17,7 @@ function EditProfileFormPage() {
   const [profilePic, setProfilePic] = useState(sessionUser.profilePic);
   const [isProfilePicUploaded, setIsProfilePicUploaded] = useState(true);
 
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async(e) => {
@@ -56,8 +56,9 @@ function EditProfileFormPage() {
       <div className='profile-page-container'>
         <div className='profile-page-content'>
           <form className='form-container' onSubmit={handleSubmit}>
-            <div>Profile</div>
-            <div className='upload-an-avatar-text'>Upload an Avatar
+            <div className='profile-text'>Profile</div>
+            <div className='avatar-text'>Avatar</div>
+            <div className='profile-avatar-content'>
               <label className='avatar-input-label' htmlFor="avatar">
                 {isProfilePicUploaded &&
                   <img className='signup-loaded-img' src={profilePic}/>
@@ -66,27 +67,34 @@ function EditProfileFormPage() {
                   <img className='signup-loaded-img' src={URL.createObjectURL(profilePic)}></img>
                 }
               </label>
-            </div>
+
+              <div className='avatar-img-req-text'>Avatar must be .JPG, .JPEG, .PNG, or .GIF</div>
+
                 <input className='input' id='avatar'
                   type="file"
                   onChange={updateProfilePic}
                   style={{visibility:"hidden"}}
                 />
+            </div>
 
-            <div>Nickname</div>
-            <input className='input'
-              placeholder='Please enter your nickname'
-              type='text'
-              value={nickname}
-              maxLength={30}
-              onChange={e => setNickname(e.target.value)}
-            />
+            <div className='profile-line-div'/>
+
+              <label className='login-label-input'>
+                Nickname
+                <input className='input'
+                  placeholder='Please enter your nickname'
+                  type="text"
+                  value={nickname}
+                  maxLength={30}
+                  onChange={(e) => setNickname(e.target.value)}
+                />
+              </label>
 
             <label className='login-label-input'>
               Bio
-              {/* {bio.length < 10 &&
+              {bio.length < 10 &&
                   <div className='alert'>10 characters minimum</div>
-              } */}
+              }
               <textarea className='textarea' id='signup' rows="4"
                 placeholder='Write a short bio to introduce yourself (min 10 characters)'
                 type="text"
@@ -94,12 +102,12 @@ function EditProfileFormPage() {
                 maxLength={500}
                 onChange={(e) => setBio(e.target.value)}
               />
-              {/* <div className='textarea-counter'>{bio.length}/500</div> */}
+              <div className='textarea-counter'>{bio.length}/500</div>
             </label>
 
             <label className='login-label-input'>
               Gender
-              <select className='login-input' value={gender} onChange={e => setGender(e.target.value)} >
+              <select className='input' value={gender} onChange={e => setGender(e.target.value)} >
                 <option value="" disabled>Select a gender</option>
                 <option>Female</option>
                 <option>Male</option>
@@ -110,11 +118,12 @@ function EditProfileFormPage() {
             {errors.map((error, idx) => <p className='errors' key={idx}>{error}</p>)}
 
             {isFormValid() ?
-              <button className='submit-button' type='submit' onClick={() => setShowModal(true)}>Save Changes</button> :
-              <button className='disabled-button' type='submit' disabled={true}>Save Changes</button>
+              <button className='profile-submit-button' type='submit'>Save Changes</button> :
+              <button className='profile-disabled-button' type='submit' disabled={true}>Save Changes</button>
             }
 
             <div className='line-div'/>
+
           </form>
         </div>
       </div>
