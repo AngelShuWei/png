@@ -62,15 +62,15 @@ function EditProfileFormPage() {
 
             <div className='profile-avatar-content'>
               <label className='avatar-input-label' htmlFor="avatar">
-                <div className='avatar-input-label-overlay'>
-                <i className="fa-solid fa-pen-to-square"/>
+                {/* <div className='avatar-input-label-overlay'> */}
+                {/* <i className="fa-solid fa-pen-to-square"/> */}
                 {isProfilePicUploaded &&
-                  <img className='signup-loaded-img' id='profile' src={profilePic}/>
+                  <img className='signup-loaded-img' src={profilePic}/>
                 }
                 {!isProfilePicUploaded &&
-                  <img className='signup-loaded-img' id='profile' src={URL.createObjectURL(profilePic)}></img>
+                  <img className='signup-loaded-img' src={URL.createObjectURL(profilePic)}></img>
                 }
-                </div>
+                {/* </div> */}
               </label>
 
               <div className='avatar-img-req-text'>Avatar must be .JPG, .JPEG, .PNG, or .GIF.</div>
