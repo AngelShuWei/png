@@ -77,33 +77,34 @@ router.post('/', singleMulterUpload("profilePic"), validateSignup, asyncHandler(
 //edit profile
 router.put('/:userId', singleMulterUpload("profilePic"), validateSignup, asyncHandler(async (req, res) => {
   const { userId } = req.params;
-
+  // console.log('userId---', userId);
   let { nickname, bio, gender, profilePic } = req.body; //getting the info from the body
 
   if (req.files > 0) {
     profilePic = await singlePublicFileUpload(req.file);
   } else {
-    profilePic = profilePic
+    profilePic = profilePic;
   }
 
   let user = await User.findByPk(+userId);
+  console.log('user---', user);
 
   await user.update({
-    email,
-    username,
-    password,
     nickname,
     bio,
     gender,
     profilePic
   });
 
-  // user = await User.findByPk(+userId);
-  await setTokenCookie(res, user); //returns a JSON response w/ the user info
+  console.log(user);
 
-  return res.json( //return the json response w/ user info
+  // user = await User.findByPk(+userId);
+  // await setTokenCookie(res, user); //returns a JSON response w/ the user info
+  // console.log(setTokenCookie)
+
+  return res.json({ //return the json response w/ user info
     user //if creation of the user is unsucessful, sequelize validation error will be pasesd onto next error-handling middleware
-  );
+  });
 })
 );
 

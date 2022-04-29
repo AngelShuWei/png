@@ -15,8 +15,8 @@ const updateUser = (user) => {
   return {
     type: UPDATE_USER,
     user
-  }
-}
+  };
+};
 
 const removeUser = () => {
   return {
@@ -82,9 +82,6 @@ export const updateProfile = (user) => async(dispatch) => {
   const { nickname, bio, gender, profilePic } = user;
 
   const formData = new FormData();
-  // formData.append("username", username);
-  // formData.append("email", email);
-  // formData.append("password", password);
   formData.append("nickname", nickname);
   formData.append("bio", bio);
   formData.append("gender", gender);
@@ -100,9 +97,8 @@ export const updateProfile = (user) => async(dispatch) => {
   });
 
   if (response.ok) {
-    console.log(data)
     const data = await response.json();
-    dispatch(updateUser(data))
+    dispatch(updateUser(data.user))
   }
   return response;
 }
@@ -122,19 +118,21 @@ const initialState = { user: null};
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-   case SET_USER:
-    newState = {...state};
-    newState.user = action.user;
-    return newState;
-   case UPDATE_USER:
-    newState[action.user.id] = action.user;
-   case REMOVE_USER:
-    newState = {...state};
-    newState.user = null;
-    return newState;
-  default:
-    return state;
- }
+    case SET_USER:
+      newState = {...state};
+      newState.user = action.user;
+      return newState;
+    case UPDATE_USER:
+      newState = {...state};
+      newState.user = action.user;
+      return newState;
+    case REMOVE_USER:
+      newState = {...state};
+      newState.user = null;
+      return newState;
+    default:
+      return state;
+  }
 };
 
 export default sessionReducer;

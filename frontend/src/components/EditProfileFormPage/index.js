@@ -24,8 +24,8 @@ function EditProfileFormPage() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(updateProfile({ id:+userId, email:sessionUser.email, username:sessionUser.username, password:sessionUser.password, nickname, bio, gender, profilePic }))
-    .then(() => history.push(`/profile/${userId}/edit`))
+    dispatch(updateProfile({ id:userId, nickname, bio, gender, profilePic }))
+    .then(() => history.push(`/profile/${sessionUser.id}/edit`))
     .catch(async(res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
@@ -57,8 +57,10 @@ function EditProfileFormPage() {
       <div className='profile-page-container'>
         <div className='profile-page-content'>
           <form className='form-container' onSubmit={handleSubmit}>
+
             <div className='profile-text'>Profile</div>
             <div className='avatar-text'>Avatar</div>
+
             <div className='profile-avatar-content'>
               <label className='avatar-input-label' htmlFor="avatar">
                 {/* <div className='avatar-input-label-overlay'> */}
