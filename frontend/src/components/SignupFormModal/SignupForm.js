@@ -181,6 +181,7 @@ function SignupForm({setShowModal}) {
                 <img className='signup-loaded-img' src={URL.createObjectURL(profilePic)}/>
               }
               </label>
+            <div className='avatar-img-req-text' id='signup'>Avatar must be .JPG, .JPEG, .PNG, or .GIF.</div>
           </div>
               <input className='input' id='avatar'
                 type="file"

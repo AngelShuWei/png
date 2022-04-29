@@ -59,6 +59,13 @@
   border-radius: 100px;
 }
 
+.avatar-img-req-text#signup{
+  color: #c4c3e6;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
 .input#avatar {
   width: 0px;
   height: 0px;
