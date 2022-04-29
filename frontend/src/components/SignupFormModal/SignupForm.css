@@ -40,7 +40,6 @@
 }
 
 .avatar-input-label {
-  position: relative;
   background-color: #21212c;
   width: 104px;
   height: 104px;
@@ -58,4 +57,10 @@
   height: 96px;
   object-fit: cover;
   border-radius: 100px;
+}
+
+.input#avatar {
+  width: 0px;
+  height: 0px;
+  margin-bottom: 0px;
 }

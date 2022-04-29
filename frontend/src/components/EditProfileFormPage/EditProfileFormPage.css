@@ -27,22 +27,27 @@
 .profile-avatar-content {
   display: flex;
   align-items: center;
-  gap: 15px;
 }
 
-/* .avatar-input-label-overlay {
+.avatar-input-label-overlay {
+  position: relative;
+  /* background-color: rgba(100, 100 100, .442); */
+  /* border-radius: 100px; */
+  left: 10px;
+  top: -9px;
+}
+
+.signup-loaded-img #profile {
   position: absolute;
-  background-color: rgba(0, 0 0, .442);
-  border-radius: 100px;
-  margin-top: 6px;
-} */
+  left: 2px;
+  top: -9px;
+}
 
 .avatar-img-req-text {
+  color: #c4c3e6;
   font-size: 12px;
   font-weight: 400;
-  color: #c4c3e6;
-  line-height: 18px;
-  margin-bottom: 12px;
+  margin-left: 15px;
 }
 
 .profile-line-div {

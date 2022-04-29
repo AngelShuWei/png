@@ -16,21 +16,19 @@
 }
 
 .profile-dropdown {
+  position: fixed;
   background-color: #21212C;
   color: white;
-  position: fixed;
   width: 320px;
   height: auto;
-  margin-top: 8.5%;
-  left: 84%;
-  transform: translateX(-5%);
+  margin-top: 14%;
+  left: 81.5%;
   border-radius: 4px;
   padding: 16px;
   box-shadow: 5px 5px 50px 1px black;
   font-weight: 400;
   font-size: 18px;
   /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, .2); */
-  /* font-size: 12px;*/
 }
 
 .profile-dropdown-top {
