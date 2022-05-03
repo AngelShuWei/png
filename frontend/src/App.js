@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; //useRef gives way to store a ref to obj that will persist with the full lifetime o the component
 import {useDispatch} from 'react-redux';
 import {NavLink, Route, Switch} from 'react-router-dom';
 import * as sessionActions from "./store/session";

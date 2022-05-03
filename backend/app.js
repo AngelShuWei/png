@@ -4,9 +4,14 @@ const cors = require('cors'); //can be used to enable cors with various options
 const csurf = require('csurf'); //adds a cookie that is HTTP-only to any server res, adds a method on all req (req.csrfToken) that will be sent to cookie XSRF-TOKEN later. The two cookies work together to provide CSRF protection for app
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const path = require('path');
+const WebSocket = require('ws');
 const { ValidationError } = require('sequelize');
+const { createServer } = require('http');
 const { environment } = require('./config');
 const isProduction = environment === 'production';
+
+// const { port } = require('/config');
 
 const app = express(); //initialize express
 const routes = require('./routes'); //connects all the routes
@@ -15,6 +20,26 @@ app.use(morgan('dev')); //for logging info about req and res
 app.use(cookieParser()); //for parsing cookies
 app.use(express.urlencoded({ extended: false })); //use Express's built in .urlencoded() method in app
 app.use(express.json()); //for parsing JSON bodies of req with content-type of application/json
+
+//WEBSOCKET code
+app.use(express.static(path.join(__dirname, '/public')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+const server = createServer(app);
+const wss = new WebSocket.Server({ server }); //passes in server we created above
+
+//listen for connection events
+wss.on('connection', (ws) => {
+  ws.on('message', (jsonData) => { //message event fires when message event is recieved from client
+    console.log(`Processing incoming message ${jsonData}`); //jsonData is the msg itself formatted as json. used for debugging
+  });
+  ws.on('close', (e) => { //close event fires when websocket is closed
+    console.log(e);
+  });
+});
 
 if (!isProduction) {
   // enable cors only in development
