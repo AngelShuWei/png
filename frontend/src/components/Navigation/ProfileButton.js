@@ -10,6 +10,8 @@ function ProfileButton({user}) {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
 
+  const sessionUser = useSelector(state => state.session.user);
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -42,10 +44,11 @@ function ProfileButton({user}) {
         <div className="profile-dropdown">
           <div className='profile-dropdown-top'>
             <img className='profile-dropdown-img' src={user.profilePic || 'https://icon-library.com/images/no-user-image-icon/no-user-image-icon-27.jpg'}/>
-            <div>{user.username}</div>
+            <div>{user.nickname}</div>
           </div>
           <div className='profile-dropdown-bottom'>
             <NavLink className='my-epal-button' exact to="/myepal">My ePal</NavLink>
+            <NavLink className='edit-profile-button' exact to={`/profile/${sessionUser.id}/edit`}>Edit Profile</NavLink>
             <div className='logout-button' onClick={logout}>Log Out</div>
           </div>
         </div>

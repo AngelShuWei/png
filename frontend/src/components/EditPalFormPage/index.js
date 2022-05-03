@@ -15,6 +15,7 @@ function EditPalFormPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const pal = useSelector(state => state.pals[palId]);
+
   const allGames = useSelector(state => Object.values(state.games));
 
   const [gameId, setGameId] = useState(pal?.Game?.id);

@@ -99,7 +99,7 @@ router.post('/', multiPartUpload("gameStatsPic", "palPic"), restoreUser, validat
 router.put('/:palId', multiPartUpload("gameStatsPic", "palPic"), validatePalInfo, asyncHandler(async(req, res) => { //'/:palId(\\d+)' regex
 
   const { palId } = req.params;
-
+  
   let { gameId, server, rank, position, style, gameStatsPic, palPic, nickname, title, description, price, address, city, state } = req.body;
 
   // console.log('reqfilessss@@@@', req.files);

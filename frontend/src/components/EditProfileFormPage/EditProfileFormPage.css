@@ -1,0 +1,89 @@
+.profile-page-container {
+  position: relative;
+  background-color: rgb(18, 14, 27);
+  min-height: 100vh;
+}
+
+.profile-page-content {
+  position: relative;
+  top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-text {
+  font-size: 24px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.avatar-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+.profile-avatar-content {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-input-label-overlay {
+  position: relative;
+  /* background-color: rgba(100, 100 100, .442); */
+  /* border-radius: 100px; */
+  left: 10px;
+  top: -9px;
+}
+
+/* .signup-loaded-img #profile {
+  position: absolute;
+  left: 2px;
+  top: -9px;
+} */
+
+.avatar-img-req-text {
+  color: #c4c3e6;
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 15px;
+}
+
+.profile-line-div {
+  background: #4f4e60;
+  width: auto;
+  height: 1px;
+  margin: 24px 0;
+}
+
+.profile-submit-button {
+  border-radius: 20px;
+  background: #7041e6;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 24px;
+  min-width: 80px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.profile-submit-button:hover {
+  background-color: rgb(141, 101, 234);
+  transition: 0.2s ease-in;
+}
+
+.profile-disabled-button {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 20px;
+  border: 1px solid gray;
+  color: gray;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 24px;
+  min-width: 80px;
+  margin-bottom: 30px;
+}

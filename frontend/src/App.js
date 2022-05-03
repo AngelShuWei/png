@@ -14,7 +14,7 @@ import HomePage from './components/HomePage';
 import OnePalPage from './components/OnePalPage';
 import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
-import EditReviewForm from './components/EditReviewFormModal/EditReviewForm';
+import EditProfileFormPage from './components/EditProfileFormPage';
 import Footer from './components/FooterModal/Footer';
 
 function App() {
@@ -45,6 +45,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute exact path='/myepal'>
             <UserPalPage/>
+          </ProtectedRoute>
+          <ProtectedRoute exact path='/profile/:userId/edit'>
+            <EditProfileFormPage />
           </ProtectedRoute>
           <ProtectedRoute exact path='/myepal/:palId/edit'>
             <EditPalFormPage/>

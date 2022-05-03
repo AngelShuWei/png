@@ -36,6 +36,7 @@ export const loadAllPals = () => async(dispatch) => {
 
 export const createPal = (pal) => async(dispatch) => {
   const { gameId, server, rank, position, style, gameStatsPic, nickname, title, description, palPic, price, address, city, state } = pal;
+
   const formData = new FormData();
   formData.append("gameId", gameId);
   formData.append("server", server);
@@ -90,7 +91,7 @@ export const updatePal = (pal) => async(dispatch) => { //have to take in whole p
   for (const pair of formData.entries()) {
     console.log('%%%%%%%', pair);
   }
-
+  console.log('test', pal.id);
   const response = await csrfFetch(`/api/pals/${pal.id}`, {
     method: 'PUT',
     headers: {
@@ -98,6 +99,7 @@ export const updatePal = (pal) => async(dispatch) => { //have to take in whole p
     },
     body: formData,
   });
+
   if (response.ok) {
     const data = await response.json();
     dispatch(updateOne(data));
