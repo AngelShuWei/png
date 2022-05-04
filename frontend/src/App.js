@@ -16,6 +16,7 @@ import UserPalPage from './components/UserPalPage';
 import EditPalFormPage from './components/EditPalFormPage';
 import EditProfileFormPage from './components/EditProfileFormPage';
 import Footer from './components/FooterModal/Footer';
+import Dm from './components/DmModal';
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function App() {
   return ( //if isLoaded is true, then load all of the routes
     <>
       <Navigation isLoaded={isLoaded} />
+      <Dm/>
       <Footer />
       {isLoaded && (
         <Switch>
