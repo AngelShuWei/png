@@ -31,9 +31,9 @@ function App() {
 
   return ( //if isLoaded is true, then load all of the routes
     <>
-      <Footer />
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && <Dm/>}
+      <Dm />
+      <Footer />
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
