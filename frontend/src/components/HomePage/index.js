@@ -83,7 +83,8 @@ function HomePage() {
               <img className='sliding-bg' src={vkimmBg}/>
               <img className='sliding-bg' src={IMLSBg}/>
               <img className='sliding-bg' src={supCaitlinBg}/>
-              <img className='sliding-bg' src={tilterellaBg}/> */}
+              <img className='sliding-bg' src={tilterellaBg}/>
+              */}
             </div>
           </div>
         </div>
